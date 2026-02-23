@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "title": "Kohlgruber Lab",
+    "subtitle": "Translational Immunology",
+    "description": "Led by Dr. Andrea Kohlgruber, our lab studies how antigen recognition can be decoded and redesigned to build durable immune tolerance and next-generation cell therapies. We combine patient-derived data, functional screening, and receptor engineering to move discoveries toward the clinic."
+  },
+  "research_previews": [
+    {
+      "title": "Antigen discovery for immune tolerance and autoimmunity",
+      "text": "We integrate patient immunoprofiling, epitope mapping, and tissue-level validation to discover antigens that drive pathologic inflammation and those that may restore tolerance. This includes a major research program on autoimmune arthritis in pediatric and adult cohorts, where we define shared and age-specific antigenic signatures to guide biomarker development and mechanism-based interventions."
+    },
+    {
+      "title": "Functional genomic screens to map immune ligands",
+      "text": "Our team builds pooled CRISPR and perturb-seq workflows to identify the ligands and regulatory pathways that shape immune synapse quality. By combining discovery screens with orthogonal biochemical validation, we generate prioritized target maps that explain how context-specific ligand expression controls T-cell activation, persistence, and dysfunction in inflammatory tissues and tumors."
+    },
+    {
+      "title": "TCR discovery and engineering (αβ and γδ) for cancer translation",
+      "text": "We discover naturally occurring αβ and γδ TCRs from patient and donor repertoires, then engineer receptor formats optimized for safety and potency in translational settings. Our workflow links receptor specificity profiling, preclinical function testing, and manufacturability assessments to nominate candidates that can advance toward first-in-human cellular immunotherapy studies."
+    }
+  ],
+  "featured_team": ["andrea-kohlgruber", "liam-fernandez", "maya-natarajan", "elena-petrov"],
+  "featured_mentoring": ["onboarding-blueprint", "grant-writing-clinic", "rotation-design"]
+}

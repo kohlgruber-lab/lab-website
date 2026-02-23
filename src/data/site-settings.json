@@ -1,0 +1,21 @@
+{
+  "lab_name": "Kohlgruber Lab",
+  "pi_name": "Dr. Andrea Kohlgruber",
+  "institution": "Center for Translational Immunology",
+  "mission_statement": "We investigate how immune recognition can be redirected toward durable tolerance in autoimmunity and precision cell therapies in cancer. Our translational immunology programs connect patient cohorts, functional genomics, and engineered receptors to accelerate clinical impact.",
+  "email": "kohlgruber.lab@institute.edu",
+  "address": "Center for Translational Immunology, 100 Discovery Avenue, Boston, MA 02115, USA",
+  "socials": [
+    { "label": "X", "url": "https://x.com" },
+    { "label": "LinkedIn", "url": "https://linkedin.com" },
+    { "label": "GitHub", "url": "https://github.com/kohlgruber-lab" }
+  ],
+  "funding_logos": [
+    { "name": "NIH", "image": "/images/funding/nih.svg", "url": "https://www.nih.gov", "alt_text": "NIH funding agency logo" },
+    { "name": "DoD CDMRP", "image": "/images/funding/dod.svg", "alt_text": "DoD CDMRP funding logo" },
+    { "name": "Parker Foundation", "image": "/images/funding/parker.svg", "alt_text": "Parker Foundation logo" },
+    { "name": "Lupus Research Alliance", "image": "/images/funding/lra.svg", "alt_text": "Lupus Research Alliance logo" },
+    { "name": "CRI", "image": "/images/funding/cri.svg", "alt_text": "Cancer Research Institute logo" },
+    { "name": "Institutional Seed Fund", "image": "/images/funding/seed.svg", "alt_text": "Institutional seed fund logo" }
+  ]
+}

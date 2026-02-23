@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+
+const items = await getCollection('mentoring');
+const philosophy = await getEntry('mentoringPage', 'index');
+if (!philosophy) throw new Error('Mentoring philosophy content missing.');
+const { Content } = await render(philosophy);
+---
+<BaseLayout title="Mentoring" description="Mentoring philosophy and training resources.">
+  <section class="section">
+    <h1 class="text-3xl font-bold">Mentoring</h1>
+    <article class="card mt-6 prose max-w-none prose-slate">
+      <h2 class="not-prose text-xl font-semibold">{philosophy.data.title}</h2>
+      <Content />
+    </article>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      {items.map((item)=><article class="card"><p class="text-xs text-primary-700">{item.data.category}</p><h2 class="mt-1 text-lg font-semibold">{item.data.title}</h2><p class="mt-2 text-sm">{item.data.description}</p>{item.data.link && <a class="mt-3 inline-block text-sm font-semibold" href={item.data.link}>Resource link →</a>}</article>)}
+    </div>
+    <article class="card mt-8">
+      <h2 class="text-xl font-semibold">Resources for trainees</h2>
+      <ul class="mt-3 list-disc space-y-2 pl-5">{philosophy.data.trainee_resources.map((r)=><li><a href={r.url}>{r.label}</a></li>)}</ul>
+    </article>
+  </section>
+</BaseLayout>

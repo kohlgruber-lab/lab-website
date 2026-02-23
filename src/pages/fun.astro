@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const items = await getCollection('fun');
+---
+<BaseLayout title="Lab Fun" description="Life in and beyond the lab.">
+  <section class="section">
+    <h1 class="text-3xl font-bold">Lab Fun</h1>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {items.map((item)=><article class="card p-4">{item.data.image && <img src={item.data.image} alt={item.data.caption} loading="lazy" class="h-40 w-full rounded-md object-cover" />}<p class="mt-3 text-xs text-primary-700">{item.data.category}</p>{item.data.title && <h2 class="font-semibold">{item.data.title}</h2>}<p class="text-sm">{item.data.caption}</p></article>)}
+    </div>
+  </section>
+</BaseLayout>
