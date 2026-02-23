@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import join from '../data/join.json';
+---
+<BaseLayout title="Join Us" description="Recruitment and open positions.">
+  <section class="section">
+    <h1 class="text-3xl font-bold">Join Us</h1>
+    <p class="mt-4">{join.intro}</p>
+    <article class="card mt-6"><h2 class="text-xl font-semibold">Who we're looking for</h2><ul class="mt-3 list-disc space-y-1 pl-5">{join.who_we_are_looking_for.map((item)=><li>{item}</li>)}</ul></article>
+    <article class="card mt-6"><h2 class="text-xl font-semibold">How to apply</h2><ul class="mt-3 list-disc space-y-1 pl-5">{join.how_to_apply.map((item)=><li>{item}</li>)}</ul><p class="mt-3"><span class="font-medium">Suggested email subject:</span> {join.email_subject}</p></article>
+    <article class="card mt-6"><h2 class="text-xl font-semibold">Lab culture & mentorship</h2><p class="mt-3">{join.culture}</p></article>
+    <article class="card mt-6"><h2 class="text-xl font-semibold">Open positions</h2><div class="mt-3 space-y-3">{join.open_positions.map((p)=><div><h3 class="font-semibold">{p.title}</h3><p class="text-sm">{p.details}</p></div>)}</div></article>
+  </section>
+</BaseLayout>

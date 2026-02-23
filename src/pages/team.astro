@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const team = (await getCollection('team')).sort((a,b)=>a.data.order-b.data.order);
+---
+<BaseLayout title="Team" description="Meet the Kohlgruber Lab team.">
+  <section class="section">
+    <h1 class="text-3xl font-bold">Team</h1>
+    <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {team.map((m)=><article class="card"><img src={m.data.photo} alt={`Portrait of ${m.data.name}`} loading="lazy" class="h-52 w-full rounded-md object-cover"/><h2 class="mt-4 text-xl font-semibold">{m.data.name}</h2><p class="text-slate-600">{m.data.position}</p><p class="text-sm">{m.data.nationality_flag_emoji} {m.data.nationality_country}</p><p class="mt-2 text-sm"><span class="font-medium">Places I've lived:</span> {m.data.places_lived.join(', ')}</p><p class="mt-3 text-sm">{m.data.bio}</p><p class="mt-3 rounded bg-primary-50 p-2 text-sm"><span class="font-medium">Fun fact:</span> {m.data.fun_fact}</p>{m.data.links && <div class="mt-3 flex flex-wrap gap-3 text-sm">{m.data.links.email && <a href={`mailto:${m.data.links.email}`}>Email</a>}{m.data.links.scholar && <a href={m.data.links.scholar}>Scholar</a>}{m.data.links.orcid && <a href={m.data.links.orcid}>ORCID</a>}{m.data.links.github && <a href={m.data.links.github}>GitHub</a>}{m.data.links.linkedin && <a href={m.data.links.linkedin}>LinkedIn</a>}</div>}</article>)}
+    </div>
+  </section>
+</BaseLayout>

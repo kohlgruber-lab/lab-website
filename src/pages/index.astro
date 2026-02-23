@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { getCollection } from 'astro:content';
+import site from '../data/site-settings.json';
+import home from '../data/home.json';
+
+const team = (await getCollection('team'))
+  .filter((m) => home.featured_team.includes(m.id.replace('.md', '')))
+  .sort((a, b) => a.data.order - b.data.order);
+const mentoring = (await getCollection('mentoring')).filter((m) => home.featured_mentoring.includes(m.id.replace('.md', '')));
+const news = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+const fun = (await getCollection('fun')).slice(0, 12);
+---
+<BaseLayout title="Home" description={site.mission_statement}>
+  <section class="section">
+    <p class="text-sm uppercase tracking-wide text-primary-700">{home.hero.subtitle}</p>
+    <h1 class="mt-2 text-4xl font-bold text-slate-900">{home.hero.title}</h1>
+    <p class="mt-3 max-w-3xl">Led by {site.pi_name}. {home.hero.description}</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a class="rounded-md bg-primary-700 px-4 py-2 text-white" href="/join">Join Us</a>
+      <a class="rounded-md bg-slate-200 px-4 py-2 text-slate-900" href="/contact">Contact</a>
+      <a class="rounded-md bg-slate-200 px-4 py-2 text-slate-900" href="/research">Explore Research</a>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <h2 class="h2">Research themes</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-3">{home.research_previews.map((item) => <article class="card"><h3 class="text-lg font-semibold">{item.title}</h3><p class="mt-2 text-sm">{item.text}</p><a href="/research" class="mt-3 inline-block text-sm font-semibold">Read more →</a></article>)}</div>
+  </section>
+
+  <section class="section pt-0"><div class="flex items-end justify-between"><h2 class="h2">Team</h2><a href="/team">View all →</a></div><div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{team.map((m)=><article class="card p-4"><img src={m.data.photo} alt={`Portrait of ${m.data.name}`} loading="lazy" class="h-40 w-full rounded-md object-cover"/><p class="mt-3 font-semibold">{m.data.name}</p><p class="text-sm text-slate-600">{m.data.position}</p><p class="text-sm">{m.data.nationality_flag_emoji} {m.data.nationality_country}</p></article>)}</div></section>
+
+  <section class="section pt-0"><div class="flex items-end justify-between"><h2 class="h2">Mentoring</h2><a href="/mentoring">View all →</a></div><div class="mt-6 grid gap-4 md:grid-cols-3">{mentoring.map((item)=><article class="card"><h3 class="font-semibold">{item.data.title}</h3><p class="text-sm text-primary-700">{item.data.category}</p><p class="mt-2 text-sm">{item.data.description}</p></article>)}</div></section>
+
+  <section class="section pt-0"><div class="flex items-end justify-between"><h2 class="h2">Lab News</h2><a href="/news">All news →</a></div><div class="mt-6 grid gap-4 md:grid-cols-3">{news.map((post)=><article class="card"><p class="text-xs text-slate-500">{post.data.date.toISOString().slice(0,10)}</p><h3 class="mt-1 font-semibold"><a href={`/news/${post.id.replace('.md','')}`}>{post.data.title}</a></h3><p class="mt-2 text-sm">{post.data.summary}</p></article>)}</div></section>
+
+  <section class="section pt-0"><div class="flex items-end justify-between"><h2 class="h2">Lab Fun</h2><a href="/fun">See more →</a></div><div class="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">{fun.map((item)=><article class="card p-3"><p class="text-xs text-primary-700">{item.data.category}</p><p class="text-sm">{item.data.caption}</p></article>)}</div></section>
+
+  <section class="section pt-0"><h2 class="h2">Join Us</h2><p class="mt-2 max-w-3xl">We recruit across levels for projects spanning antigen discovery, functional genomics, and receptor engineering. We value rigor, openness, and mentorship in a collaborative environment.</p><a href="/join" class="mt-3 inline-block font-semibold">Explore opportunities →</a></section>
+
+  <section class="section pt-0"><h2 class="h2">Contact</h2><p class="mt-2">Email: <a href={`mailto:${site.email}`}>{site.email}</a></p><p>{site.address}</p><div class="mt-6 max-w-2xl"><ContactForm /></div></section>
+
+  <section class="section pt-0">
+    <h2 class="h2">Funding</h2>
+    <div class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      {site.funding_logos.map((logo) => (
+        <a href={logo.url ?? '#'} class="card flex h-20 items-center justify-center p-2" aria-label={logo.name}>
+          <img src={logo.image} alt={logo.alt_text} loading="lazy" class="max-h-14" />
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

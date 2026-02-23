@@ -1,0 +1,8 @@
+{
+  "mentoring_philosophy": "Our mentoring philosophy centers on rigorous science, structured growth, and humane teamwork. We tailor project ownership to each trainee's stage, pair ambitious milestones with practical support, and prioritize transparent communication. Every trainee develops technical depth, critical writing skills, and collaborative leadership through regular feedback, individualized development plans, and opportunities to mentor others.",
+  "trainee_resources": [
+    { "label": "Individual Development Plan template", "url": "https://myidp.sciencecareers.org" },
+    { "label": "NIH grant writing resources", "url": "https://grants.nih.gov" },
+    { "label": "Responsible conduct of research training", "url": "https://ori.hhs.gov" }
+  ]
+}

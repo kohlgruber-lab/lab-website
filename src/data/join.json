@@ -1,0 +1,25 @@
+{
+  "intro": "We are building an interdisciplinary team of scientists committed to translational immunology. We welcome applicants who are curious, collaborative, and motivated to bridge mechanistic biology with clinical impact.",
+  "who_we_are_looking_for": [
+    "PhD students interested in immunology, genomics, and quantitative analysis",
+    "Postdoctoral fellows with strong publication records and translational ambition",
+    "Research staff with experience in cell engineering, flow cytometry, or NGS workflows"
+  ],
+  "how_to_apply": [
+    "Email a CV, a brief statement of research interests, and contact details for 2-3 references.",
+    "If applicable, include one representative manuscript or preprint.",
+    "In your message, note which research theme aligns most closely with your goals."
+  ],
+  "email_subject": "Application to Kohlgruber Lab - [Role] - [Your Name]",
+  "culture": "Our lab culture emphasizes shared standards, generous collaboration, and deliberate professional development. We invest in mentorship, reproducibility, and inclusive scientific dialogue.",
+  "open_positions": [
+    {
+      "title": "Postdoctoral Fellow - Autoimmune Antigen Discovery",
+      "details": "Focus on integrating cohort immunology and antigen mapping across pediatric and adult arthritis studies. Experience with repertoire analysis or proteomics preferred."
+    },
+    {
+      "title": "Research Associate - Functional Genomics",
+      "details": "Lead pooled CRISPR screening experiments and validation workflows in primary immune systems. Prior experience with NGS library prep is desirable."
+    }
+  ]
+}
