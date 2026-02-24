@@ -30,6 +30,19 @@ const image = '/images/og-placeholder.svg';
     <Nav />
     <main id="main"><slot /></main>
     <Footer />
+<script>
+  // If Netlify Identity sends the user to /#recovery_token=... or /#invite_token=...,
+  // forward them to /admin with the same hash so the Identity widget can handle it.
+  const hash = window.location.hash || "";
+  const isIdentityToken =
+    hash.includes("recovery_token=") ||
+    hash.includes("invite_token=") ||
+    hash.includes("confirmation_token=");
+
+  if (isIdentityToken && !window.location.pathname.startsWith("/admin")) {
+    window.location.href = "/admin/" + hash;
+  }
+</script>
   </body>
 </html>
 
