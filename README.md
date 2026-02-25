@@ -1,10 +1,11 @@
 # Kohlgruber Lab Website (Astro + Tailwind + Decap CMS)
 
-Production-ready academic lab website for translational immunology.
+A production-ready academic lab website with a clean, modern visual system and CMS-backed content editing.
 
-## Tech stack
+## Stack
 - Astro + TypeScript
 - Tailwind CSS
+- Netlify static deploy
 - Decap CMS (`/admin`) with Netlify Identity + Git Gateway
 - Netlify Forms for contact submissions
 
@@ -18,62 +19,82 @@ Production-ready academic lab website for translational immunology.
    npm run dev
    ```
 3. Open `http://localhost:4321`.
-4. CMS admin is at `http://localhost:4321/admin`.
+4. Open CMS at `http://localhost:4321/admin`.
 
 ## Deploy to Netlify (click-by-click)
-1. Push this branch/repo to GitHub.
+1. Push this repository to GitHub.
 2. In Netlify, click **Add new site** → **Import an existing project**.
-3. Select GitHub and choose `kohlgruber-lab/lab-website`.
-4. Netlify build settings:
+3. Select your GitHub repo.
+4. Build settings are auto-provided by `netlify.toml`:
    - Build command: `npm run build`
    - Publish directory: `dist`
 5. Click **Deploy site**.
 
-## Enable Decap CMS (Identity + Git Gateway)
+## Enable Identity + Git Gateway (required for CMS)
 1. In Netlify site dashboard, open **Identity**.
 2. Click **Enable Identity**.
-3. Under **Registration preferences**, choose invite-only or open (recommended invite-only).
+3. Go to **Identity → Settings and usage**:
+   - Set registration mode (recommend **Invite only**).
 4. Under **Services**, click **Enable Git Gateway**.
-5. (Optional) Set external providers if needed.
+5. Confirm deploy is complete, then visit `/admin`.
 
-## Invite admin + log into `/admin`
-1. In Netlify → **Identity** → **Invite users**.
-2. Enter admin email and send invite.
-3. Accept invite from email and set password.
-4. Visit `https://<your-site>.netlify.app/admin`.
-5. Log in; Decap now edits repository files directly through Git Gateway.
+## Invite your first CMS user
+1. In Netlify, go to **Identity**.
+2. Click **Invite users**.
+3. Enter email and send invite.
+4. User accepts invite via email and sets password.
+5. User logs in at `https://<your-site>.netlify.app/admin`.
 
-## How to edit content collections
-In `/admin`, use the left panel collections:
-- **Site Settings**: lab name, PI, mission, contact info, social links, funding logos.
-- **Home Page Content**: hero text, research previews, featured team/mentoring slugs.
-- **Research Page Content**: three research theme paragraphs.
-- **Team Members**: profile cards and optional links.
-- **Mentoring Page Settings**: mentoring philosophy markdown + trainee resources.
-- **Mentoring Items**: mentoring programs and featured toggles.
-- **Lab News**: post metadata + markdown body.
-- **Lab Fun**: gallery tiles.
-- **Join Page**: recruiting copy, bullets, suggested subject, open positions.
+## CMS collections included
+- **Site Settings** (single file)
+- **Welcome Page Content** (single file)
+- **Research Page Content** (single file)
+- **Team Members** (folder)
+- **News** (folder)
+- **Culture Items** (folder)
+- **Join Page** (single file)
+- **Contact Page** (single file)
+
+Uploads are stored in `public/uploads` and served from `/uploads`.
+
+## Content editing workflow
+1. Open `/admin` and log in.
+2. Choose a collection from the sidebar.
+3. Edit fields and click **Publish**.
+4. Decap commits content changes to the connected Git repo via Git Gateway.
+5. Netlify rebuilds and publishes the updated site.
+
+## Netlify auth and `/admin` reliability defaults
+This repo includes the common auth fixes by default:
+- Identity widget loaded in `public/admin/index.html`
+- Decap script loaded in `public/admin/index.html`
+- `window.netlifyIdentity.init()` call in admin page
+- Client-side token forwarding to `/admin/#...` in the global layout
+- Netlify redirect: `/admin/* -> /admin/index.html (200)`
 
 ## Forms (Netlify Forms)
-- Contact forms exist on homepage and contact page.
-- Netlify detects form name `contact` during deploy.
+- Contact form is configured with `name="contact"`, `data-netlify="true"`, and hidden `form-name`.
 - Submissions appear in Netlify dashboard under **Forms**.
 
 ## Troubleshooting
-### `/admin` shows blank or cannot save
-- Confirm **Identity** and **Git Gateway** are enabled.
-- Verify logged-in user has access.
-- Check browser console for blocked third-party scripts.
+### `/admin` login link lands on homepage
+- Confirm token-forwarding script is present in layout and unchanged.
+- Ensure URL retains hash tokens (`invite_token`, `recovery_token`, `confirmation_token`).
 
-### Images not displaying
-- Ensure uploads are in `public/uploads`.
-- Ensure saved image paths begin with `/uploads/...`.
+### `/admin` returns 404
+- Confirm redirect exists in `netlify.toml`:
+  - `/admin/*  /admin/index.html  200`
+- Trigger a fresh deploy.
 
-### Form submissions not appearing
-- Trigger a fresh deploy after form markup changes.
-- Ensure `name="contact"`, `data-netlify="true"`, and hidden `form-name` are present.
+### CMS can't save content
+- Ensure **Identity** and **Git Gateway** are enabled.
+- Ensure invited user has accepted invite.
+- Check browser console/network for blocked scripts.
 
-### Build fails on content
-- Validate frontmatter fields in `src/content/*` against `src/content.config.ts` schemas.
-- Ensure dates are valid `YYYY-MM-DD` when required.
+### Images don't render
+- Confirm image lives in `public/uploads`.
+- Confirm path begins with `/uploads/...`.
+
+### Build fails
+- Validate frontmatter/schema alignment in `src/content.config.ts`.
+- Ensure date fields are valid where required.

@@ -1,0 +1,17 @@
+{
+  "intro": "Our research programs span discovery immunology to preclinical translation, with a strong focus on clinically grounded questions.",
+  "themes": [
+    {
+      "title": "Antigen discovery for immune tolerance and autoimmunity",
+      "text": "We integrate cohort immunology, epitope mapping, and spatial tissue profiling to define disease-driving antigens and tolerance opportunities. This includes a major research program on autoimmune arthritis in pediatric and adult cohorts, designed to identify shared and age-stratified antigen signatures that can guide biomarker development and antigen-specific intervention strategies."
+    },
+    {
+      "title": "Functional genomic screens to map immune ligands",
+      "text": "Our lab uses pooled CRISPR perturbation, single-cell phenotyping, and orthogonal validation assays to identify ligand systems that regulate immune activation, persistence, and dysfunction. These maps reveal actionable control points in inflammatory and tumor microenvironments and generate hypotheses for mechanistic follow-up."
+    },
+    {
+      "title": "TCR discovery and engineering (αβ and γδ) for cancer translation",
+      "text": "We discover naturally primed αβ and γδ TCRs and engineer receptor formats for translational oncology programs. By combining specificity mapping, safety profiling, and functional testing, we prioritize candidates with strong anti-tumor potential and favorable developability for clinical-forward collaboration."
+    }
+  ]
+}

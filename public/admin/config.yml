@@ -32,82 +32,54 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Image", name: "image", widget: "image" }
               - { label: "URL", name: "url", widget: "string", required: false }
-              - { label: "Alt text", name: "alt_text", widget: "string" }
+              - { label: "Alt Text", name: "alt_text", widget: "string" }
 
-  - name: "home"
-    label: "Home Page Content"
+  - name: "welcome_page"
+    label: "Welcome Page Content"
     files:
-      - label: "Home"
-        name: "home"
-        file: "src/data/home.json"
+      - label: "Welcome"
+        name: "welcome"
+        file: "src/data/welcome.json"
         format: "json"
         fields:
           - label: "Hero"
             name: "hero"
             widget: "object"
             fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Subtitle", name: "subtitle", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-          - label: "Research previews"
-            name: "research_previews"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Text", name: "text", widget: "text" }
-          - { label: "Featured Team Slugs", name: "featured_team", widget: "list", field: {label: "Slug", name: "slug", widget: "string"} }
-          - { label: "Featured Mentoring Slugs", name: "featured_mentoring", widget: "list", field: {label: "Slug", name: "slug", widget: "string"} }
+              - { label: "Highlight Label", name: "highlight_label", widget: "string", required: false }
+              - label: "Primary CTA"
+                name: "primary_cta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - label: "Secondary CTA"
+                name: "secondary_cta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+          - { label: "Culture Preview", name: "culture_preview", widget: "text" }
+          - { label: "News Preview Title", name: "news_preview_title", widget: "string" }
 
-  - name: "research"
+  - name: "research_page"
     label: "Research Page Content"
     files:
       - label: "Research"
         name: "research"
-        file: "src/data/research.json"
+        file: "src/data/research-page.json"
         format: "json"
         fields:
+          - { label: "Intro", name: "intro", widget: "text" }
           - label: "Themes"
             name: "themes"
             widget: "list"
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
-
-  - name: "mentoring_page"
-    label: "Mentoring Page Settings"
-    files:
-      - label: "Mentoring Philosophy"
-        name: "mentoring_page"
-        file: "src/content/mentoringPage/index.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - label: "Resources for trainees"
-            name: "trainee_resources"
-            widget: "list"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "URL", name: "url", widget: "string" }
-          - { label: "Mentoring Philosophy", name: "body", widget: "markdown" }
-
-  - name: "join"
-    label: "Join Page"
-    files:
-      - label: "Join Us"
-        name: "join"
-        file: "src/data/join.json"
-        format: "json"
-        fields:
-          - { label: "Intro", name: "intro", widget: "text" }
-          - { label: "Who we are looking for", name: "who_we_are_looking_for", widget: "list", field: {label: "Item", name: "item", widget: "string"} }
-          - { label: "How to apply", name: "how_to_apply", widget: "list", field: {label: "Item", name: "item", widget: "string"} }
-          - { label: "Suggested email subject", name: "email_subject", widget: "string" }
-          - { label: "Lab culture", name: "culture", widget: "text" }
-          - label: "Open positions"
-            name: "open_positions"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Details", name: "details", widget: "text" }
 
   - name: "team"
     label: "Team Members"
@@ -119,42 +91,17 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Position", name: "position", widget: "string" }
-      - { label: "Nationality country", name: "nationality_country", widget: "string" }
-      - { label: "Nationality flag emoji", name: "nationality_flag_emoji", widget: "string" }
-      - { label: "Places lived", name: "places_lived", widget: "list", field: {label: "Place", name: "place", widget: "string"} }
+      - { label: "Nationality Country", name: "nationality_country", widget: "string" }
+      - { label: "Nationality Flag", name: "nationality_flag_emoji", widget: "string" }
+      - { label: "Places I've lived", name: "places_lived", widget: "list", field: { label: "Place", name: "place", widget: "string" } }
       - { label: "Photo", name: "photo", widget: "image" }
       - { label: "Bio", name: "bio", widget: "text" }
-      - { label: "Fun fact", name: "fun_fact", widget: "string" }
-      - label: "Links"
-        name: "links"
-        widget: "object"
-        required: false
-        fields:
-          - { label: "Email", name: "email", widget: "string", required: false }
-          - { label: "Google Scholar", name: "scholar", widget: "string", required: false }
-          - { label: "ORCID", name: "orcid", widget: "string", required: false }
-          - { label: "GitHub", name: "github", widget: "string", required: false }
-          - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+      - { label: "Fun Fact", name: "fun_fact", widget: "string" }
       - { label: "Order", name: "order", widget: "number", value_type: "int" }
-      - { label: "Featured on home", name: "featured_on_home", widget: "boolean", default: false }
-
-  - name: "mentoring"
-    label: "Mentoring Items"
-    folder: "src/content/mentoring"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Category", name: "category", widget: "select", options: ["Training", "Career development", "Lab culture", "Courses", "Rotations"] }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Link", name: "link", widget: "string", required: false }
-      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Featured on Home", name: "featured_on_home", widget: "boolean", default: false }
 
   - name: "news"
-    label: "Lab News"
+    label: "News"
     folder: "src/content/news"
     create: true
     slug: "{{slug}}"
@@ -163,21 +110,53 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Tags", name: "tags", widget: "list", field: {label: "Tag", name: "tag", widget: "string"} }
+      - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" } }
       - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "fun"
-    label: "Lab Fun"
-    folder: "src/content/fun"
+  - name: "culture"
+    label: "Culture Items"
+    folder: "src/content/culture"
     create: true
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
     fields:
-      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["Value", "Tradition", "Moment"] }
       - { label: "Date", name: "date", widget: "datetime", required: false, date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Category", name: "category", widget: "string" }
-      - { label: "Caption", name: "caption", widget: "text" }
+      - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Image", name: "image", widget: "image", required: false }
+
+  - name: "join_page"
+    label: "Join Page"
+    files:
+      - label: "Join"
+        name: "join"
+        file: "src/data/join.json"
+        format: "json"
+        fields:
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Who We Are Looking For", name: "who_we_are_looking_for", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+          - { label: "How to Apply", name: "how_to_apply", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+          - { label: "Email Subject", name: "email_subject", widget: "string" }
+          - { label: "Culture", name: "culture", widget: "text" }
+          - label: "Open Positions"
+            name: "open_positions"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Details", name: "details", widget: "text" }
+
+  - name: "contact_page"
+    label: "Contact Page"
+    files:
+      - label: "Contact"
+        name: "contact"
+        file: "src/data/contact-page.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Map Note", name: "map_note", widget: "text" }
