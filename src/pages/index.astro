@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import site from '../data/site-settings.json';
-import { welcomeContent as welcome, researchContent as research } from '../lib/labWebsiteV2';
+import welcome from '../data/welcome.json';
+import research from '../data/research-page.json';
 
 const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order).slice(0, 4);
 const news = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
