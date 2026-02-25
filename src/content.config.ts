@@ -11,29 +11,8 @@ const team = defineCollection({
     photo: z.string(),
     bio: z.string(),
     fun_fact: z.string(),
-    links: z
-      .object({
-        email: z.string().optional(),
-        scholar: z.string().url().optional(),
-        orcid: z.string().url().optional(),
-        github: z.string().url().optional(),
-        linkedin: z.string().url().optional()
-      })
-      .optional(),
     order: z.number(),
     featured_on_home: z.boolean().default(false)
-  })
-});
-
-const mentoring = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    category: z.enum(['Training', 'Career development', 'Lab culture', 'Courses', 'Rotations']),
-    description: z.string(),
-    image: z.string().optional(),
-    link: z.string().url().optional(),
-    featured: z.boolean().default(false)
   })
 });
 
@@ -48,23 +27,20 @@ const news = defineCollection({
   })
 });
 
-const fun = defineCollection({
+const culture = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string().optional(),
+    title: z.string(),
+    type: z.enum(['Value', 'Tradition', 'Moment']),
     date: z.coerce.date().optional(),
-    category: z.string(),
-    caption: z.string(),
+    summary: z.string(),
     image: z.string().optional()
   })
 });
 
-const mentoringPage = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    trainee_resources: z.array(z.object({ label: z.string(), url: z.string().url() }))
-  })
-});
+// Legacy content collections are retained for backward compatibility with existing repository content.
+const fun = defineCollection({ type: 'content', schema: z.any() });
+const mentoring = defineCollection({ type: 'content', schema: z.any() });
+const mentoringPage = defineCollection({ type: 'content', schema: z.any() });
 
-export const collections = { team, mentoring, news, fun, mentoringPage };
+export const collections = { team, news, culture, fun, mentoring, mentoringPage };

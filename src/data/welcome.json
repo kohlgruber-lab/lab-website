@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "eyebrow": "Lab of immune-specificity mapping",
+    "title": "Precision immune-specificity mapping for human disease.",
+    "description": "We map T-cell antigen specificity in patient samples using genetic screens, single-cell profiling, and synthetic biology. Our goal is to uncover mechanisms in autoimmunity, cancer, and infection, then translate them into next-generation targeted therapies.",
+    "primary_cta": {
+      "label": "Join Us",
+      "href": "/join"
+    },
+    "secondary_cta": {
+      "label": "Contact",
+      "href": "/contact"
+    },
+    "highlight_label": "Lab focus"
+  },
+  "culture_preview": "We combine high standards with supportive mentorship, transparent communication, and celebrations of team milestones.",
+  "news_preview_title": "Latest updates from the lab"
+}

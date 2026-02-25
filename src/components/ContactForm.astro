@@ -6,25 +6,25 @@ const { includeCollab = false } = Astro.props;
   <input class="hidden" name="bot-field" />
   <div>
     <label for="name" class="block text-sm font-medium text-slate-700">Name</label>
-    <input id="name" name="name" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2" />
+    <input id="name" name="name" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
   </div>
   <div>
     <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
-    <input id="email" type="email" name="email" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2" />
+    <input id="email" type="email" name="email" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
   </div>
   <div>
     <label for="affiliation" class="block text-sm font-medium text-slate-700">Affiliation</label>
-    <input id="affiliation" name="affiliation" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2" />
+    <input id="affiliation" name="affiliation" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
   </div>
   <div>
     <label for="message" class="block text-sm font-medium text-slate-700">Message</label>
-    <textarea id="message" name="message" required rows="5" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2"></textarea>
+    <textarea id="message" name="message" required rows="5" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2"></textarea>
   </div>
   {includeCollab && (
     <label class="flex items-center gap-2 text-sm text-slate-700">
       <input type="checkbox" name="collaboration_interest" value="yes" class="rounded border-slate-300" />
-      I'm interested in collaboration
+      I'm interested in collaboration.
     </label>
   )}
-  <button type="submit" class="rounded-md bg-primary-700 px-4 py-2 font-medium text-white hover:bg-primary-600">Send message</button>
+  <button type="submit" class="btn-primary">Send message</button>
 </form>

@@ -7,7 +7,8 @@ interface Props {
   title?: string;
   description?: string;
 }
-const { title = 'Home', description = site.mission_statement } = Astro.props;
+
+const { title = 'Welcome', description = site.mission_statement } = Astro.props;
 const pageTitle = `${title} | ${site.lab_name}`;
 const image = '/images/og-placeholder.svg';
 ---
@@ -26,23 +27,21 @@ const image = '/images/og-placeholder.svg';
     <meta property="og:image" content={new URL(image, Astro.site)} />
   </head>
   <body>
-    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
     <Nav />
     <main id="main"><slot /></main>
     <Footer />
-<script>
-  // If Netlify Identity sends the user to /#recovery_token=... or /#invite_token=...,
-  // forward them to /admin with the same hash so the Identity widget can handle it.
-  const hash = window.location.hash || "";
-  const isIdentityToken =
-    hash.includes("recovery_token=") ||
-    hash.includes("invite_token=") ||
-    hash.includes("confirmation_token=");
+    <script>
+      const hash = window.location.hash || '';
+      const hasIdentityToken =
+        hash.includes('recovery_token=') ||
+        hash.includes('invite_token=') ||
+        hash.includes('confirmation_token=');
 
-  if (isIdentityToken && !window.location.pathname.startsWith("/admin")) {
-    window.location.href = "/admin/" + hash;
-  }
-</script>
+      if (hasIdentityToken && !window.location.pathname.startsWith('/admin')) {
+        window.location.href = '/admin/' + hash;
+      }
+    </script>
   </body>
 </html>
 
