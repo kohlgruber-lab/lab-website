@@ -1,21 +1,21 @@
 {
   "hero": {
-    "title": "Kohlgruber Lab",
-    "subtitle": "Translational Immunology",
-    "description": "Led by Dr. Andrea Kohlgruber, our lab studies how antigen recognition can be decoded and redesigned to build durable immune tolerance and next-generation cell therapies. We combine patient-derived data, functional screening, and receptor engineering to move discoveries toward the clinic."
+    "title": "Precision immune-specificity mapping for human disease.",
+    "subtitle": "Lab of immune-specificity mapping",
+    "description": "We map T-cell antigen specificity in patient samples using genetic screens, single-cell profiling, and synthetic biology. Our goal is to uncover mechanisms in autoimmunity, cancer, and infection, then translate them into next-generation targeted therapies."
   },
   "research_previews": [
     {
       "title": "Antigen discovery for immune tolerance and autoimmunity",
-      "text": "We integrate patient immunoprofiling, epitope mapping, and tissue-level validation to discover antigens that drive pathologic inflammation and those that may restore tolerance. This includes a major research program on autoimmune arthritis in pediatric and adult cohorts, where we define shared and age-specific antigenic signatures to guide biomarker development and mechanism-based interventions."
+      "text": "We integrate cohort immunology, epitope mapping, and spatial tissue profiling to define disease-driving antigens and tolerance opportunities, including a major research program on autoimmune arthritis in pediatric and adult cohorts."
     },
     {
       "title": "Functional genomic screens to map immune ligands",
-      "text": "Our team builds pooled CRISPR and perturb-seq workflows to identify the ligands and regulatory pathways that shape immune synapse quality. By combining discovery screens with orthogonal biochemical validation, we generate prioritized target maps that explain how context-specific ligand expression controls T-cell activation, persistence, and dysfunction in inflammatory tissues and tumors."
+      "text": "Our lab uses pooled CRISPR perturbation, single-cell phenotyping, and orthogonal validation assays to identify ligand systems that regulate immune activation, persistence, and dysfunction."
     },
     {
       "title": "TCR discovery and engineering (αβ and γδ) for cancer translation",
-      "text": "We discover naturally occurring αβ and γδ TCRs from patient and donor repertoires, then engineer receptor formats optimized for safety and potency in translational settings. Our workflow links receptor specificity profiling, preclinical function testing, and manufacturability assessments to nominate candidates that can advance toward first-in-human cellular immunotherapy studies."
+      "text": "We discover naturally primed αβ and γδ TCRs and engineer receptor formats for translational oncology programs with strong specificity, safety, and developability profiles."
     }
   ],
   "featured_team": ["andrea-kohlgruber", "liam-fernandez", "maya-natarajan", "elena-petrov"],

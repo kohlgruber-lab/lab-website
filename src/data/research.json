@@ -2,15 +2,15 @@
   "themes": [
     {
       "title": "Antigen discovery for immune tolerance and autoimmunity",
-      "text": "We define disease-relevant antigens using integrated serology, T-cell receptor repertoire analysis, and spatial tissue immunology across longitudinal patient cohorts. A central focus is a major research program on autoimmune arthritis in pediatric and adult cohorts, where we compare developmental immune trajectories to identify shared antigens, age-modulated epitope hierarchy, and windows for intervention. These data are paired with mechanistic assays that test whether candidate antigens can support antigen-specific tolerance strategies, including peptide-guided regulatory programs and context-aware delivery systems designed for translational deployment."
+      "text": "We integrate cohort immunology, epitope mapping, and spatial tissue profiling to define disease-driving antigens and tolerance opportunities. This includes a major research program on autoimmune arthritis in pediatric and adult cohorts, designed to identify shared and age-stratified antigen signatures that can guide biomarker development and antigen-specific intervention strategies."
     },
     {
       "title": "Functional genomic screens to map immune ligands",
-      "text": "Our laboratory uses scalable CRISPR-based loss- and gain-of-function screening to chart ligand landscapes that tune immune cell behavior in autoimmunity and oncology. We combine pooled perturbation, single-cell readouts, and orthogonal protein interaction assays to identify ligand systems that control activation thresholds, exhaustion trajectories, and tissue retention. Hits from discovery screens move through reproducibility gates and in vivo validation frameworks, producing high-confidence ligand maps that nominate actionable intervention points and clarify how microenvironmental context reshapes immune recognition across disease states."
+      "text": "Our lab uses pooled CRISPR perturbation, single-cell phenotyping, and orthogonal validation assays to identify ligand systems that regulate immune activation, persistence, and dysfunction. These maps reveal actionable control points in inflammatory and tumor microenvironments and generate hypotheses for mechanistic follow-up."
     },
     {
       "title": "TCR discovery and engineering (αβ and γδ) for cancer translation",
-      "text": "We discover therapeutic TCR candidates from naturally primed human repertoires and engineer αβ and γδ receptor architectures for translational cancer applications. Our platform links antigen specificity mapping, off-target risk assessment, and functional screening in clinically relevant model systems. We prioritize candidates that demonstrate robust tumor recognition while preserving safety margins, then evaluate manufacturability and persistence characteristics needed for cell-therapy development. This end-to-end pipeline supports disciplined receptor nomination for collaborative preclinical packages and future early-phase translation."
+      "text": "We discover naturally primed αβ and γδ TCRs and engineer receptor formats for translational oncology programs. By combining specificity mapping, safety profiling, and functional testing, we prioritize candidates with strong anti-tumor potential and favorable developability for clinical-forward collaboration."
     }
   ]
 }

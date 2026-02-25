@@ -72,6 +72,14 @@ This repo includes the common auth fixes by default:
 - Client-side token forwarding to `/admin/#...` in the global layout
 - Netlify redirect: `/admin/* -> /admin/index.html (200)`
 
+
+## lab-website-v2 compatibility
+This repo includes a compatibility adapter at `src/lib/labWebsiteV2.ts` so templates can read either:
+- v2-style data files (`welcome.json`, `research-page.json`, `contact-page.json`), or
+- legacy files (`home.json`, `research.json`) when needed.
+
+This keeps page rendering stable while migrating content schemas.
+
 ## Forms (Netlify Forms)
 - Contact form is configured with `name="contact"`, `data-netlify="true"`, and hidden `form-name`.
 - Submissions appear in Netlify dashboard under **Forms**.
