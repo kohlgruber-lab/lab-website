@@ -1,8 +1,8 @@
 {
   "hero": {
     "eyebrow": "Lab of immune-specificity mapping",
-    "title": "Precision immune-specificity mapping for human disease.",
-    "description": "We map T-cell antigen specificity in patient samples using genetic screens, single-cell profiling, and synthetic biology. Our goal is to uncover mechanisms in autoimmunity, cancer, and infection, then translate them into next-generation targeted therapies.",
+    "title": "Precision immune-specificity mapping to understand human health and disease",
+    "description": "The Kohlgruber Lab specializes in immune-specificity mapping with a focus on T cells to understand the antigen-specific basis of human diseases. To achieve this we leverage a combination of high-throughput genetic screens, single-cell profiling technologies, and synthetic biology approaches on human patient samples, combined with preclinical mouse models. Our goal is to mechanistically understand autoimmunity, cancer, and infectious diseases, and generate next-generation therapies that target immune-specificities rather than be broadly acting. ",
     "primary_cta": {
       "label": "Join Us",
       "href": "/join"
