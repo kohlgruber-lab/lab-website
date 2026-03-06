@@ -1,21 +1,42 @@
 {
   "lab_name": "Kohlgruber Lab",
-  "pi_name": "Dr. Andrea Kohlgruber",
-  "institution": "Center for Translational Immunology",
-  "mission_statement": "We investigate how immune recognition can be redirected toward durable tolerance in autoimmunity and precision cell therapies in cancer. Our translational immunology programs connect patient cohorts, functional genomics, and engineered receptors to accelerate clinical impact.",
-  "email": "kohlgruber.lab@institute.edu",
-  "address": "Center for Translational Immunology, 100 Discovery Avenue, Boston, MA 02115, USA",
-  "socials": [
-    { "label": "X", "url": "https://x.com" },
-    { "label": "LinkedIn", "url": "https://linkedin.com" },
-    { "label": "GitHub", "url": "https://github.com/kohlgruber-lab" }
-  ],
+  "pi_name": "Dr. Ayano Kohlgruber",
+  "institution": "Boston Children's Hospital",
+  "mission_statement": "Our lab's mission is to understand how T cells recognize disease and to harness that knowledge to build more precise therapies. Through immune-specificity mapping in human patient samples, combined with high-throughput genetic screens, single-cell profiling, and synthetic biology, we define the antigen-specific basis of autoimmunity, cancer, and infectious disease to enable next-generation treatments that target immune specificities with the goal of curing or preventing disease.",
+  "email": "Ayano.Kohlgruber@childrens.harvard.edu",
+  "address": "Center for Life Sciences Building, 2nd floor\n3 Blackfan Street, Boston, MA 02115",
+  "socials": [],
   "funding_logos": [
-    { "name": "NIH", "image": "/images/funding/nih.svg", "url": "https://www.nih.gov", "alt_text": "NIH funding agency logo" },
-    { "name": "DoD CDMRP", "image": "/images/funding/dod.svg", "alt_text": "DoD CDMRP funding logo" },
-    { "name": "Parker Foundation", "image": "/images/funding/parker.svg", "alt_text": "Parker Foundation logo" },
-    { "name": "Lupus Research Alliance", "image": "/images/funding/lra.svg", "alt_text": "Lupus Research Alliance logo" },
-    { "name": "CRI", "image": "/images/funding/cri.svg", "alt_text": "Cancer Research Institute logo" },
-    { "name": "Institutional Seed Fund", "image": "/images/funding/seed.svg", "alt_text": "Institutional seed fund logo" }
+    {
+      "name": "National Institutes of Health",
+      "image": "/uploads/nih.png",
+      "url": "",
+      "alt_text": "NIH"
+    },
+    {
+      "name": "Arthritis National Research Foundation",
+      "image": "/uploads/anrf.png",
+      "alt_text": "ANRF"
+    },
+    {
+      "name": "Cancer Research Institute",
+      "image": "/uploads/cri.jpg",
+      "alt_text": "CRI"
+    },
+    {
+      "name": "Breakthrough T1D",
+      "image": "/uploads/breakthrought1d.png",
+      "alt_text": "Breakthrough T1D"
+    },
+    {
+      "name": "Arthritis Foundation",
+      "image": "/uploads/arthritis-foundation.png",
+      "alt_text": "Arthritis Foundation"
+    },
+    {
+      "name": "Philanthropic Donations",
+      "image": "/uploads/philanthropic-donations.webp",
+      "alt_text": "Philanthropy"
+    }
   ]
 }
