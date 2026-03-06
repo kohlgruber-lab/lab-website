@@ -7,7 +7,7 @@ places_lived:
   - Ota, Japan
   - SF Bay Area, CA
   - Boston, MA
-photo: /images/team/andrea.svg
+photo: /uploads/kohlgruber.ayano.jpg
 bio: Andrea is a physician-scientist focused on translating immunology into
   mechanism-informed therapies. She has led multidisciplinary programs spanning
   human cohorts, molecular immunology, and early translational development. In
