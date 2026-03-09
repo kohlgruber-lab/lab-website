@@ -87,7 +87,7 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
 
-  - name: "team"
+    - name: "team"
     label: "Team Members"
     folder: "src/content/team"
     create: true
@@ -97,15 +97,17 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Position", name: "position", widget: "string" }
-      - { label: "Nationality Country", name: "nationality_country", widget: "string" }
-      - { label: "Nationality Flag", name: "nationality_flag_emoji", widget: "string" }
-      - { label: "Places I've lived", name: "places_lived", widget: "list", field: { label: "Place", name: "place", widget: "string" } }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Nationality Country", name: "nationality_country", widget: "string", required: false }
+      - { label: "Nationality Flag", name: "nationality_flag_emoji", widget: "string", required: false }
+      - { label: "Places I've lived", name: "places_lived", widget: "list", required: false, field: { label: "Place", name: "place", widget: "string" } }
       - { label: "Photo", name: "photo", widget: "image" }
-      - { label: "Bio", name: "bio", widget: "text" }
-      - { label: "Fun Fact", name: "fun_fact", widget: "string" }
+      - { label: "Short Bio", name: "short_bio", widget: "text", hint: "2–3 sentences for the card preview." }
+      - { label: "Expanded Bio", name: "bio", widget: "text", hint: "Longer bio shown on hover." }
+      - { label: "Fun Fact", name: "fun_fact", widget: "string", required: false }
       - { label: "Order", name: "order", widget: "number", value_type: "int" }
       - { label: "Featured on Home", name: "featured_on_home", widget: "boolean", default: false }
-
+      
   - name: "news"
     label: "News"
     folder: "src/content/news"
