@@ -148,13 +148,14 @@ collections:
               - { label: "Alt Text", name: "alt", widget: "string", required: false }
 
   - name: "join_page"
-    label: "Join Page"
+    label: "Join Us Page"
     files:
-      - label: "Join"
+      - label: "Join Us"
         name: "join"
         file: "src/data/join.json"
         format: "json"
         fields:
+          - { label: "Page Title", name: "title", widget: "string" }
           - { label: "Intro", name: "intro", widget: "text" }
           - { label: "Who We Are Looking For", name: "who_we_are_looking_for", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
           - { label: "How to Apply", name: "how_to_apply", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
