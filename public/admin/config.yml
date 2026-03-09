@@ -177,4 +177,18 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Intro", name: "intro", widget: "text" }
-          - { label: "Map Note", name: "map_note", widget: "text" }
+          - { label: "Map Note", name: "map_note", widget: "text", required: false }
+          - { label: "Lab Photo", name: "lab_photo", widget: "image", required: false }
+          - { label: "Lab Photo Alt Text", name: "lab_photo_alt", widget: "string", required: false }
+          - { label: "Building Photo", name: "building_photo", widget: "image", required: false }
+          - { label: "Building Photo Alt Text", name: "building_photo_alt", widget: "string", required: false }
+          - { label: "Location Description", name: "location_description", widget: "text", required: false }
+          - { label: "Application Section Title", name: "application_title", widget: "string", required: false }
+          - { label: "Application Intro", name: "application_intro", widget: "text", required: false }
+          - label: "Application Paths"
+            name: "application_paths"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Applicant Type", name: "type", widget: "string" }
+              - { label: "Instructions", name: "instructions", widget: "text" }
