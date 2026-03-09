@@ -1,25 +1,36 @@
 {
-  "intro": "We are building an interdisciplinary team of scientists committed to translational immunology. We welcome applicants who are curious, collaborative, and motivated to bridge mechanistic biology with clinical impact.",
+  "title": "Join Us",
+  "intro": "We are building an interdisciplinary team of scientists interested in immune specificity, translational immunology, and the mechanisms that connect antigen recognition to human disease. We welcome applicants who are curious, collaborative, thoughtful, and excited to bridge mechanistic biology with clinical impact.",
   "who_we_are_looking_for": [
-    "PhD students interested in immunology, genomics, and quantitative analysis",
-    "Postdoctoral fellows with strong publication records and translational ambition",
-    "Research staff with experience in cell engineering, flow cytometry, or NGS workflows"
+    "PhD students interested in immunology, functional genomics, synthetic biology, and quantitative approaches to studying immune recognition",
+    "Postdoctoral fellows with strong scientific training, creativity, and interest in building ambitious projects at the interface of basic and translational immunology",
+    "Research staff with experience in molecular biology, cell engineering, flow cytometry, or next-generation sequencing workflows",
+    "Master’s students seeking immersive research experience in immunology and translational science",
+    "Undergraduate students who are eager to learn, contribute to a collaborative team, and gain hands-on experience in research"
   ],
   "how_to_apply": [
-    "Email a CV, a brief statement of research interests, and contact details for 2-3 references.",
-    "If applicable, include one representative manuscript or preprint.",
-    "In your message, note which research theme aligns most closely with your goals."
+    "Please email a CV, a brief statement of research interests, and contact information for 2 to 3 references.",
+    "If applicable, you are welcome to include a representative manuscript, preprint, or short summary of past research experience.",
+    "In your message, please note your current training stage and which research area of the lab most closely aligns with your interests and goals."
   ],
   "email_subject": "Application to Kohlgruber Lab - [Role] - [Your Name]",
-  "culture": "Our lab culture emphasizes shared standards, generous collaboration, and deliberate professional development. We invest in mentorship, reproducibility, and inclusive scientific dialogue.",
+  "culture": "Our lab values rigorous science, open communication, generosity, and strong mentorship. We aim to create an environment where people can grow as scientists, contribute thoughtfully to a team, and do their best work in a culture that is collaborative, supportive, and intellectually ambitious.",
   "open_positions": [
     {
-      "title": "Postdoctoral Fellow - Autoimmune Antigen Discovery",
-      "details": "Focus on integrating cohort immunology and antigen mapping across pediatric and adult arthritis studies. Experience with repertoire analysis or proteomics preferred."
+      "title": "Postdoctoral Fellow",
+      "details": "We are interested in candidates excited about antigen discovery, T cell biology, and translational immunology. Projects may span autoimmunity, infection, cancer, and immune ligand discovery, depending on background and mutual interest."
     },
     {
-      "title": "Research Associate - Functional Genomics",
-      "details": "Lead pooled CRISPR screening experiments and validation workflows in primary immune systems. Prior experience with NGS library prep is desirable."
+      "title": "Research Associate",
+      "details": "We welcome applicants interested in functional genomics, pooled screening, molecular immunology, and experimental platform development. Prior experience with cell culture, flow cytometry, cloning, or sequencing-based workflows is helpful."
+    },
+    {
+      "title": "Master’s Student",
+      "details": "We welcome master’s students interested in gaining rigorous research experience in immunology, data analysis, and experimental design within a collaborative and mentorship-driven environment."
+    },
+    {
+      "title": "Undergraduate Student",
+      "details": "We welcome undergraduate students who are excited to learn, contribute to team science, and build foundational research skills through hands-on experience in the lab."
     }
   ]
 }
