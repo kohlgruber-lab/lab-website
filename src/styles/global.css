@@ -3,25 +3,30 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #009088;
-  --color-secondary: #989898;
+  --color-primary: #06948E;
+  --color-secondary: #707071;
   --color-bg: #f8f8f8;
-  --color-accent: #f28c28;
-  --color-text: #0f172a;
+  --color-accent: #E7872B;
+  --color-text: #2F3133;
+  --color-muted-green: #A8B8A3;
+  --color-navy: #1F3552;
   color-scheme: light;
 }
 
 body {
-  @apply m-0 bg-brand-offwhite text-brand-ink antialiased;
+  @apply m-0 antialiased;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
 a {
-  @apply text-brand-turquoise transition-colors;
+  color: var(--color-primary);
+  @apply transition-colors;
 }
 
 a:hover {
-  @apply text-brand-ink;
+  color: var(--color-text);
 }
 
 @layer components {
@@ -30,22 +35,182 @@ a:hover {
   }
 
   .h2 {
-    @apply text-3xl font-semibold tracking-tight text-brand-ink;
+    @apply text-3xl font-semibold tracking-tight;
+    color: var(--color-text);
   }
 
   .card {
-    @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-soft;
+    @apply rounded-2xl border bg-white p-6 shadow-soft;
+    border-color: #e5e7eb;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-brand-turquoise px-5 py-2.5 text-sm font-semibold text-white hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-turquoise;
+    @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    background-color: var(--color-primary);
+    outline-color: var(--color-primary);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-brand-gray px-5 py-2.5 text-sm font-semibold text-brand-ink hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gray;
+    @apply inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold transition hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    border-color: var(--color-secondary);
+    color: var(--color-text);
+    outline-color: var(--color-secondary);
   }
 
   .badge-accent {
-    @apply inline-flex rounded-full bg-[#F28C28]/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#B76316];
+    @apply inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide;
+    background-color: rgb(231 135 43 / 0.14);
+    color: #B76316;
+  }
+
+  .team-page-hero {
+    @apply mb-10 rounded-3xl border bg-white px-6 py-8 shadow-soft sm:px-8;
+    border-color: #e5e7eb;
+  }
+
+  .team-page-hero-inner {
+    @apply flex flex-col gap-6 md:flex-row md:items-center md:justify-between;
+  }
+
+  .team-page-hero-copy {
+    @apply max-w-3xl;
+  }
+
+  .team-page-kicker {
+    @apply mb-2 text-sm font-semibold uppercase tracking-[0.16em];
+    color: var(--color-primary);
+  }
+
+  .team-page-title {
+    @apply mb-3 text-3xl font-semibold tracking-tight sm:text-4xl;
+    color: var(--color-text);
+  }
+
+  .team-page-subtitle {
+    @apply mb-3 text-lg font-medium;
+    color: var(--color-secondary);
+  }
+
+  .team-page-intro {
+    @apply max-w-2xl text-base leading-7;
+    color: #4b5563;
+  }
+
+  .team-page-logo-wrap {
+    @apply flex shrink-0 items-center justify-center;
+  }
+
+  .team-page-logo {
+    @apply h-auto max-h-28 w-auto object-contain sm:max-h-32;
+  }
+
+  .team-grid {
+    @apply grid gap-6;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .team-card {
+    @apply relative overflow-hidden rounded-2xl border bg-white shadow-soft transition-all duration-200;
+    min-height: 470px;
+    border-color: #e5e7eb;
+    border-top: 4px solid var(--color-accent);
+  }
+
+  .team-card:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  .team-card-image-wrap {
+    @apply overflow-hidden;
+    aspect-ratio: 4 / 3;
+    background-color: #f3f4f6;
+  }
+
+  .team-card-image {
+    @apply h-full w-full object-cover transition-transform duration-300;
+  }
+
+  .team-card:hover .team-card-image {
+    transform: scale(1.03);
+  }
+
+  .team-card-content {
+    @apply p-5;
+  }
+
+  .team-card-name {
+    @apply mb-1 text-lg font-semibold tracking-tight;
+    color: var(--color-text);
+  }
+
+  .team-card-position {
+    @apply mb-2 text-sm font-semibold;
+    color: var(--color-primary);
+  }
+
+  .team-card-email {
+    @apply mb-3 block break-all text-sm transition-colors;
+    color: var(--color-secondary);
+  }
+
+  .team-card-email:hover {
+    color: var(--color-accent);
+  }
+
+  .team-card-nationality {
+    @apply mb-3 text-sm;
+    color: var(--color-secondary);
+  }
+
+  .team-card-short-bio {
+    @apply text-sm leading-6;
+    color: #4b5563;
+  }
+
+  .team-card-fun-fact {
+    @apply mt-4 text-sm leading-6;
+    color: #4b5563;
+  }
+
+  .team-card-fun-fact-label {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .team-card-overlay {
+    @apply absolute inset-0 overflow-y-auto p-5 transition-opacity duration-200;
+    background: rgba(255, 255, 255, 0.97);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .team-card:hover .team-card-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .team-card-overlay-name {
+    @apply mb-1 text-lg font-semibold tracking-tight;
+    color: var(--color-text);
+  }
+
+  .team-card-overlay-position {
+    @apply mb-3 text-sm font-semibold;
+    color: var(--color-primary);
+  }
+
+  .team-card-overlay-bio {
+    @apply text-sm leading-6;
+    color: #4b5563;
+  }
+
+  .team-card-overlay-meta {
+    @apply mt-4 text-sm leading-6;
+    color: #4b5563;
+  }
+
+  .team-card-overlay-label {
+    font-weight: 600;
+    color: var(--color-text);
   }
 }
