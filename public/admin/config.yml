@@ -123,19 +123,29 @@ collections:
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "culture"
-    label: "Culture Items"
-    folder: "src/content/culture"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Type", name: "type", widget: "select", options: ["Value", "Tradition", "Moment"] }
-      - { label: "Date", name: "date", widget: "datetime", required: false, date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Image", name: "image", widget: "image", required: false }
+  - name: "culture_page"
+    label: "Culture Page"
+    files:
+      - label: "Culture"
+        name: "culture"
+        file: "src/data/culture-page.json"
+        format: "json"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text", required: false }
+          - { label: "Culture Title", name: "culture_title", widget: "string" }
+          - { label: "Culture Text", name: "culture_text", widget: "text" }
+          - { label: "Philosophy Title", name: "philosophy_title", widget: "string" }
+          - { label: "Philosophy Text", name: "philosophy_text", widget: "text" }
+          - { label: "Mentoring Title", name: "mentoring_title", widget: "string" }
+          - { label: "Mentoring Text", name: "mentoring_text", widget: "text" }
+          - label: "Photo Collage"
+            name: "photo_collage"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string", required: false }
 
   - name: "join_page"
     label: "Join Page"
