@@ -1,25 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
-const items = (await getCollection('culture')).sort((a, b) => {
-  if (!a.data.date || !b.data.date) return 0;
-  return b.data.date.getTime() - a.data.date.getTime();
-});
+import culturePage from '../data/culture-page.json';
 ---
-<BaseLayout title="Culture" description="Lab values, traditions, and moments beyond the bench.">
+
+<BaseLayout title={culturePage.title ?? 'Culture'} description="Lab culture, philosophy, and mentoring.">
   <section class="section">
-    <h1 class="text-4xl font-semibold tracking-tight">Culture</h1>
-    <p class="mt-3 max-w-3xl text-slate-700">We care deeply about mentorship, team rituals, scientific joy, and building a healthy environment where everyone can do their best work.</p>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((item) => (
-        <article class="card p-4">
-          {item.data.image && <img src={item.data.image} alt={item.data.title} loading="lazy" class="h-40 w-full rounded-xl object-cover" />}
-          <p class="mt-3"><span class="badge-accent">{item.data.type}</span></p>
-          <h2 class="mt-2 text-lg font-semibold">{item.data.title}</h2>
-          <p class="mt-2 text-sm text-slate-700">{item.data.summary}</p>
-        </article>
-      ))}
+    <h1 class="text-4xl font-semibold tracking-tight text-brand-ink">
+      {culturePage.title ?? 'Culture'}
+    </h1>
+
+    {culturePage.intro && (
+      <p class="mt-3 max-w-3xl text-brand-gray">
+        {culturePage.intro}
+      </p>
+    )}
+
+    <div class="mt-10 space-y-10">
+      <article class="card">
+        <h2 class="h2">{culturePage.culture_title ?? 'Culture'}</h2>
+        <p class="mt-4 max-w-4xl leading-7 text-brand-gray">
+          {culturePage.culture_text}
+        </p>
+      </article>
+
+      <article class="card">
+        <h2 class="h2">{culturePage.philosophy_title ?? 'Philosophy'}</h2>
+        <p class="mt-4 max-w-4xl leading-7 text-brand-gray">
+          {culturePage.philosophy_text}
+        </p>
+      </article>
+
+      <article class="card">
+        <h2 class="h2">{culturePage.mentoring_title ?? 'Mentoring'}</h2>
+        <p class="mt-4 max-w-4xl leading-7 text-brand-gray">
+          {culturePage.mentoring_text}
+        </p>
+      </article>
     </div>
+
+    {culturePage.photo_collage && culturePage.photo_collage.length > 0 && (
+      <div class="mt-12">
+        <h2 class="h2">Life in the Lab</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {culturePage.photo_collage.map((photo) => (
+            <div class="overflow-hidden rounded-2xl border border-brand-gray/20 bg-white shadow-soft">
+              <img
+                src={photo.image}
+                alt={photo.alt ?? 'Lab photo'}
+                loading="lazy"
+                class="h-64 w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
   </section>
 </BaseLayout>
