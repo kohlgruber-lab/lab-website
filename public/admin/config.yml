@@ -25,6 +25,7 @@ collections:
           - { label: "Mission Statement", name: "mission_statement", widget: "text" }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Address", name: "address", widget: "text" }
+          - { label: "Lab Logo", name: "lab_logo", widget: "image", required: false }
           - label: "Socials"
             name: "socials"
             widget: "list"
