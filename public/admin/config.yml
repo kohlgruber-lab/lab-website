@@ -3,6 +3,9 @@ backend:
   repo: kohlgruber-lab/lab-website
   branch: main
   auth_type: oauth
+  squash_merges: true
+
+publish_mode: editorial_workflow
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
