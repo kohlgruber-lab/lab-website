@@ -2,8 +2,8 @@
   "intro": "Our research programs span discovery immunology to preclinical translation, with a strong focus on clinically grounded questions.",
   "themes": [
     {
-      "title": "Antigen discovery for immune tolerance and autoimmunity",
-      "text": "We integrate cohort immunology, epitope mapping, and spatial tissue profiling to define disease-driving antigens and tolerance opportunities. This includes a major research program on autoimmune arthritis in pediatric and adult cohorts, designed to identify shared and age-stratified antigen signatures that can guide biomarker development and antigen-specific intervention strategies."
+      "title": "Immune tolerance and autoimmunity",
+      "text": "The immune system must perform a delicate balancing act. It must respond rapidly to infection and cancer while avoiding harmful responses against self. Our lab studies how this balance is established, maintained, and broken by focusing on the antigens recognized by T cells in autoimmune and inflammatory disease. We are especially interested in the earliest stages of immune education and in the tissue-specific antigenic cues that guide protective, tolerogenic, or pathogenic T cell responses across the life course.\n\nWe study antigen-specific T cell responses in settings including early-life tolerance, autoimmune arthritis, and immune-related adverse events that arise during cancer immunotherapy, as well as diseases in which infection may help trigger or amplify pathology through chronic antigen exposure or molecular mimicry. A major goal is to identify the self and non-self antigens seen by disease-associated T cells and to define the receptors and cellular states linked to those responses. By understanding exactly what T cells see in health and disease, we aim to reveal fundamental principles of immune tolerance and uncover new opportunities for therapies that restore immune balance with greater precision than broad immunosuppression."
     },
     {
       "title": "Functional genomic screens to map immune ligands",
