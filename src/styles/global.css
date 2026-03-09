@@ -10,6 +10,9 @@
   --color-text: #2F3133;
   --color-muted-green: #A8B8A3;
   --color-navy: #1F3552;
+  --color-border: #d7dbd8;
+  --color-soft-surface: #f3f5f4;
+  --color-muted-text: #5e6366;
   color-scheme: light;
 }
 
@@ -26,7 +29,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-text);
+  color: var(--color-accent);
 }
 
 @layer components {
@@ -41,7 +44,7 @@ a:hover {
 
   .card {
     @apply rounded-2xl border bg-white p-6 shadow-soft;
-    border-color: #e5e7eb;
+    border-color: var(--color-border);
   }
 
   .btn-primary {
@@ -60,12 +63,12 @@ a:hover {
   .badge-accent {
     @apply inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide;
     background-color: rgb(231 135 43 / 0.14);
-    color: #B76316;
+    color: var(--color-accent);
   }
 
   .team-page-hero {
     @apply mb-10 rounded-3xl border bg-white px-6 py-8 shadow-soft sm:px-8;
-    border-color: #e5e7eb;
+    border-color: var(--color-border);
   }
 
   .team-page-hero-inner {
@@ -93,7 +96,7 @@ a:hover {
 
   .team-page-intro {
     @apply max-w-2xl text-base leading-7;
-    color: #4b5563;
+    color: var(--color-muted-text);
   }
 
   .team-page-logo-wrap {
@@ -112,7 +115,7 @@ a:hover {
   .team-card {
     @apply relative overflow-hidden rounded-2xl border bg-white shadow-soft transition-all duration-200;
     min-height: 470px;
-    border-color: #e5e7eb;
+    border-color: var(--color-border);
     border-top: 4px solid var(--color-accent);
   }
 
@@ -123,7 +126,7 @@ a:hover {
   .team-card-image-wrap {
     @apply overflow-hidden;
     aspect-ratio: 4 / 3;
-    background-color: #f3f4f6;
+    background-color: var(--color-soft-surface);
   }
 
   .team-card-image {
@@ -164,12 +167,12 @@ a:hover {
 
   .team-card-short-bio {
     @apply text-sm leading-6;
-    color: #4b5563;
+    color: var(--color-muted-text);
   }
 
   .team-card-fun-fact {
     @apply mt-4 text-sm leading-6;
-    color: #4b5563;
+    color: var(--color-muted-text);
   }
 
   .team-card-fun-fact-label {
@@ -179,7 +182,7 @@ a:hover {
 
   .team-card-overlay {
     @apply absolute inset-0 overflow-y-auto p-5 transition-opacity duration-200;
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(248, 248, 248, 0.98);
     opacity: 0;
     pointer-events: none;
   }
@@ -201,12 +204,12 @@ a:hover {
 
   .team-card-overlay-bio {
     @apply text-sm leading-6;
-    color: #4b5563;
+    color: var(--color-muted-text);
   }
 
   .team-card-overlay-meta {
     @apply mt-4 text-sm leading-6;
-    color: #4b5563;
+    color: var(--color-muted-text);
   }
 
   .team-card-overlay-label {
