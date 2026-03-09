@@ -85,7 +85,7 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
 
-    - name: "team"
+  - name: "team"
     label: "Team Members"
     folder: "src/content/team"
     create: true
@@ -105,7 +105,7 @@ collections:
       - { label: "Fun Fact", name: "fun_fact", widget: "string", required: false }
       - { label: "Order", name: "order", widget: "number", value_type: "int" }
       - { label: "Featured on Home", name: "featured_on_home", widget: "boolean", default: false }
-      
+
   - name: "news"
     label: "News"
     folder: "src/content/news"
