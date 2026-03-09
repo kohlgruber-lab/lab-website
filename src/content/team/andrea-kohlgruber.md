@@ -1,21 +1,34 @@
 ---
 name: Ayano Kohlgruber
 position: Principal Investigator
-nationality_country: USA, Canada
-nationality_flag_emoji: 🇺🇸&🇨🇦
+nationality_country: USA & Canada
+nationality_flag_emoji: 🇺🇸 & 🇨🇦
 places_lived:
-  - Ota, Japan
-  - SF Bay Area, CA
+  - Ota, Japan;
+  - Berkeley, CA;
   - Boston, MA
 photo: /uploads/kohlgruber.ayano.jpg
-bio: Andrea is a physician-scientist focused on translating immunology into
-  mechanism-informed therapies. She has led multidisciplinary programs spanning
-  human cohorts, molecular immunology, and early translational development. In
-  the lab, she prioritizes clear scientific logic, reproducibility, and team
-  mentorship. She enjoys helping trainees connect fundamental discoveries to
-  patient-relevant questions.
-fun_fact: Andrea is an amateur watercolor painter and sketches conference venues
-  while traveling.
+bio: Ayano Kohlgruber is an immunologist whose work focuses on understanding how
+  T cells recognize antigen and how immune specificity shapes health and
+  disease. She completed her undergraduate studies at the University of
+  California, Berkeley, where she first developed a deep interest in immunology.
+  She went on to earn her PhD at Harvard, where she trained with Michael Brenner
+  and Lydia Lynch and studied γδ T cells and their roles in adipose tissue and
+  metabolic homeostasis. She then joined Steve Elledge’s laboratory as a
+  postdoctoral fellow, where she developed new tools to profile T cell
+  specificities at scale. In her own lab, Ayano studies the antigen-specific
+  basis of immunity across autoimmunity, cancer, and infectious disease. Her
+  group combines functional genomics, single-cell technologies, and synthetic
+  biology to define T cell specificities and understand how they become altered
+  in disease. She is especially excited to build a collaborative lab environment
+  that brings together basic immunology, technology development, and
+  translational questions.
+fun_fact: Outside the lab, Ayano can usually be found adventuring outdoors with
+  her husband, son, and two dogs, whether hiking, backpacking,
+  (backcountry/cross-country) skiing, (canoe) camping, climbing, or running.
+  These days, her main venue for experimentation is the kitchen, where she loves
+  hosting dinner parties and cooking/baking foods inspired by cuisines from
+  around the world.
 order: 1
 featured_on_home: true
 links:
