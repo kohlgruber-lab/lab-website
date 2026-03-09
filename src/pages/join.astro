@@ -2,13 +2,48 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import join from '../data/join.json';
 ---
-<BaseLayout title="Join Us" description="Recruitment and open positions.">
+<BaseLayout title={join.title ?? 'Join Us'} description="Recruitment and open positions.">
   <section class="section">
-    <h1 class="text-4xl font-semibold tracking-tight">Join Us</h1>
-    <p class="mt-4 max-w-3xl text-slate-700">{join.intro}</p>
-    <article class="card mt-6"><h2 class="text-xl font-semibold">Who we're looking for</h2><ul class="mt-3 list-disc space-y-1 pl-5 text-slate-700">{join.who_we_are_looking_for.map((item) => <li>{item}</li>)}</ul></article>
-    <article class="card mt-6"><h2 class="text-xl font-semibold">How to apply</h2><ul class="mt-3 list-disc space-y-1 pl-5 text-slate-700">{join.how_to_apply.map((item) => <li>{item}</li>)}</ul><p class="mt-3"><span class="font-medium">Suggested email subject:</span> {join.email_subject}</p></article>
-    <article class="card mt-6"><h2 class="text-xl font-semibold">Lab culture</h2><p class="mt-3 text-slate-700">{join.culture}</p></article>
-    <article class="card mt-6"><h2 class="text-xl font-semibold">Open positions</h2><div class="mt-3 space-y-3">{join.open_positions.map((p) => <div><h3 class="font-semibold">{p.title}</h3><p class="text-sm text-slate-700">{p.details}</p></div>)}</div></article>
+    <h1 class="text-4xl font-semibold tracking-tight text-brand-ink">
+      {join.title ?? 'Join Us'}
+    </h1>
+
+    <p class="mt-4 max-w-3xl text-brand-gray">
+      {join.intro}
+    </p>
+
+    <article class="card mt-6">
+      <h2 class="text-xl font-semibold text-brand-ink">Who we're looking for</h2>
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-brand-gray">
+        {join.who_we_are_looking_for.map((item) => <li>{item}</li>)}
+      </ul>
+    </article>
+
+    <article class="card mt-6">
+      <h2 class="text-xl font-semibold text-brand-ink">How to apply</h2>
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-brand-gray">
+        {join.how_to_apply.map((item) => <li>{item}</li>)}
+      </ul>
+      <p class="mt-3 text-brand-ink">
+        <span class="font-medium">Suggested email subject:</span> {join.email_subject}
+      </p>
+    </article>
+
+    <article class="card mt-6">
+      <h2 class="text-xl font-semibold text-brand-ink">Lab culture</h2>
+      <p class="mt-3 text-brand-gray">{join.culture}</p>
+    </article>
+
+    <article class="card mt-6">
+      <h2 class="text-xl font-semibold text-brand-ink">Open positions</h2>
+      <div class="mt-3 space-y-3">
+        {join.open_positions.map((p) => (
+          <div>
+            <h3 class="font-semibold text-brand-ink">{p.title}</h3>
+            <p class="text-sm text-brand-gray">{p.details}</p>
+          </div>
+        ))}
+      </div>
+    </article>
   </section>
 </BaseLayout>
