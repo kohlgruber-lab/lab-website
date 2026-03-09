@@ -1,5 +1,30 @@
 {
   "title": "Contact",
-  "intro": "We welcome inquiries about collaboration, trainee opportunities, and speaking invitations.",
-  "map_note": "Our lab is located in the Center for Translational Immunology, with easy access to major Boston hospitals and partner institutes."
+  "intro": "We are located at Harvard Medical School and welcome inquiries from prospective trainees, collaborators, and colleagues.",
+  "map_note": "",
+  "lab_photo": "",
+  "lab_photo_alt": "Kohlgruber Lab group photo",
+  "building_photo": "",
+  "building_photo_alt": "Lab building exterior",
+  "location_description": "Our lab is based at Harvard Medical School in Boston and is part of a vibrant scientific community with strengths in immunology, translational medicine, and collaborative discovery.",
+  "application_title": "Interested in joining the lab",
+  "application_intro": "We welcome inquiries from scientists at different training stages. Please review the information below and reach out by email with materials tailored to your interests and goals.",
+  "application_paths": [
+    {
+      "type": "Postdoctoral fellows",
+      "instructions": "Please email a CV, a brief description of your research background and interests, and contact information for references."
+    },
+    {
+      "type": "Graduate students",
+      "instructions": "Please reach out by email with your program, research interests, and a short note about why you are interested in the lab."
+    },
+    {
+      "type": "Master’s students",
+      "instructions": "Please email a CV and a short description of your background, goals, and availability."
+    },
+    {
+      "type": "Undergraduate students",
+      "instructions": "Please email a CV, your current year and concentration, and a short note describing your interests and availability."
+    }
+  ]
 }
