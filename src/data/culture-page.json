@@ -1,5 +1,34 @@
 {
-  "photo_collage": [],
+  "photo_collage": [
+    {
+      "image": "/uploads/2025_summerbbq_1.jpeg",
+      "alt": "summer BBQ at Ayano's house! "
+    },
+    {
+      "image": "/uploads/2025_labphoto_5.jpeg",
+      "alt": "First lab photo! "
+    },
+    {
+      "image": "/uploads/2025_friendsgivingpotluck_7.jpeg",
+      "alt": "Labsgiving potluck joint with the Henderson and Chatila labs"
+    },
+    {
+      "image": "/uploads/2025_focis_1.jpeg",
+      "alt": "Kohlgruber lab at FOCIS, Boston"
+    },
+    {
+      "image": "/uploads/2025_chefjayashree.png",
+      "alt": "Chef Jayashree feeding the lab"
+    },
+    {
+      "image": "/uploads/2025_alicia_birthday_2.jpeg",
+      "alt": "Celebrating Alicia's birthday!"
+    },
+    {
+      "image": "/uploads/2025_summerlablunch2.jpg",
+      "alt": "Lab lunch at TimeOut Market to celebrate Ebube's successful CURE program internship and Ben joining the lab! "
+    }
+  ],
   "culture_title": "Culture",
   "philosophy_title": "Philosophy",
   "mentoring_text": "Mentorship is a central part of life in the Kohlgruber lab. We work closely with each trainee to support scientific growth, build independence, and develop a clear path toward long-term career goals. This includes regular research meetings, structured independent development plan (IDP) discussions, timely feedback on manuscripts, presentations, and applications, and hands-on guidance in both technical and conceptual development. Our goal is for trainees to leave the lab having grown not only as scientists, but also as communicators, mentors, and thoughtful colleagues, with the confidence and skills to pursue a wide range of careers.",
