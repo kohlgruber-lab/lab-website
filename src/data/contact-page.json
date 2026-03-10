@@ -1,30 +1,34 @@
 {
-  "title": "Contact",
-  "intro": "We are located at Harvard Medical School and welcome inquiries from prospective trainees, collaborators, and colleagues.",
-  "map_note": "",
-  "lab_photo": "",
+  "lab_photo": "/uploads/2025_summerlablunch2.jpg",
+  "building_photo": "/uploads/clsbuilding.jpg",
+  "application_title": "Interested in joining the lab? ",
   "lab_photo_alt": "Kohlgruber Lab group photo",
-  "building_photo": "",
-  "building_photo_alt": "Lab building exterior",
-  "location_description": "Our lab is based at Harvard Medical School in Boston and is part of a vibrant scientific community with strengths in immunology, translational medicine, and collaborative discovery.",
-  "application_title": "Interested in joining the lab",
-  "application_intro": "We welcome inquiries from scientists at different training stages. Please review the information below and reach out by email with materials tailored to your interests and goals.",
+  "intro": "Our lab is based in the Longwood Medical Campus at Boston Children's Hospital joint with Harvard Medical School in Boston and is part of a vibrant scientific community with strengths in immunology, translational medicine, and collaborative discovery. Please reach out if you are interested in collaborating! ",
+  "building_photo_alt": "Center for Life Sciences Building",
+  "location_description": "",
+  "map_note": "Center for ",
+  "title": "Contact",
+  "application_intro": "We are building an interdisciplinary team of scientists interested in immune specificity, translational immunology, and the mechanisms that connect antigen recognition to human disease. We welcome applicants from different training stages who are curious, collaborative, thoughtful, and excited to bridge mechanistic biology with clinical impact. Please review the information below and reach out by email with materials tailored to your interests and goals.",
   "application_paths": [
     {
       "type": "Postdoctoral fellows",
-      "instructions": "Please email a CV, a brief description of your research background and interests, and contact information for references."
+      "instructions": "We are always interested in hearing from exceptional postdoctoral candidates whose research interests align with the lab’s mission. Postdoctoral opportunities may include independent research projects, collaborations across disease areas, and mentorship within a growing interdisciplinary lab If you are interested in joining the lab, please email Ayano with your CV, a brief summary of your current research and any relevant publications, a few words about your future research interests and goals, and contact information for three references."
     },
     {
       "type": "Graduate students",
-      "instructions": "Please reach out by email with your program, research interests, and a short note about why you are interested in the lab."
+      "instructions": "The lab is part of the Harvard Medical School (HMS) Graduate Program in Immunology and welcomes students from other HMS-affiliated programs, including Virology, BBS, and Harvard-MIT Health Sciences and Technology (HST), among others. Graduate opportunities in the lab may include rotation projects, thesis research (directly or jointly mentored), and conversations about scientific interests, mentorship, and long-term career development. If you are interested in joining the lab, please reach out to Ayano by email with your CV, your program and research interests, and a short note about why you are interested in the lab."
     },
     {
       "type": "Master’s students",
-      "instructions": "Please email a CV and a short description of your background, goals, and availability."
+      "instructions": "We welcome inquiries from master’s students who are interested in joining the lab. We are glad to consider students from Harvard programs, including the Master of Medical Sciences in Immunology, as well as applicants from outside Harvard. If you are an international student, please plan ahead, as visa processing can take up to 6 months. Master’s student opportunities may include research projects, thesis work where applicable, and close mentorship in translational immunology and immune-specificity mapping. If you are interested in joining the lab, please email Ayano with your CV and a brief description of your current research interests and goals."
     },
     {
-      "type": "Undergraduate students",
-      "instructions": "Please email a CV, your current year and concentration, and a short note describing your interests and availability."
+      "type": "Research assistant ",
+      "instructions": "We welcome inquiries from motivated research assistant candidates who are interested in gaining hands-on experience in immunology, functional genomics, and translational research. Research assistants are an important part of the lab community and have the opportunity to build both experimental and analytical skills in a collaborative setting. If you are interested in joining the lab, please email Ayano with your CV and a brief description of your research interests, prior lab experience, and career goals. "
+    },
+    {
+      "type": "Undergraduate interns",
+      "instructions": "The Kohlgruber Lab offers undergraduate research opportunities during both the academic year and the summer. We typically host interns through structured programs such as the Dana-Farber Cancer Institute CURE program, and we also welcome inquiries from enthusiastic students who are interested in gaining hands-on research experience. If you are an international student, please plan ahead, as visa processing can take up to 6 months. If you are interested in joining the lab, please email Ayano with your CV, your current year and concentration, and a short note describing your interests and availability."
     }
   ]
 }
