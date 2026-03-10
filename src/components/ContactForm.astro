@@ -1,30 +1,68 @@
 ---
 const { includeCollab = false } = Astro.props;
 ---
-<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="card space-y-4">
+<form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="card space-y-4"
+>
   <input type="hidden" name="form-name" value="contact" />
   <input class="hidden" name="bot-field" />
+
   <div>
-    <label for="name" class="block text-sm font-medium text-slate-700">Name</label>
-    <input id="name" name="name" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
+    <label for="name" class="block text-sm font-medium text-brand-ink">Name</label>
+    <input
+      id="name"
+      name="name"
+      required
+      class="mt-1 w-full rounded-xl border border-brand-gray/40 px-3 py-2 text-brand-ink"
+    />
   </div>
+
   <div>
-    <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
-    <input id="email" type="email" name="email" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
+    <label for="email" class="block text-sm font-medium text-brand-ink">Email</label>
+    <input
+      id="email"
+      type="email"
+      name="email"
+      required
+      class="mt-1 w-full rounded-xl border border-brand-gray/40 px-3 py-2 text-brand-ink"
+    />
   </div>
+
   <div>
-    <label for="affiliation" class="block text-sm font-medium text-slate-700">Affiliation</label>
-    <input id="affiliation" name="affiliation" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
+    <label for="affiliation" class="block text-sm font-medium text-brand-ink">Affiliation</label>
+    <input
+      id="affiliation"
+      name="affiliation"
+      class="mt-1 w-full rounded-xl border border-brand-gray/40 px-3 py-2 text-brand-ink"
+    />
   </div>
+
   <div>
-    <label for="message" class="block text-sm font-medium text-slate-700">Message</label>
-    <textarea id="message" name="message" required rows="5" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2"></textarea>
+    <label for="message" class="block text-sm font-medium text-brand-ink">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="5"
+      class="mt-1 w-full rounded-xl border border-brand-gray/40 px-3 py-2 text-brand-ink"
+    ></textarea>
   </div>
+
   {includeCollab && (
-    <label class="flex items-center gap-2 text-sm text-slate-700">
-      <input type="checkbox" name="collaboration_interest" value="yes" class="rounded border-slate-300" />
+    <label class="flex items-center gap-2 text-sm text-brand-gray">
+      <input
+        type="checkbox"
+        name="collaboration_interest"
+        value="yes"
+        class="rounded border-brand-gray/40"
+      />
       I'm interested in collaboration.
     </label>
   )}
+
   <button type="submit" class="btn-primary">Send message</button>
 </form>
