@@ -11,32 +11,60 @@ const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.
       Our team brings together clinical insight, molecular immunology, and computational analysis to tackle high-impact translational questions.
     </p>
 
-    <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    <div class="team-grid mt-8">
       {team.map((m) => (
-        <article class="card">
-          <img
-            src={m.data.photo}
-            alt={`Portrait of ${m.data.name}`}
-            loading="lazy"
-            class="h-56 w-full rounded-xl object-cover"
-          />
+        <article class="team-card">
+          <div class="team-card-image-wrap">
+            <img
+              src={m.data.photo}
+              alt={`Portrait of ${m.data.name}`}
+              loading="lazy"
+              class="team-card-image"
+            />
+          </div>
 
-          <h2 class="mt-4 text-xl font-semibold text-brand-ink">{m.data.name}</h2>
-          <p class="text-brand-gray">{m.data.position}</p>
+          <div class="team-card-content">
+            <h2 class="team-card-name">{m.data.name}</h2>
+            <p class="team-card-position">{m.data.position}</p>
 
-          <p class="text-sm text-brand-gray">
-            {m.data.nationality_flag_emoji} {m.data.nationality_country}
-          </p>
+            {m.data.email && (
+              <a href={`mailto:${m.data.email}`} class="team-card-email">
+                {m.data.email}
+              </a>
+            )}
 
-          <p class="mt-2 text-sm text-brand-ink">
-            <span class="font-medium">Places I’ve lived:</span> {m.data.places_lived.join(', ')}
-          </p>
+            {(m.data.nationality_flag_emoji || m.data.nationality_country) && (
+              <p class="team-card-nationality">
+                {m.data.nationality_flag_emoji} {m.data.nationality_country}
+              </p>
+            )}
 
-          <p class="mt-3 text-sm text-brand-gray">{m.data.bio}</p>
+            {m.data.short_bio && (
+              <p class="team-card-short-bio">{m.data.short_bio}</p>
+            )}
 
-          <p class="mt-3 rounded-xl bg-brand-orange/10 p-3 text-sm text-brand-ink">
-            <span class="font-medium">Fun fact:</span> {m.data.fun_fact}
-          </p>
+            {m.data.fun_fact && (
+              <p class="team-card-fun-fact">
+                <span class="team-card-fun-fact-label">Fun fact:</span> {m.data.fun_fact}
+              </p>
+            )}
+          </div>
+
+          <div class="team-card-overlay">
+            <h3 class="team-card-overlay-name">{m.data.name}</h3>
+            <p class="team-card-overlay-position">{m.data.position}</p>
+
+            {m.data.bio && (
+              <p class="team-card-overlay-bio">{m.data.bio}</p>
+            )}
+
+            {m.data.places_lived && m.data.places_lived.length > 0 && (
+              <p class="team-card-overlay-meta">
+                <span class="team-card-overlay-label">Places I’ve lived:</span>{' '}
+                {m.data.places_lived.join(', ')}
+              </p>
+            )}
+          </div>
         </article>
       ))}
     </div>
