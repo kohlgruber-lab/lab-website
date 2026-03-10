@@ -1,4 +1,6 @@
 ---
+import site from '../data/site-settings.json';
+
 const links = [
   ['Welcome', '/'],
   ['Research', '/research'],
@@ -12,8 +14,21 @@ const current = Astro.url.pathname;
 ---
 <header class="sticky top-0 z-30 border-b border-brand-gray/30 bg-brand-offwhite/95 backdrop-blur">
   <div class="h-1 w-full bg-gradient-to-r from-brand-turquoise via-brand-turquoise to-brand-orange"></div>
+
   <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8" aria-label="Primary">
-    <a href="/" class="text-lg font-semibold tracking-tight text-brand-ink">Kohlgruber Lab</a>
+    <a href="/" class="flex items-center gap-3 text-brand-ink no-underline">
+      {site.lab_logo && (
+        <img
+          src={site.lab_logo}
+          alt={`${site.lab_name} logo`}
+          class="h-10 w-auto object-contain sm:h-12"
+        />
+      )}
+      <span class="text-lg font-semibold tracking-tight text-brand-ink">
+        {site.lab_name}
+      </span>
+    </a>
+
     <ul class="flex flex-wrap items-center gap-1 text-sm font-medium">
       {links.map(([label, href]) => (
         <li>
