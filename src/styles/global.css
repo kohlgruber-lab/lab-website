@@ -53,17 +53,17 @@ a:hover {
     outline-color: var(--color-primary);
   }
 
-.btn-secondary {
-  @apply inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
-  border-color: var(--color-secondary);
-  color: var(--color-text);
-  outline-color: var(--color-secondary);
-  background-color: transparent;
-}
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    border-color: var(--color-secondary);
+    color: var(--color-text);
+    outline-color: var(--color-secondary);
+    background-color: transparent;
+  }
 
-.btn-secondary:hover {
-  background-color: white;
-}
+  .btn-secondary:hover {
+    background-color: white;
+  }
 
   .badge-accent {
     @apply inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide;
@@ -71,48 +71,11 @@ a:hover {
     color: var(--color-accent);
   }
 
-  .team-page-hero {
-    @apply mb-10 rounded-3xl border bg-white px-6 py-8 shadow-soft sm:px-8;
-    border-color: var(--color-border);
-  }
+  /* ─────────────────────────────────────────────────────────────
+     TEAM PAGE
+  ───────────────────────────────────────────────────────────── */
 
-  .team-page-hero-inner {
-    @apply flex flex-col gap-6 md:flex-row md:items-center md:justify-between;
-  }
-
-  .team-page-hero-copy {
-    @apply max-w-3xl;
-  }
-
-  .team-page-kicker {
-    @apply mb-2 text-sm font-semibold uppercase tracking-[0.16em];
-    color: var(--color-primary);
-  }
-
-  .team-page-title {
-    @apply mb-3 text-3xl font-semibold tracking-tight sm:text-4xl;
-    color: var(--color-text);
-  }
-
-  .team-page-subtitle {
-    @apply mb-3 text-lg font-medium;
-    color: var(--color-secondary);
-  }
-
-  .team-page-intro {
-    @apply max-w-2xl text-base leading-7;
-    color: var(--color-muted-text);
-  }
-
-  .team-page-logo-wrap {
-    @apply flex shrink-0 items-center justify-center;
-  }
-
-  .team-page-logo {
-    @apply h-auto max-h-28 w-auto object-contain sm:max-h-32;
-  }
-
-  /* Legacy auto-fit grid (kept for backward compat) */
+  /* Legacy auto-fit grid */
   .team-grid {
     @apply grid gap-6;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -121,7 +84,7 @@ a:hover {
   /* Max 3-column grid used on the team page */
   .team-grid-3 {
     @apply grid gap-6;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     max-width: 100%;
   }
 
@@ -139,7 +102,7 @@ a:hover {
     display: inline-block;
   }
 
-  /* PI featured card – horizontal layout */
+  /* PI featured card */
   .pi-card {
     @apply flex flex-col gap-6 rounded-2xl border bg-white p-8 shadow-soft;
     border-color: var(--color-border);
@@ -182,56 +145,18 @@ a:hover {
   }
 
   .pi-card-bio {
-    @apply text-sm leading-7 mt-3;
+    @apply text-sm leading-6 mt-3;
     color: var(--color-muted-text);
   }
 
   .pi-card-fun-fact {
-    @apply mt-4 text-sm leading-6;
+    @apply mt-3 text-sm leading-6;
     color: var(--color-muted-text);
   }
 
-  .team-card {
-    @apply relative overflow-hidden rounded-2xl border bg-white shadow-soft transition-all duration-200;
-    min-height: 470px;
-    border-color: var(--color-border);
-    border-top: 4px solid var(--color-accent);
-  }
-
-  .team-card:hover {
-    @apply -translate-y-1 shadow-lg;
-  }
-
-  .team-card-image-wrap {
-    @apply overflow-hidden;
-    aspect-ratio: 4 / 3;
-    background-color: var(--color-soft-surface);
-  }
-
-  .team-card-image {
-    @apply h-full w-full object-cover transition-transform duration-300;
-  }
-
-  .team-card:hover .team-card-image {
-    transform: scale(1.03);
-  }
-
-  .team-card-content {
-    @apply p-5;
-  }
-
-  .team-card-name {
-    @apply mb-1 text-lg font-semibold tracking-tight;
-    color: var(--color-text);
-  }
-
-  .team-card-position {
-    @apply mb-2 text-sm font-semibold;
-    color: var(--color-primary);
-  }
-
+  /* Shared email link style */
   .team-card-email {
-    @apply mb-3 block break-all text-sm transition-colors;
+    @apply block break-all text-sm transition-colors;
     color: var(--color-secondary);
   }
 
@@ -239,60 +164,194 @@ a:hover {
     color: var(--color-accent);
   }
 
-  .team-card-nationality {
-    @apply mb-3 text-sm;
+  /* ─────────────────────────────────────────────────────────────
+     TRAINEE CARDS — square photo, info below, hover → bio
+  ───────────────────────────────────────────────────────────── */
+  .trainee-card {
+    @apply relative overflow-hidden rounded-2xl border bg-white shadow-soft transition-all duration-200;
+    border-color: var(--color-border);
+    border-top: 4px solid var(--color-accent);
+  }
+
+  .trainee-card:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  /* Square photo */
+  .trainee-card-photo-wrap {
+    @apply overflow-hidden;
+    aspect-ratio: 1 / 1;
+    background-color: var(--color-soft-surface);
+  }
+
+  .trainee-card-photo {
+    @apply h-full w-full object-cover transition-transform duration-300;
+  }
+
+  .trainee-card:hover .trainee-card-photo {
+    transform: scale(1.04);
+  }
+
+  .trainee-card-front {
+    @apply p-4;
+  }
+
+  .trainee-card-name {
+    @apply text-base font-semibold tracking-tight leading-snug;
+    color: var(--color-text);
+  }
+
+  .trainee-card-position {
+    @apply mt-0.5 text-sm font-semibold;
+    color: var(--color-primary);
+  }
+
+  .trainee-card-email-link {
+    @apply mt-1 block break-all text-xs transition-colors;
     color: var(--color-secondary);
+    text-decoration: none;
   }
 
-  .team-card-short-bio {
-    @apply text-sm leading-6;
+  .trainee-card-email-link:hover {
+    color: var(--color-accent);
+  }
+
+  .trainee-card-project {
+    @apply mt-1.5 text-xs leading-5;
     color: var(--color-muted-text);
   }
 
-  .team-card-fun-fact {
-    @apply mt-4 text-sm leading-6;
-    color: var(--color-muted-text);
-  }
-
-  .team-card-fun-fact-label {
+  .trainee-card-project-label {
     font-weight: 600;
     color: var(--color-text);
   }
 
-  .team-card-overlay {
+  /* Hover overlay shows bio */
+  .trainee-card-overlay {
     @apply absolute inset-0 overflow-y-auto p-5 transition-opacity duration-200;
-    background: rgba(248, 248, 248, 0.98);
+    background: rgba(248, 248, 248, 0.97);
     opacity: 0;
     pointer-events: none;
   }
 
-  .team-card:hover .team-card-overlay {
+  .trainee-card:hover .trainee-card-overlay {
     opacity: 1;
     pointer-events: auto;
   }
 
-  .team-card-overlay-name {
-    @apply mb-1 text-lg font-semibold tracking-tight;
+  .trainee-card-overlay-name {
+    @apply mb-0.5 text-base font-semibold tracking-tight;
     color: var(--color-text);
   }
 
-  .team-card-overlay-position {
+  .trainee-card-overlay-position {
     @apply mb-3 text-sm font-semibold;
     color: var(--color-primary);
   }
 
-  .team-card-overlay-bio {
+  .trainee-card-overlay-bio {
     @apply text-sm leading-6;
     color: var(--color-muted-text);
   }
 
-  .team-card-overlay-meta {
-    @apply mt-4 text-sm leading-6;
+  /* ─────────────────────────────────────────────────────────────
+     RESEARCH HOME CARDS (square, orange title, bg image)
+  ───────────────────────────────────────────────────────────── */
+  .research-home-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .research-home-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.11);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     CULTURE PAGE
+  ───────────────────────────────────────────────────────────── */
+  .culture-collage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     NEWS ITEMS (timeline style)
+  ───────────────────────────────────────────────────────────── */
+  .news-item {
+    transition: background-color 0.15s ease;
+    border-radius: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  .news-item:hover {
+    background-color: rgba(6, 148, 142, 0.04);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     JOIN / CONTACT ACCORDION
+  ───────────────────────────────────────────────────────────── */
+  .join-accordion {
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+    background-color: white;
+    overflow: hidden;
+    transition: box-shadow 0.15s ease;
+  }
+
+  .join-accordion[open] {
+    box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    border-color: var(--color-accent);
+  }
+
+  .join-accordion-summary {
+    @apply flex cursor-pointer items-center justify-between gap-3 px-5 py-4;
+    list-style: none;
+    user-select: none;
+  }
+
+  .join-accordion-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .join-accordion-summary:hover {
+    background-color: var(--color-soft-surface);
+  }
+
+  .join-accordion[open] .join-accordion-summary {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .join-accordion-title {
+    @apply font-semibold text-base;
+    color: var(--color-text);
+  }
+
+  .join-accordion[open] .join-accordion-title {
+    color: var(--color-accent);
+  }
+
+  .join-accordion-chevron {
+    @apply h-5 w-5 shrink-0 transition-transform duration-200;
+    color: var(--color-secondary);
+  }
+
+  .join-accordion[open] .join-accordion-chevron {
+    transform: rotate(180deg);
+    color: var(--color-accent);
+  }
+
+  .join-accordion-body {
+    @apply px-5 pb-5;
+    padding-top: 0.75rem;
+  }
+
+  .join-accordion-body p {
+    @apply mt-3 text-sm leading-7;
     color: var(--color-muted-text);
   }
 
-  .team-card-overlay-label {
-    font-weight: 600;
-    color: var(--color-text);
+  .join-accordion-body p:first-child {
+    @apply mt-0;
   }
 }

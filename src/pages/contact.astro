@@ -3,84 +3,129 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import site from '../data/site-settings.json';
 import contact from '../data/contact-page.json';
+
+// Simple inline markdown renderer: **bold**, *italic*
+function renderInline(text: string): string {
+  if (!text) return '';
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>');
+}
+
+// Paragraph renderer for longer text
+function renderParagraphs(text: string): string {
+  if (!text) return '';
+  return text
+    .split(/\n\n+/)
+    .map(p => `<p>${renderInline(p.trim())}</p>`)
+    .join('\n');
+}
 ---
 <BaseLayout title={contact.title ?? 'Contact'} description="Get in touch with the Kohlgruber Lab.">
-  <section class="section">
-    <h1 class="text-4xl font-semibold tracking-tight text-brand-ink">
-      {contact.title ?? 'Contact'}
-    </h1>
 
-    {contact.intro && (
-      <p class="mt-3 max-w-3xl text-brand-gray">
-        {contact.intro}
-      </p>
-    )}
-
-    <div class="mt-8 grid gap-6 lg:grid-cols-2">
-      <article class="card">
-        <h2 class="text-xl font-semibold text-brand-ink">Lab details</h2>
-        <p class="mt-3 text-brand-ink">
-          Email: <a href={`mailto:${site.email}`}>{site.email}</a>
+  <!-- ── Page header ──────────────────────────────────────────── -->
+  <div style="background: linear-gradient(105deg, var(--color-navy) 0%, var(--color-primary) 100%);" class="px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <h1 class="text-4xl font-bold tracking-tight text-white">{contact.title ?? 'Contact'}</h1>
+      {contact.intro && (
+        <p class="mt-3 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
+          {contact.intro}
         </p>
-        <p class="mt-2 text-brand-gray">{site.address}</p>
-        {contact.map_note && (
-          <p class="mt-4 text-sm text-brand-gray">{contact.map_note}</p>
-        )}
-        {contact.location_description && (
-          <p class="mt-4 leading-7 text-brand-gray">{contact.location_description}</p>
-        )}
-      </article>
-
-      <ContactForm includeCollab={true} />
+      )}
     </div>
+  </div>
 
-    {(contact.lab_photo || contact.building_photo) && (
-      <div class="mt-12 grid gap-6 lg:grid-cols-2">
-        {contact.lab_photo && (
-          <article class="card p-4">
-            <img
-              src={contact.lab_photo}
-              alt={contact.lab_photo_alt ?? 'Lab photo'}
-              loading="lazy"
-              class="h-72 w-full rounded-xl object-cover"
-            />
-          </article>
-        )}
-
-        {contact.building_photo && (
-          <article class="card p-4">
-            <img
-              src={contact.building_photo}
-              alt={contact.building_photo_alt ?? 'Building photo'}
-              loading="lazy"
-              class="h-72 w-full rounded-xl object-cover"
-            />
-          </article>
-        )}
-      </div>
-    )}
-
-    {contact.application_title && (
-      <div class="mt-12">
-        <h2 class="h2">{contact.application_title}</h2>
+  <!-- ── Interested in joining? — visible above fold ──────────── -->
+  {contact.application_title && (
+    <section style="background-color: var(--color-soft-surface); border-bottom: 1px solid var(--color-border);">
+      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="h-8 w-1.5 rounded-full shrink-0" style="background-color: var(--color-accent);"></div>
+          <h2 class="text-2xl font-bold tracking-tight" style="color: var(--color-accent);">
+            {contact.application_title}
+          </h2>
+        </div>
 
         {contact.application_intro && (
-          <p class="mt-4 max-w-4xl leading-7 text-brand-gray">
-            {contact.application_intro}
-          </p>
+          <p class="mb-8 max-w-3xl leading-7 text-brand-gray" set:html={renderInline(contact.application_intro)} />
         )}
 
         {contact.application_paths && contact.application_paths.length > 0 && (
-          <div class="mt-6 grid gap-4 md:grid-cols-2">
+          <div class="space-y-3 max-w-3xl">
             {contact.application_paths.map((path) => (
-              <article class="card">
-                <h3 class="text-lg font-semibold text-brand-ink">{path.type}</h3>
-                <p class="mt-3 leading-7 text-brand-gray">{path.instructions}</p>
-              </article>
+              <details class="join-accordion">
+                <summary class="join-accordion-summary">
+                  <span class="join-accordion-title">{path.type}</span>
+                  <svg
+                    class="join-accordion-chevron"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </summary>
+                <div
+                  class="join-accordion-body prose-sm leading-7 text-brand-gray"
+                  set:html={renderParagraphs(path.instructions)}
+                />
+              </details>
             ))}
           </div>
         )}
       </div>
-    )}
+    </section>
+  )}
+
+  <!-- ── Contact details + form  ──────────────────────────────── -->
+  <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-10 lg:flex-row lg:gap-12">
+
+      <!-- Building photo -->
+      {contact.building_photo && (
+        <div class="lg:w-5/12 shrink-0">
+          <div class="overflow-hidden rounded-2xl shadow-md h-full" style="border: 1px solid var(--color-border); min-height: 320px; max-height: 520px;">
+            <img
+              src={contact.building_photo}
+              alt={contact.building_photo_alt ?? 'Building photo'}
+              loading="lazy"
+              class="h-full w-full object-cover"
+              style="min-height: 320px;"
+            />
+          </div>
+        </div>
+      )}
+
+      <!-- Lab details + form -->
+      <div class="flex-1 min-w-0 space-y-8">
+
+        <!-- Lab info -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="h-6 w-1.5 rounded-full" style="background-color: var(--color-primary);"></div>
+            <h2 class="text-xl font-semibold text-brand-ink">Lab Details</h2>
+          </div>
+          <p class="text-brand-ink">
+            Email: <a href={`mailto:${site.email}`}>{site.email}</a>
+          </p>
+          <p class="mt-2 whitespace-pre-line text-brand-gray">{site.address}</p>
+          {contact.location_description && (
+            <p class="mt-3 leading-7 text-brand-gray">{contact.location_description}</p>
+          )}
+        </div>
+
+        <!-- Contact form -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="h-6 w-1.5 rounded-full" style="background-color: var(--color-primary);"></div>
+            <h2 class="text-xl font-semibold text-brand-ink">Send a Message</h2>
+          </div>
+          <ContactForm includeCollab={true} />
+        </div>
+
+      </div>
+    </div>
   </section>
+
 </BaseLayout>

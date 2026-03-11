@@ -73,9 +73,16 @@ const otherGroups = GROUPS
         />
         <div class="pi-card-content">
           <p class="pi-card-kicker">Principal Investigator</p>
-          <h2 class="pi-card-name">{m.data.name}</h2>
+          <h2 class="pi-card-name">
+            {m.data.name}
+            {(m.data as any).nationality_flag_emoji && (
+              <span class="ml-2 text-xl" title={(m.data as any).nationality_country ?? ''}>
+                {(m.data as any).nationality_flag_emoji}
+              </span>
+            )}
+          </h2>
           {(m.data as any).email && (
-            <a href={`mailto:${(m.data as any).email}`} class="team-card-email mb-4 block">
+            <a href={`mailto:${(m.data as any).email}`} class="team-card-email mb-3 block">
               {(m.data as any).email}
             </a>
           )}
@@ -97,44 +104,55 @@ const otherGroups = GROUPS
         <h2 class="group-heading">{group.label}</h2>
         <div class="team-grid-3 mt-5">
           {group.members.map((m) => (
-            <article class="team-card">
-              <div class="team-card-image-wrap">
+            <article class="trainee-card">
+              <!-- Photo fills top half -->
+              <div class="trainee-card-photo-wrap">
                 <img
                   src={m.data.photo}
                   alt={`Portrait of ${m.data.name}`}
                   loading="lazy"
-                  class="team-card-image"
+                  class="trainee-card-photo"
                 />
               </div>
-              <div class="team-card-content">
-                <h3 class="team-card-name">{m.data.name}</h3>
-                <p class="team-card-position">{m.data.position}</p>
+
+              <!-- Front info -->
+              <div class="trainee-card-front">
+                <div class="mb-0.5 flex items-center gap-1.5 flex-wrap">
+                  <h3 class="trainee-card-name">{m.data.name}</h3>
+                  {(m.data as any).nationality_flag_emoji && (
+                    <span class="text-base leading-none" title={(m.data as any).nationality_country ?? ''}>
+                      {(m.data as any).nationality_flag_emoji}
+                    </span>
+                  )}
+                </div>
+                <p class="trainee-card-position">{m.data.position}</p>
                 {(m.data as any).email && (
-                  <a href={`mailto:${(m.data as any).email}`} class="team-card-email">
+                  <a href={`mailto:${(m.data as any).email}`} class="team-card-email trainee-card-email-link">
                     {(m.data as any).email}
                   </a>
                 )}
-                {(m.data as any).short_bio && (m.data as any).short_bio !== 'TBD' && (
-                  <p class="team-card-short-bio">{(m.data as any).short_bio}</p>
-                )}
-                {m.data.fun_fact && (
-                  <p class="team-card-fun-fact">
-                    <span class="team-card-fun-fact-label">Fun fact: </span>{m.data.fun_fact}
+                {(m.data as any).research_project && (m.data as any).research_project !== 'TBD' && (
+                  <p class="trainee-card-project">
+                    <span class="trainee-card-project-label">Project: </span>
+                    {(m.data as any).research_project}
                   </p>
                 )}
               </div>
-              <div class="team-card-overlay">
-                <h3 class="team-card-overlay-name">{m.data.name}</h3>
-                <p class="team-card-overlay-position">{m.data.position}</p>
-                {m.data.bio && m.data.bio !== 'TBD' && (
-                  <p class="team-card-overlay-bio">{m.data.bio}</p>
-                )}
-                {m.data.places_lived && m.data.places_lived.length > 0 && (
-                  <p class="team-card-overlay-meta">
-                    <span class="team-card-overlay-label">Places I've lived: </span>
-                    {m.data.places_lived.join(', ')}
-                  </p>
-                )}
+
+              <!-- Hover overlay — shows bio -->
+              <div class="trainee-card-overlay">
+                <div class="mb-1 flex items-center gap-1.5">
+                  <h3 class="trainee-card-overlay-name">{m.data.name}</h3>
+                  {(m.data as any).nationality_flag_emoji && (
+                    <span class="text-base leading-none">{(m.data as any).nationality_flag_emoji}</span>
+                  )}
+                </div>
+                <p class="trainee-card-overlay-position">{m.data.position}</p>
+                {m.data.bio && m.data.bio !== 'TBD' ? (
+                  <p class="trainee-card-overlay-bio">{m.data.bio}</p>
+                ) : (m.data as any).short_bio && (m.data as any).short_bio !== 'TBD' ? (
+                  <p class="trainee-card-overlay-bio">{(m.data as any).short_bio}</p>
+                ) : null}
               </div>
             </article>
           ))}
