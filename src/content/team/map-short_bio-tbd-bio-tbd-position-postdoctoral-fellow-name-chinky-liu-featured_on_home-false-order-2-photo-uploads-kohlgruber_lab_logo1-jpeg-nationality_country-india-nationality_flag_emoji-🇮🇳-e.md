@@ -8,5 +8,5 @@ photo: /uploads/kohlgruber_lab_logo1.jpeg
 short_bio: TBD
 bio: TBD
 order: 2
-featured_on_home: false
+featured_on_home: true
 ---
