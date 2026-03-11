@@ -4,150 +4,146 @@ import { getCollection } from 'astro:content';
 import site from '../data/site-settings.json';
 import welcome from '../data/welcome.json';
 import research from '../data/research-page.json';
-import culturePage from '../data/culture-page.json';
 
-const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order).slice(0, 4);
-const news = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+const team = (await getCollection('team'))
+  .filter((m) => m.data.featured_on_home)
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+  .slice(0, 3);
+
+const news = (await getCollection('news'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const labPhoto = (welcome as any).lab_photo as string | undefined;
 ---
 <BaseLayout title="Welcome" description={site.mission_statement}>
-  <section class="section pb-10">
-    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-gray">
-      {welcome.hero.eyebrow}
-    </p>
 
-    <h1 class="mt-3 max-w-5xl text-4xl font-semibold tracking-tight text-brand-ink sm:text-5xl">
-      {welcome.hero.title}
-    </h1>
+  <!-- ── Hero ─────────────────────────────────────────────────── -->
+  <section class="relative flex items-center overflow-hidden" style="min-height: 520px;">
+    {labPhoto ? (
+      <>
+        <img
+          src={labPhoto}
+          alt="Kohlgruber Lab"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(31,53,82,0.90) 0%, rgba(6,148,142,0.55) 62%, rgba(6,148,142,0.12) 100%);"></div>
+      </>
+    ) : (
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, #1F3552 0%, #06948E 100%);"></div>
+    )}
 
-    <article class="mt-6 max-w-5xl rounded-2xl border border-brand-turquoise/30 bg-brand-turquoise/5 p-5 shadow-soft">
-      <p class="badge-accent">{welcome.hero.highlight_label ?? 'Lab focus'}</p>
-      <p class="mt-3 text-lg text-brand-gray">{welcome.hero.description}</p>
-    </article>
-
-    <div class="mt-7 flex flex-wrap gap-3">
-      <a class="btn-primary" href={welcome.hero.primary_cta.href}>{welcome.hero.primary_cta.label}</a>
-      <a class="btn-secondary" href={welcome.hero.secondary_cta.href}>{welcome.hero.secondary_cta.label}</a>
-      <a class="btn-secondary" href="/research">Explore Research</a>
+    <div class="relative z-10 mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style="color: rgba(231,135,43,0.95);">
+        {welcome.hero.eyebrow}
+      </p>
+      <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] leading-tight">
+        {welcome.hero.title}
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
+        {site.mission_statement}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn-primary" href="/research">Explore Research</a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+          style="border-color: rgba(255,255,255,0.45);"
+        >Contact Us</a>
+      </div>
     </div>
   </section>
 
-  <section class="section pt-0">
+  <!-- ── Research Themes ───────────────────────────────────────── -->
+  <section class="section">
     <div class="mb-6 flex items-end justify-between">
       <h2 class="h2">Research</h2>
       <a href="/research" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
-        View full research overview →
+        Full overview →
       </a>
     </div>
-
     <div class="grid gap-4 md:grid-cols-3">
       {research.themes.map((theme) => (
         <article class="card">
-          <h3 class="text-xl font-semibold text-brand-ink">{theme.title}</h3>
-          <p class="mt-3 text-sm text-brand-gray">{theme.text}</p>
+          <h3 class="text-base font-semibold text-brand-ink">{theme.title}</h3>
+          <p class="mt-2 text-sm leading-6 text-brand-gray">{theme.text}</p>
         </article>
       ))}
     </div>
   </section>
 
-  <section class="section pt-0">
-    <div class="mb-6 flex items-end justify-between">
-      <h2 class="h2">Team</h2>
-      <a href="/team" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
-        Meet everyone →
-      </a>
-    </div>
-
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {team.map((member) => (
-        <article class="card p-4">
-          <img
-            src={member.data.photo}
-            alt={`Portrait of ${member.data.name}`}
-            class="h-48 w-full rounded-xl object-cover"
-            loading="lazy"
-          />
-          <h3 class="mt-3 text-lg font-semibold text-brand-ink">{member.data.name}</h3>
-          <p class="text-sm text-brand-gray">{member.data.position}</p>
-          <p class="text-sm text-brand-gray">
-            {member.data.nationality_flag_emoji} {member.data.nationality_country}
-          </p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section pt-0">
-    <div class="mb-6 flex items-end justify-between">
-      <h2 class="h2">Mentoring & Culture</h2>
-      <a href="/culture" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
-        Explore culture →
-      </a>
-    </div>
-
-    <article class="card">
-      <p class="max-w-3xl leading-7 text-brand-gray">
-        {welcome.culture_preview}
-      </p>
-      {culturePage.intro && (
-        <p class="mt-4 max-w-3xl leading-7 text-brand-gray">
-          {culturePage.intro}
-        </p>
-      )}
-    </article>
-  </section>
-
-  <section class="section pt-0">
-    <div class="mb-6 flex items-end justify-between">
-      <h2 class="h2">News</h2>
-      <a href="/news" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
-        All news →
-      </a>
-    </div>
-
-    <p class="mb-5 text-brand-gray">{welcome.news_preview_title}</p>
-
-    <div class="grid gap-4 md:grid-cols-3">
-      {news.map((post) => (
-        <article class="card">
-          <p class="text-xs text-brand-gray">{post.data.date.toISOString().slice(0, 10)}</p>
-          <h3 class="mt-2 text-lg font-semibold text-brand-ink">
-            <a href={`/news/${post.id.replace('.md', '')}`} class="hover:text-brand-turquoise">
-              {post.data.title}
-            </a>
-          </h3>
-          <p class="mt-2 text-sm text-brand-gray">{post.data.summary}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section pt-0 grid gap-6 md:grid-cols-2">
-    <article class="card">
-      <h2 class="h2 text-2xl">Join Us</h2>
-      <p class="mt-3 text-brand-gray">
-        We recruit trainees and staff who are excited to work across autoimmunity, functional genomics, and translational receptor engineering.
-      </p>
-      <a href="/join" class="mt-4 btn-primary">View opportunities</a>
-    </article>
-
-    <article class="card">
-      <h2 class="h2 text-2xl">Contact</h2>
-      <p class="mt-3 text-brand-gray">
-        Email us at <a href={`mailto:${site.email}`}>{site.email}</a>.
-      </p>
-      <p class="mt-2 text-brand-gray">{site.address}</p>
-      <a href="/contact" class="mt-4 btn-secondary">Get in touch</a>
-    </article>
-  </section>
-
-  <section class="section pt-0">
-    <h2 class="h2">Funding</h2>
-    <div class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-      {site.funding_logos.map((logo) => (
-        <a href={logo.url ?? '#'} class="card flex h-20 items-center justify-center p-2" aria-label={logo.name}>
-          <img src={logo.image} alt={logo.alt_text} loading="lazy" class="max-h-14" />
+  <!-- ── Featured Team Members ─────────────────────────────────── -->
+  {team.length > 0 && (
+    <section class="section pt-0">
+      <div class="mb-6 flex items-end justify-between">
+        <h2 class="h2">Our Team</h2>
+        <a href="/team" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
+          Meet everyone →
         </a>
-      ))}
-    </div>
-  </section>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {team.map((member) => (
+          <article class="card flex gap-4 p-5">
+            <img
+              src={member.data.photo}
+              alt={`Portrait of ${member.data.name}`}
+              class="h-20 w-20 shrink-0 rounded-xl object-cover"
+              loading="lazy"
+            />
+            <div class="min-w-0">
+              <h3 class="text-base font-semibold text-brand-ink">{member.data.name}</h3>
+              <p class="text-sm font-medium" style="color: var(--color-primary);">{member.data.position}</p>
+              {(member.data as any).short_bio && (
+                <p class="mt-1 text-xs leading-5 text-brand-gray line-clamp-3">{(member.data as any).short_bio}</p>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- ── News ─────────────────────────────────────────────────── -->
+  {news.length > 0 && (
+    <section class="section pt-0">
+      <div class="mb-6 flex items-end justify-between">
+        <h2 class="h2">Latest News</h2>
+        <a href="/news" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
+          All news →
+        </a>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        {news.map((post) => (
+          <article class="card">
+            <p class="text-xs text-brand-gray">{post.data.date.toISOString().slice(0, 10)}</p>
+            <h3 class="mt-2 text-base font-semibold text-brand-ink">
+              <a href={`/news/${post.id.replace('.md', '')}`} class="hover:text-brand-turquoise">
+                {post.data.title}
+              </a>
+            </h3>
+            <p class="mt-2 text-sm leading-6 text-brand-gray">{post.data.summary}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- ── Funding ───────────────────────────────────────────────── -->
+  {site.funding_logos.length > 0 && (
+    <section class="section pt-0">
+      <h2 class="h2 mb-5">Funding</h2>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {site.funding_logos.map((logo) => (
+          <a
+            href={logo.url ?? '#'}
+            class="card flex h-20 items-center justify-center p-2"
+            aria-label={logo.name}
+          >
+            <img src={logo.image} alt={logo.alt_text} loading="lazy" class="max-h-14 object-contain" />
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
 </BaseLayout>

@@ -5,13 +5,15 @@ const team = defineCollection({
   schema: z.object({
     name: z.string(),
     position: z.string(),
-    nationality_country: z.string(),
-    nationality_flag_emoji: z.string(),
-    places_lived: z.array(z.string()),
+    email: z.string().optional(),
+    nationality_country: z.string().optional(),
+    nationality_flag_emoji: z.string().optional(),
+    places_lived: z.array(z.string()).optional(),
     photo: z.string(),
-    bio: z.string(),
-    fun_fact: z.string(),
-    order: z.number(),
+    short_bio: z.string().optional(),
+    bio: z.string().optional(),
+    fun_fact: z.string().optional(),
+    order: z.number().optional(),
     featured_on_home: z.boolean().default(false)
   })
 });

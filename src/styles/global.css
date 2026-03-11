@@ -112,9 +112,83 @@ a:hover {
     @apply h-auto max-h-28 w-auto object-contain sm:max-h-32;
   }
 
+  /* Legacy auto-fit grid (kept for backward compat) */
   .team-grid {
     @apply grid gap-6;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  /* Max 3-column grid used on the team page */
+  .team-grid-3 {
+    @apply grid gap-6;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    max-width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .team-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Section heading for role groups */
+  .group-heading {
+    @apply text-xl font-semibold tracking-tight pb-3;
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  /* PI featured card – horizontal layout */
+  .pi-card {
+    @apply flex flex-col gap-6 rounded-2xl border bg-white p-8 shadow-soft;
+    border-color: var(--color-border);
+    border-top: 4px solid var(--color-primary);
+  }
+
+  @media (min-width: 768px) {
+    .pi-card {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2.5rem;
+    }
+  }
+
+  .pi-card-image {
+    @apply shrink-0 rounded-xl object-cover;
+    width: 11rem;
+    height: 11rem;
+    align-self: center;
+  }
+
+  @media (min-width: 768px) {
+    .pi-card-image {
+      align-self: flex-start;
+    }
+  }
+
+  .pi-card-content {
+    @apply flex-1 min-w-0;
+  }
+
+  .pi-card-kicker {
+    @apply mb-1 text-xs font-semibold uppercase tracking-[0.16em];
+    color: var(--color-accent);
+  }
+
+  .pi-card-name {
+    @apply mb-2 text-2xl font-semibold tracking-tight;
+    color: var(--color-text);
+  }
+
+  .pi-card-bio {
+    @apply text-sm leading-7 mt-3;
+    color: var(--color-muted-text);
+  }
+
+  .pi-card-fun-fact {
+    @apply mt-4 text-sm leading-6;
+    color: var(--color-muted-text);
   }
 
   .team-card {
