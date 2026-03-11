@@ -4,7 +4,7 @@ position: "Postdoctoral Fellow "
 email: Jayashree.VR@childrens.harvard.edu
 nationality_country: India
 nationality_flag_emoji: 🇮🇳
-photo: /uploads/kohlgruber_lab_logo1.jpeg
+photo: /uploads/website_photo.jpg
 short_bio: Jayashree is a bioengineer by training interested in
   interdisciplinary and translational immuno-engineering research. She loves to
   explore the application of data science and AI tools to immunology to
