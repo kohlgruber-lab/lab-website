@@ -23,7 +23,7 @@ bio: Alicia graduated from Wellesley College where she majored in Biochemistry.
   macrophage because it eats a lot!
 fun_fact: "I can do a headstand even though I was never a trained gymnast or
   acrobat of any sort. "
-order: 2
+order: 4
 featured_on_home: true
 links:
   github: https://github.com
