@@ -18,5 +18,5 @@ bio: Jayashree is a bioengineer by training interested in interdisciplinary and
   enjoys cooking, gardening, yoga, hiking, impromptu travels, adventurous
   activities, and many more on the endless fun list!
 order: 3
-featured_on_home: false
+featured_on_home: true
 ---
