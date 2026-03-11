@@ -7,16 +7,19 @@ const sections = [
     title: culturePage.culture_title ?? 'Culture',
     text: culturePage.culture_text,
     accent: 'var(--color-primary)',
+    icon: '🤝',
   },
   {
     title: culturePage.philosophy_title ?? 'Philosophy',
     text: culturePage.philosophy_text,
     accent: 'var(--color-accent)',
+    icon: '💡',
   },
   {
     title: culturePage.mentoring_title ?? 'Mentoring',
     text: culturePage.mentoring_text,
     accent: 'var(--color-navy)',
+    icon: '🌱',
   },
 ];
 ---
@@ -47,8 +50,9 @@ const sections = [
           <div class="culture-text-block">
             <div class="flex items-center gap-3 mb-4">
               <div class="h-8 w-1.5 rounded-full shrink-0" style={`background-color: ${sec.accent};`}></div>
-              <h2 class="text-2xl font-bold tracking-tight" style={`color: ${sec.accent};`}>
+              <h2 class="text-2xl font-bold tracking-tight flex items-center gap-2" style={`color: ${sec.accent};`}>
                 {sec.title}
+                <span class="text-2xl" role="img" aria-label={sec.title}>{sec.icon}</span>
               </h2>
             </div>
             <p class="leading-8 text-brand-gray text-base max-w-prose">{sec.text}</p>
@@ -61,7 +65,7 @@ const sections = [
         <div class="lg:w-[42%] shrink-0">
           <div class="sticky top-24">
             <h2 class="mb-5 text-sm font-bold uppercase tracking-widest" style="color: var(--color-primary);">
-              Life in the Lab
+              Life in and out of the lab
             </h2>
             <div class="culture-collage-grid">
               {culturePage.photo_collage.map((photo, i) => (

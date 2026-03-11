@@ -36,11 +36,11 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
       <div class="absolute inset-0" style="background: linear-gradient(135deg, #1F3552 0%, #06948E 100%);"></div>
     )}
 
-    <div class="relative z-10 mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <p class="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style="color: rgba(231,135,43,0.95);">
         {welcome.hero.eyebrow}
       </p>
-      <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] leading-tight">
+      <h1 class="max-w-3xl text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-[4.5rem] leading-tight">
         {welcome.hero.title}
       </h1>
       <p class="mt-6 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
@@ -108,21 +108,17 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
       </div>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {team.map((member) => (
-          <article class="card flex gap-4 p-5">
+          <div
+            class="overflow-hidden rounded-2xl"
+            style="aspect-ratio: 3/4; background-color: var(--color-soft-surface);"
+          >
             <img
               src={member.data.photo}
               alt={`Portrait of ${member.data.name}`}
-              class="h-20 w-20 shrink-0 rounded-xl object-cover"
+              class="h-full w-full object-cover"
               loading="lazy"
             />
-            <div class="min-w-0">
-              <h3 class="text-base font-semibold text-brand-ink">{member.data.name}</h3>
-              <p class="text-sm font-medium" style="color: var(--color-primary);">{member.data.position}</p>
-              {(member.data as any).short_bio && (
-                <p class="mt-1 text-xs leading-5 text-brand-gray line-clamp-3">{(member.data as any).short_bio}</p>
-              )}
-            </div>
-          </article>
+          </div>
         ))}
       </div>
     </section>
@@ -139,7 +135,7 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
       </div>
       <div class="grid gap-4 md:grid-cols-3">
         {news.map((post) => (
-          <article class="card">
+          <article class="soft-card p-5">
             <p class="text-xs text-brand-gray">{post.data.date.toISOString().slice(0, 10)}</p>
             <h3 class="mt-2 text-base font-semibold text-brand-ink">
               <a href={`/news/${post.id.replace('.md', '')}`} class="hover:text-brand-turquoise">
@@ -161,7 +157,7 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
         {site.funding_logos.map((logo) => (
           <a
             href={logo.url ?? '#'}
-            class="card flex h-20 items-center justify-center p-2"
+            class="soft-card flex h-20 items-center justify-center p-2"
             aria-label={logo.name}
           >
             <img src={logo.image} alt={logo.alt_text} loading="lazy" class="max-h-14 object-contain" />

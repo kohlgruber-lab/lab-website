@@ -34,7 +34,7 @@ a:hover {
 
 @layer components {
   .section {
-    @apply mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8;
   }
 
   .h2 {
@@ -71,6 +71,13 @@ a:hover {
     color: var(--color-accent);
   }
 
+  /* Soft translucent card — used on home page sections */
+  .soft-card {
+    @apply rounded-2xl;
+    background-color: rgba(243, 245, 244, 0.80);
+    border: 1px solid rgba(215, 219, 216, 0.45);
+  }
+
   /* ─────────────────────────────────────────────────────────────
      TEAM PAGE
   ───────────────────────────────────────────────────────────── */
@@ -81,16 +88,22 @@ a:hover {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 
-  /* Max 3-column grid used on the team page */
+  /* Max 4-column grid used on the team page */
   .team-grid-3 {
-    @apply grid gap-6;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    @apply grid gap-5;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     max-width: 100%;
   }
 
   @media (min-width: 1024px) {
     .team-grid-3 {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .team-grid-3 {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -104,34 +117,36 @@ a:hover {
 
   /* PI featured card */
   .pi-card {
-    @apply flex flex-col gap-6 rounded-2xl border bg-white p-8 shadow-soft;
-    border-color: var(--color-border);
+    @apply flex flex-col rounded-2xl border overflow-hidden shadow-soft;
+    background-color: rgba(243, 245, 244, 0.80);
+    border-color: rgba(215, 219, 216, 0.45);
     border-top: 4px solid var(--color-primary);
   }
 
   @media (min-width: 768px) {
     .pi-card {
       flex-direction: row;
-      align-items: flex-start;
-      gap: 2.5rem;
+      align-items: stretch;
     }
   }
 
   .pi-card-image {
-    @apply shrink-0 rounded-xl object-cover;
-    width: 11rem;
-    height: 11rem;
-    align-self: center;
+    @apply shrink-0 object-cover w-full;
+    height: 280px;
+    border-radius: 0;
   }
 
   @media (min-width: 768px) {
     .pi-card-image {
-      align-self: flex-start;
+      width: 38%;
+      height: auto;
+      min-height: 340px;
+      align-self: stretch;
     }
   }
 
   .pi-card-content {
-    @apply flex-1 min-w-0;
+    @apply flex-1 min-w-0 p-8;
   }
 
   .pi-card-kicker {
@@ -168,9 +183,10 @@ a:hover {
      TRAINEE CARDS — square photo, info below, hover → bio
   ───────────────────────────────────────────────────────────── */
   .trainee-card {
-    @apply relative overflow-hidden rounded-2xl border bg-white shadow-soft transition-all duration-200;
-    border-color: var(--color-border);
-    border-top: 4px solid var(--color-accent);
+    @apply relative overflow-hidden rounded-2xl border shadow-soft transition-all duration-200;
+    background-color: rgba(243, 245, 244, 0.80);
+    border-color: rgba(215, 219, 216, 0.45);
+    border-top: 3px solid var(--color-accent);
   }
 
   .trainee-card:hover {
@@ -229,7 +245,7 @@ a:hover {
   /* Hover overlay shows bio */
   .trainee-card-overlay {
     @apply absolute inset-0 overflow-y-auto p-5 transition-opacity duration-200;
-    background: rgba(248, 248, 248, 0.97);
+    background: rgba(243, 245, 244, 0.97);
     opacity: 0;
     pointer-events: none;
   }
