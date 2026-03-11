@@ -25,6 +25,11 @@ collections:
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Address", name: "address", widget: "text" }
           - { label: "Lab Logo", name: "lab_logo", widget: "image", required: false }
+          - label: "Contact Form Notification Email"
+            name: "contact_notification_email"
+            widget: "string"
+            required: false
+            hint: "Reference only — record the email that should receive contact form submissions here. The actual email forwarding must be configured in Netlify dashboard under Site Settings → Forms → Form notifications."
           - label: "Socials"
             name: "socials"
             widget: "list"
@@ -86,6 +91,7 @@ collections:
             widget: "list"
             fields:
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Image", name: "image", widget: "image", required: false, hint: "Optional visual displayed alongside the research description. Placeholder diagrams are provided by default." }
               - { label: "Text", name: "text", widget: "text" }
 
   - name: "team"
@@ -99,12 +105,13 @@ collections:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Position", name: "position", widget: "string" }
       - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Research Project", name: "research_project", widget: "string", required: false, hint: "Short description of their current project (shown on team card)." }
       - { label: "Nationality Country", name: "nationality_country", widget: "string", required: false }
       - { label: "Nationality Flag", name: "nationality_flag_emoji", widget: "string", required: false }
       - { label: "Places I've lived", name: "places_lived", widget: "list", required: false, field: { label: "Place", name: "place", widget: "string" } }
       - { label: "Photo", name: "photo", widget: "image" }
-      - { label: "Short Bio", name: "short_bio", widget: "text", hint: "2–3 sentences for the card preview." }
-      - { label: "Expanded Bio", name: "bio", widget: "text", hint: "Longer bio shown on hover." }
+      - { label: "Bio", name: "bio", widget: "text", hint: "Full bio shown on hover over the team card.", required: false }
+      - { label: "Short Bio (fallback)", name: "short_bio", widget: "text", required: false, hint: "Used as fallback if Bio is not set." }
       - { label: "Fun Fact", name: "fun_fact", widget: "string", required: false }
       - { label: "Order", name: "order", widget: "number", value_type: "int" }
       - { label: "Featured on Home", name: "featured_on_home", widget: "boolean", default: false }
@@ -120,7 +127,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" } }
-      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Summary", name: "summary", widget: "markdown", hint: "Supports **bold** and *italic* formatting. Shown in the news listing.", minimal: true }
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
@@ -186,14 +193,14 @@ collections:
           - { label: "Building Photo Alt Text", name: "building_photo_alt", widget: "string", required: false }
           - { label: "Location Description", name: "location_description", widget: "text", required: false }
           - { label: "Application Section Title", name: "application_title", widget: "string", required: false }
-          - { label: "Application Intro", name: "application_intro", widget: "text", required: false }
+          - { label: "Application Intro", name: "application_intro", widget: "markdown", required: false, hint: "Supports **bold** and *italic* formatting.", minimal: true }
           - label: "Application Paths"
             name: "application_paths"
             widget: "list"
             required: false
             fields:
               - { label: "Applicant Type", name: "type", widget: "string" }
-              - { label: "Instructions", name: "instructions", widget: "text" }
+              - { label: "Instructions", name: "instructions", widget: "markdown", hint: "Supports **bold** and *italic* formatting.", minimal: true }
 
   - name: "alumni"
     label: "Alumni"

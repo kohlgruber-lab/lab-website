@@ -12,6 +12,7 @@ const team = defineCollection({
     photo: z.string(),
     short_bio: z.string().optional(),
     bio: z.string().optional(),
+    research_project: z.string().optional(),
     fun_fact: z.string().optional(),
     order: z.number().optional(),
     featured_on_home: z.boolean().default(false)

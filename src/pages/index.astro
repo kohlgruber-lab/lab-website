@@ -15,6 +15,9 @@ const news = (await getCollection('news'))
   .slice(0, 3);
 
 const labPhoto = (welcome as any).lab_photo as string | undefined;
+
+// Accent colors per research card (cycling)
+const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color-navy)'];
 ---
 <BaseLayout title="Welcome" description={site.mission_statement}>
 
@@ -63,11 +66,33 @@ const labPhoto = (welcome as any).lab_photo as string | undefined;
       </a>
     </div>
     <div class="grid gap-4 md:grid-cols-3">
-      {research.themes.map((theme) => (
-        <article class="card">
-          <h3 class="text-base font-semibold text-brand-ink">{theme.title}</h3>
-          <p class="mt-2 text-sm leading-6 text-brand-gray">{theme.text}</p>
-        </article>
+      {research.themes.map((theme, i) => (
+        <a
+          href="/research"
+          class="research-home-card group relative block aspect-square overflow-hidden rounded-2xl no-underline"
+          style={`background-color: ${i === 1 ? 'var(--color-soft-surface)' : i === 2 ? '#eef1f5' : '#f0f9f8'};`}
+        >
+          {(theme as any).image && (
+            <img
+              src={(theme as any).image}
+              alt=""
+              aria-hidden="true"
+              class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-35"
+            />
+          )}
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+            <div
+              class="mb-3 h-1 w-10 rounded-full"
+              style={`background-color: ${cardAccents[i % cardAccents.length]};`}
+            ></div>
+            <h3
+              class="text-lg font-bold leading-snug sm:text-xl"
+              style={`color: ${cardAccents[i % cardAccents.length]};`}
+            >
+              {theme.title}
+            </h3>
+          </div>
+        </a>
       ))}
     </div>
   </section>

@@ -1,0 +1,47 @@
+<svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg1" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#06948E" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#1F3552" stop-opacity="0.05"/>
+    </radialGradient>
+    <radialGradient id="cell1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#06948E" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#06948E" stop-opacity="0.1"/>
+    </radialGradient>
+    <radialGradient id="cell2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A8B8A3" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#A8B8A3" stop-opacity="0.1"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="540" fill="#f3f9f9"/>
+  <rect width="800" height="540" fill="url(#bg1)"/>
+
+  <!-- Large background cell circles -->
+  <circle cx="600" cy="120" r="160" fill="url(#cell1)" stroke="#06948E" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="200" cy="400" r="130" fill="url(#cell2)" stroke="#A8B8A3" stroke-width="1.5" stroke-opacity="0.4"/>
+  <circle cx="680" cy="420" r="90" fill="none" stroke="#06948E" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="6 4"/>
+
+  <!-- T cell receptor-like connectors -->
+  <line x1="300" y1="200" x2="450" y2="270" stroke="#06948E" stroke-width="2" stroke-opacity="0.4"/>
+  <line x1="450" y1="270" x2="520" y2="200" stroke="#06948E" stroke-width="2" stroke-opacity="0.4"/>
+  <line x1="380" y1="350" x2="450" y2="270" stroke="#1F3552" stroke-width="2" stroke-opacity="0.3"/>
+
+  <!-- Small cells / dots -->
+  <circle cx="450" cy="270" r="22" fill="#06948E" fill-opacity="0.6"/>
+  <circle cx="300" cy="200" r="16" fill="#1F3552" fill-opacity="0.5"/>
+  <circle cx="520" cy="200" r="16" fill="#1F3552" fill-opacity="0.5"/>
+  <circle cx="380" cy="350" r="14" fill="#E7872B" fill-opacity="0.6"/>
+  <circle cx="560" cy="340" r="12" fill="#06948E" fill-opacity="0.4"/>
+  <circle cx="240" cy="240" r="10" fill="#A8B8A3" fill-opacity="0.7"/>
+  <circle cx="650" cy="260" r="18" fill="#06948E" fill-opacity="0.3"/>
+  <circle cx="130" cy="180" r="8" fill="#06948E" fill-opacity="0.5"/>
+
+  <!-- Flowing lines suggesting balance/tolerance -->
+  <path d="M 80 270 Q 200 180 320 270 Q 440 360 560 270 Q 680 180 760 270" fill="none" stroke="#06948E" stroke-width="2.5" stroke-opacity="0.25" stroke-dasharray="8 5"/>
+  <path d="M 80 310 Q 200 400 320 310 Q 440 220 560 310 Q 680 400 760 310" fill="none" stroke="#1F3552" stroke-width="1.5" stroke-opacity="0.15" stroke-dasharray="6 6"/>
+
+  <!-- Label area -->
+  <rect x="30" y="460" width="4" height="56" rx="2" fill="#06948E" opacity="0.6"/>
+  <text x="46" y="480" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#06948E" opacity="0.7" font-weight="600">Immune Tolerance</text>
+  <text x="46" y="500" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#707071" opacity="0.7">&amp; Autoimmunity</text>
+</svg>

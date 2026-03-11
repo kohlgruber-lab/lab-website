@@ -1,0 +1,60 @@
+<svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg3" cx="60%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#1F3552" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#06948E" stop-opacity="0.05"/>
+    </radialGradient>
+    <linearGradient id="receptor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F3552" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#06948E" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="540" fill="#f3f5f9"/>
+  <rect width="800" height="540" fill="url(#bg3)"/>
+
+  <!-- Cell membrane (horizontal band) -->
+  <rect x="0" y="300" width="800" height="80" fill="#1F3552" fill-opacity="0.07"/>
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#1F3552" stroke-width="1.5" stroke-opacity="0.2"/>
+  <line x1="0" y1="380" x2="800" y2="380" stroke="#1F3552" stroke-width="1.5" stroke-opacity="0.2"/>
+
+  <!-- TCR alpha chain -->
+  <path d="M 340 300 L 300 200 L 260 160 L 220 120" fill="none" stroke="url(#receptor)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- TCR beta chain -->
+  <path d="M 400 300 L 440 200 L 480 160 L 510 120" fill="none" stroke="#06948E" stroke-width="8" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Disulfide bond between chains -->
+  <line x1="300" y1="200" x2="440" y2="200" stroke="#E7872B" stroke-width="3" stroke-opacity="0.6" stroke-dasharray="5 3"/>
+  <circle cx="300" cy="200" r="6" fill="#E7872B" fill-opacity="0.7"/>
+  <circle cx="440" cy="200" r="6" fill="#E7872B" fill-opacity="0.7"/>
+
+  <!-- Antigen/peptide-MHC above -->
+  <rect x="200" y="60" width="330" height="55" rx="12" fill="#1F3552" fill-opacity="0.12" stroke="#1F3552" stroke-width="1.5" stroke-opacity="0.3"/>
+  <rect x="240" y="72" width="250" height="30" rx="6" fill="#06948E" fill-opacity="0.2"/>
+  <!-- Peptide groove -->
+  <rect x="270" y="80" width="60" height="14" rx="3" fill="#E7872B" fill-opacity="0.55"/>
+  <text x="276" y="92" font-family="monospace" font-size="10" fill="#fff" opacity="0.9" font-weight="bold">pMHC</text>
+  <!-- Arrows for recognition -->
+  <path d="M 260 120 L 250 95" fill="none" stroke="#1F3552" stroke-width="2" stroke-opacity="0.4" marker-end="url(#arrow1)"/>
+  <path d="M 510 120 L 480 95" fill="none" stroke="#06948E" stroke-width="2" stroke-opacity="0.4" marker-end="url(#arrow1)"/>
+
+  <!-- CD3 chains (transmembrane signal units) -->
+  <rect x="350" y="300" width="10" height="80" rx="3" fill="#1F3552" fill-opacity="0.5"/>
+  <rect x="375" y="300" width="10" height="80" rx="3" fill="#06948E" fill-opacity="0.5"/>
+  <rect x="326" y="300" width="10" height="80" rx="3" fill="#1F3552" fill-opacity="0.4"/>
+
+  <!-- Intracellular signaling (below membrane) -->
+  <circle cx="356" cy="400" r="20" fill="#1F3552" fill-opacity="0.2" stroke="#1F3552" stroke-width="1.5" stroke-opacity="0.35"/>
+  <circle cx="380" cy="420" r="15" fill="#06948E" fill-opacity="0.2" stroke="#06948E" stroke-width="1" stroke-opacity="0.35"/>
+  <circle cx="330" cy="415" r="12" fill="#E7872B" fill-opacity="0.25" stroke="#E7872B" stroke-width="1" stroke-opacity="0.4"/>
+
+  <!-- Second TCR in background (dimmer) -->
+  <path d="M 580 300 L 545 220 L 510 175" fill="none" stroke="#1F3552" stroke-width="5" stroke-opacity="0.2" stroke-linecap="round"/>
+  <path d="M 630" fill="none"/>
+  <path d="M 630 300 L 665 220 L 695 175" fill="none" stroke="#06948E" stroke-width="5" stroke-opacity="0.2" stroke-linecap="round"/>
+  <line x1="545" y1="220" x2="665" y2="220" stroke="#E7872B" stroke-width="2" stroke-opacity="0.2" stroke-dasharray="4 3"/>
+
+  <!-- Label -->
+  <rect x="30" y="460" width="4" height="56" rx="2" fill="#1F3552" opacity="0.6"/>
+  <text x="46" y="480" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#1F3552" opacity="0.8" font-weight="600">TCR Discovery</text>
+  <text x="46" y="500" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#707071" opacity="0.7">&amp; Translation</text>
+</svg>
