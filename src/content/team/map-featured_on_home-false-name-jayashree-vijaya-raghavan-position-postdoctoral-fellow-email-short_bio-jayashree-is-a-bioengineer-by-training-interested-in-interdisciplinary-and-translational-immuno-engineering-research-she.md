@@ -1,7 +1,9 @@
 ---
 name: Jayashree Vijaya Raghavan
 position: "Postdoctoral Fellow "
-email: ""
+email: Jayashree.VR@childrens.harvard.edu
+nationality_country: India
+nationality_flag_emoji: 🇮🇳
 photo: /uploads/kohlgruber_lab_logo1.jpeg
 short_bio: Jayashree is a bioengineer by training interested in
   interdisciplinary and translational immuno-engineering research. She loves to
