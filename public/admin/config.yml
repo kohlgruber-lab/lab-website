@@ -48,6 +48,7 @@ collections:
         file: "src/data/welcome.json"
         format: "json"
         fields:
+          - { label: "Lab Photo", name: "lab_photo", widget: "image", required: false, hint: "Upload a photo of the lab for the home page hero background." }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -193,3 +194,20 @@ collections:
             fields:
               - { label: "Applicant Type", name: "type", widget: "string" }
               - { label: "Instructions", name: "instructions", widget: "text" }
+
+  - name: "alumni"
+    label: "Alumni"
+    files:
+      - label: "Alumni"
+        name: "alumni"
+        file: "src/data/alumni.json"
+        format: "json"
+        fields:
+          - label: "Alumni"
+            name: "alumni"
+            widget: "list"
+            hint: "Past lab members. Sorted as entered — most recent first is recommended."
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Position Held", name: "position", widget: "string", hint: "e.g. Postdoctoral Fellow, Graduate Student" }
+              - { label: "Currently", name: "current", widget: "string", hint: "e.g. Assistant Professor, Stanford University" }

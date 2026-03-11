@@ -1,72 +1,179 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import alumni from '../data/alumni.json';
 
-const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+// ── Sorting helpers ───────────────────────────────────────────────
+const POSITION_RANK: [string, number][] = [
+  ['principal investigator', 0],
+  ['postdoctoral', 1],
+  ['postdoc', 1],
+  ['graduate student', 2],
+  ['phd student', 2],
+  ["master's", 3],
+  ['masters student', 3],
+  ['research assistant', 4],
+  ['undergraduate', 5],
+  ['undergrad', 5],
+];
+
+function positionRank(pos: string): number {
+  const lower = pos.toLowerCase();
+  for (const [key, rank] of POSITION_RANK) {
+    if (lower.includes(key)) return rank;
+  }
+  return 6;
+}
+
+function lastName(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  return parts[parts.length - 1].toLowerCase();
+}
+
+const allMembers = (await getCollection('team')).sort((a, b) => {
+  const rankDiff = positionRank(a.data.position) - positionRank(b.data.position);
+  if (rankDiff !== 0) return rankDiff;
+  return lastName(a.data.name).localeCompare(lastName(b.data.name));
+});
+
+const GROUPS = [
+  { rank: 1, label: 'Postdoctoral Fellows' },
+  { rank: 2, label: 'Graduate Students' },
+  { rank: 3, label: "Master's Students" },
+  { rank: 4, label: 'Research Assistants' },
+  { rank: 5, label: 'Undergraduate Interns' },
+  { rank: 6, label: 'Team Members' },
+];
+
+const pi = allMembers.filter((m) => positionRank(m.data.position) === 0);
+const otherGroups = GROUPS
+  .map((g) => ({
+    label: g.label,
+    members: allMembers.filter((m) => positionRank(m.data.position) === g.rank),
+  }))
+  .filter((g) => g.members.length > 0);
 ---
 <BaseLayout title="Team" description="Meet the Kohlgruber Lab team.">
   <section class="section">
+
     <h1 class="text-4xl font-semibold tracking-tight text-brand-ink">Team</h1>
-    <p class="mt-3 max-w-3xl text-brand-gray">
-      Our team brings together clinical insight, molecular immunology, and computational analysis to tackle high-impact translational questions.
+    <p class="mt-3 max-w-3xl leading-7 text-brand-gray">
+      Our team brings together clinical insight, molecular immunology, and computational analysis
+      to tackle high-impact translational questions.
     </p>
 
-    <div class="team-grid mt-8">
-      {team.map((m) => (
-        <article class="team-card">
-          <div class="team-card-image-wrap">
-            <img
-              src={m.data.photo}
-              alt={`Portrait of ${m.data.name}`}
-              loading="lazy"
-              class="team-card-image"
-            />
-          </div>
+    <!-- ── Principal Investigator ───────────────────────────────── -->
+    {pi.map((m) => (
+      <div class="pi-card mt-10">
+        <img
+          src={m.data.photo}
+          alt={`Portrait of ${m.data.name}`}
+          loading="lazy"
+          class="pi-card-image"
+        />
+        <div class="pi-card-content">
+          <p class="pi-card-kicker">Principal Investigator</p>
+          <h2 class="pi-card-name">{m.data.name}</h2>
+          {(m.data as any).email && (
+            <a href={`mailto:${(m.data as any).email}`} class="team-card-email mb-4 block">
+              {(m.data as any).email}
+            </a>
+          )}
+          {m.data.bio && m.data.bio !== 'TBD' && (
+            <p class="pi-card-bio">{m.data.bio}</p>
+          )}
+          {m.data.fun_fact && (
+            <p class="pi-card-fun-fact">
+              <span class="font-semibold text-brand-ink">Outside the lab: </span>{m.data.fun_fact}
+            </p>
+          )}
+        </div>
+      </div>
+    ))}
 
-          <div class="team-card-content">
-            <h2 class="team-card-name">{m.data.name}</h2>
-            <p class="team-card-position">{m.data.position}</p>
+    <!-- ── Other role groups ────────────────────────────────────── -->
+    {otherGroups.map((group) => (
+      <div class="mt-12">
+        <h2 class="group-heading">{group.label}</h2>
+        <div class="team-grid-3 mt-5">
+          {group.members.map((m) => (
+            <article class="team-card">
+              <div class="team-card-image-wrap">
+                <img
+                  src={m.data.photo}
+                  alt={`Portrait of ${m.data.name}`}
+                  loading="lazy"
+                  class="team-card-image"
+                />
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-card-name">{m.data.name}</h3>
+                <p class="team-card-position">{m.data.position}</p>
+                {(m.data as any).email && (
+                  <a href={`mailto:${(m.data as any).email}`} class="team-card-email">
+                    {(m.data as any).email}
+                  </a>
+                )}
+                {(m.data as any).short_bio && (m.data as any).short_bio !== 'TBD' && (
+                  <p class="team-card-short-bio">{(m.data as any).short_bio}</p>
+                )}
+                {m.data.fun_fact && (
+                  <p class="team-card-fun-fact">
+                    <span class="team-card-fun-fact-label">Fun fact: </span>{m.data.fun_fact}
+                  </p>
+                )}
+              </div>
+              <div class="team-card-overlay">
+                <h3 class="team-card-overlay-name">{m.data.name}</h3>
+                <p class="team-card-overlay-position">{m.data.position}</p>
+                {m.data.bio && m.data.bio !== 'TBD' && (
+                  <p class="team-card-overlay-bio">{m.data.bio}</p>
+                )}
+                {m.data.places_lived && m.data.places_lived.length > 0 && (
+                  <p class="team-card-overlay-meta">
+                    <span class="team-card-overlay-label">Places I've lived: </span>
+                    {m.data.places_lived.join(', ')}
+                  </p>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
 
-            {m.data.email && (
-              <a href={`mailto:${m.data.email}`} class="team-card-email">
-                {m.data.email}
-              </a>
-            )}
+    <!-- ── Alumni ───────────────────────────────────────────────── -->
+    {alumni.alumni.length > 0 && (
+      <div class="mt-16">
+        <h2 class="group-heading">Alumni</h2>
+        <p class="mt-2 mb-6 text-brand-gray">
+          We are proud of all our past trainees and the paths they have taken.
+        </p>
+        <div class="overflow-hidden rounded-2xl border bg-white shadow-soft" style="border-color: var(--color-border);">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b" style="border-color: var(--color-border); background-color: var(--color-soft-surface);">
+                <th class="px-6 py-3 text-left font-semibold text-brand-ink">Name</th>
+                <th class="px-6 py-3 text-left font-semibold text-brand-ink">Position Held</th>
+                <th class="px-6 py-3 text-left font-semibold text-brand-ink">Currently</th>
+              </tr>
+            </thead>
+            <tbody>
+              {alumni.alumni.map((person, i) => (
+                <tr
+                  class="border-b last:border-0"
+                  style={`border-color: var(--color-border);${i % 2 !== 0 ? ' background-color: var(--color-soft-surface);' : ''}`}
+                >
+                  <td class="px-6 py-4 font-medium text-brand-ink">{person.name}</td>
+                  <td class="px-6 py-4 text-brand-gray">{person.position}</td>
+                  <td class="px-6 py-4 text-brand-gray">{person.current}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )}
 
-            {(m.data.nationality_flag_emoji || m.data.nationality_country) && (
-              <p class="team-card-nationality">
-                {m.data.nationality_flag_emoji} {m.data.nationality_country}
-              </p>
-            )}
-
-            {m.data.short_bio && (
-              <p class="team-card-short-bio">{m.data.short_bio}</p>
-            )}
-
-            {m.data.fun_fact && (
-              <p class="team-card-fun-fact">
-                <span class="team-card-fun-fact-label">Fun fact:</span> {m.data.fun_fact}
-              </p>
-            )}
-          </div>
-
-          <div class="team-card-overlay">
-            <h3 class="team-card-overlay-name">{m.data.name}</h3>
-            <p class="team-card-overlay-position">{m.data.position}</p>
-
-            {m.data.bio && (
-              <p class="team-card-overlay-bio">{m.data.bio}</p>
-            )}
-
-            {m.data.places_lived && m.data.places_lived.length > 0 && (
-              <p class="team-card-overlay-meta">
-                <span class="team-card-overlay-label">Places I’ve lived:</span>{' '}
-                {m.data.places_lived.join(', ')}
-              </p>
-            )}
-          </div>
-        </article>
-      ))}
-    </div>
   </section>
 </BaseLayout>

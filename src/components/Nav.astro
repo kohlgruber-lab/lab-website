@@ -8,7 +8,6 @@ const links = [
   ['News', '/news'],
   ['Culture', '/culture'],
   ['Contact', '/contact'],
-  ['Join Us', '/join']
 ];
 const current = Astro.url.pathname;
 ---
@@ -16,17 +15,18 @@ const current = Astro.url.pathname;
   <div class="h-1 w-full bg-gradient-to-r from-brand-turquoise via-brand-turquoise to-brand-orange"></div>
 
   <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8" aria-label="Primary">
-    <a href="/" class="flex items-center gap-3 text-brand-ink no-underline">
-      {site.lab_logo && (
+    <a href="/" class="flex items-center no-underline">
+      {site.lab_logo ? (
         <img
           src={site.lab_logo}
           alt={`${site.lab_name} logo`}
-          class="h-10 w-auto object-contain sm:h-12"
+          class="h-14 w-auto object-contain sm:h-16"
         />
+      ) : (
+        <span class="text-lg font-semibold tracking-tight text-brand-ink">
+          {site.lab_name}
+        </span>
       )}
-      <span class="text-lg font-semibold tracking-tight text-brand-ink">
-        {site.lab_name}
-      </span>
     </a>
 
     <ul class="flex flex-wrap items-center gap-1 text-sm font-medium">
