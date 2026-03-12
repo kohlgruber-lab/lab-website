@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import research from '../data/research-page.json';
 
-// Accent colors cycling through brand palette
+// Accent colors cycling through brand palette (area 1 = orange, area 2 = teal, area 3 = navy)
 const accents = [
-  { color: 'var(--color-primary)', bg: '#f0f9f8', borderColor: 'var(--color-primary)' },
   { color: 'var(--color-accent)',  bg: '#fdf8f3', borderColor: 'var(--color-accent)'  },
+  { color: 'var(--color-primary)', bg: '#f0f9f8', borderColor: 'var(--color-primary)' },
   { color: 'var(--color-navy)',    bg: '#eef1f5', borderColor: 'var(--color-navy)'    },
 ];
 
@@ -41,8 +41,7 @@ function renderParagraphs(text: string): string[] {
                   <img
                     src={(theme as any).image}
                     alt={`Visual for ${theme.title}`}
-                    class="w-full object-cover"
-                    style="aspect-ratio: 4/3;"
+                    class="w-full h-auto block"
                     loading="lazy"
                   />
                 ) : (
