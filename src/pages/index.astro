@@ -21,44 +21,49 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
 ---
 <BaseLayout title="Welcome" description={site.mission_statement}>
 
-  <!-- ── Hero (full-width gradient) ───────────────────────────── -->
-  <section style="background: linear-gradient(135deg, #1F3552 0%, #06948E 100%); min-height: 480px;" class="flex items-center">
-    <div class="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em]" style="color: rgba(231,135,43,0.95);">
-        {welcome.hero.eyebrow}
-      </p>
-      <h1 class="max-w-3xl text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-[4.5rem] leading-tight">
-        {welcome.hero.title}
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
-        {site.mission_statement}
-      </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a class="btn-primary" href="/research">Explore Research</a>
-        <a
-          href="/team"
-          class="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition"
-          style="background-color: #E7872B;"
-          onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"
-        >Meet Our Team</a>
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-          style="border-color: rgba(255,255,255,0.45);"
-        >Contact Us</a>
+  <!-- ── Hero (split: gradient left + lab photo right) ──────── -->
+  <section class="flex overflow-hidden" style="min-height: 480px;">
+
+    <!-- Left: gradient + text -->
+    <div class="flex flex-1 items-center" style="background: linear-gradient(135deg, #1F3552 0%, #06948E 100%);">
+      <div class="w-full px-4 py-20 sm:px-6 lg:px-8">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em]" style="color: rgba(231,135,43,0.95);">
+          {welcome.hero.eyebrow}
+        </p>
+        <h1 class="max-w-3xl text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-[4.5rem] leading-tight">
+          {welcome.hero.title}
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
+          {site.mission_statement}
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn-primary" href="/research">Explore Research</a>
+          <a
+            href="/team"
+            class="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition"
+            style="background-color: #E7872B;"
+            onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"
+          >Meet Our Team</a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+            style="border-color: rgba(255,255,255,0.45);"
+          >Contact Us</a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ── Lab photo strip ───────────────────────────────────────── -->
-  <div class="w-full overflow-hidden" style="max-height: 440px;">
-    <img
-      src={labPhoto || '/uploads/2025_labphoto_5.jpeg'}
-      alt="Kohlgruber Lab"
-      class="w-full object-cover"
-      style="max-height: 440px; object-position: center center;"
-    />
-  </div>
+    <!-- Right: lab photo (desktop only) -->
+    <div class="hidden lg:block lg:w-[44%] shrink-0 overflow-hidden">
+      <img
+        src={labPhoto || '/uploads/2025_labphoto_5.jpeg'}
+        alt="Kohlgruber Lab"
+        class="h-full w-full object-cover"
+        style="object-position: center center;"
+      />
+    </div>
+
+  </section>
 
   <!-- ── News ─────────────────────────────────────────────────── -->
   {news.length > 0 && (
@@ -102,7 +107,7 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
               src={logo.image}
               alt={logo.alt_text}
               loading="lazy"
-              class="h-16 w-auto object-contain"
+              class="h-20 w-auto object-contain"
               style="mix-blend-mode: multiply; max-width: 160px;"
             />
           </a>
