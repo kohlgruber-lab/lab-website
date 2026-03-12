@@ -140,9 +140,9 @@ a:hover {
     .pi-card-image {
       width: 28%;
       height: auto;
-      min-height: 0;
-      max-height: 340px;
-      align-self: flex-start;
+      min-height: 280px;
+      align-self: stretch;
+      object-fit: cover;
     }
   }
 

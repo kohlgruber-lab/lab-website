@@ -1,3 +1,300 @@
 ---
-return Astro.redirect('/culture');
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
+<BaseLayout title="Immunology Trivia" description="Test your immunology knowledge with our lab trivia game!">
+
+  <!-- Hero banner -->
+  <div style="background: linear-gradient(105deg, var(--color-navy) 0%, var(--color-primary) 100%);">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold tracking-tight text-white">Immunology Trivia</h1>
+      <p class="mt-3 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
+        Test your immunology knowledge — one question at a time. Jeopardy-style!
+      </p>
+    </div>
+  </div>
+
+  <!-- Game container -->
+  <div class="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
+    <div id="trivia-game">
+
+      <!-- Score bar -->
+      <div class="mb-8 flex items-center justify-between rounded-2xl border px-6 py-4 shadow-soft" style="border-color: var(--color-border); background-color: rgba(243,245,244,0.8);">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest" style="color: var(--color-primary);">Question</p>
+          <p class="text-2xl font-bold" style="color: var(--color-text);" id="q-counter">1 / 15</p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs font-semibold uppercase tracking-widest" style="color: var(--color-accent);">Score</p>
+          <p class="text-2xl font-bold" style="color: var(--color-text);" id="score-display">0</p>
+        </div>
+      </div>
+
+      <!-- Category badge -->
+      <p id="category-badge" class="mb-3 inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide" style="background-color: rgb(6 148 142 / 0.12); color: var(--color-primary);"></p>
+
+      <!-- Question card -->
+      <div class="rounded-2xl border p-8 shadow-soft" style="border-color: var(--color-border); background: white;">
+        <p id="question-text" class="text-xl font-semibold leading-7" style="color: var(--color-text);"></p>
+
+        <!-- Answer choices -->
+        <div id="choices" class="mt-6 space-y-3"></div>
+
+        <!-- Feedback -->
+        <div id="feedback" class="mt-5 hidden rounded-xl px-5 py-4 text-sm font-medium leading-6"></div>
+
+        <!-- Next button -->
+        <button
+          id="next-btn"
+          class="mt-6 hidden inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold text-white transition hover:brightness-95"
+          style="background-color: var(--color-primary);"
+        >
+          Next Question →
+        </button>
+      </div>
+
+      <!-- Final screen (hidden initially) -->
+      <div id="final-screen" class="hidden rounded-2xl border p-10 text-center shadow-soft" style="border-color: var(--color-border); background: white;">
+        <p class="text-5xl mb-4">🧬</p>
+        <h2 class="text-2xl font-bold mb-2" style="color: var(--color-text);">Game Over!</h2>
+        <p class="text-lg mb-6" style="color: var(--color-muted-text);">You scored <span id="final-score" class="font-bold" style="color: var(--color-accent);"></span> out of 15</p>
+        <p id="final-message" class="mb-8 text-base leading-7" style="color: var(--color-muted-text);"></p>
+        <button
+          id="restart-btn"
+          class="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold text-white transition hover:brightness-95"
+          style="background-color: var(--color-primary);"
+        >
+          Play Again
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script is:inline>
+    const ALL_QUESTIONS = [
+      {
+        category: "T Cells",
+        q: "Which co-receptor is expressed on cytotoxic T cells?",
+        choices: ["CD4", "CD8", "CD19", "CD56"],
+        answer: 1
+      },
+      {
+        category: "T Cells",
+        q: "MHC class I molecules present antigens to which type of T cell?",
+        choices: ["Helper T cells (CD4+)", "Regulatory T cells", "Cytotoxic T cells (CD8+)", "Natural killer T cells"],
+        answer: 2
+      },
+      {
+        category: "T Cells",
+        q: "Which cytokine is primarily responsible for driving naïve CD4+ T cells toward the Th1 lineage?",
+        choices: ["IL-4", "IL-12", "IL-17", "TGF-β"],
+        answer: 1
+      },
+      {
+        category: "T Cells",
+        q: "What is the primary function of regulatory T cells (Tregs)?",
+        choices: ["Kill virus-infected cells", "Suppress immune responses", "Produce antibodies", "Activate macrophages"],
+        answer: 1
+      },
+      {
+        category: "Antigen Recognition",
+        q: "What molecules are required for T cell receptor (TCR) signaling at the immune synapse?",
+        choices: ["CD19 and CD21", "CD3 complex chains", "BCR and IgM", "TLR4 and MyD88"],
+        answer: 1
+      },
+      {
+        category: "Antigen Recognition",
+        q: "Which process generates the diverse repertoire of T cell receptors?",
+        choices: ["Somatic hypermutation", "VDJ recombination", "Class switch recombination", "Alternative splicing only"],
+        answer: 1
+      },
+      {
+        category: "Antigen Recognition",
+        q: "γδ T cells differ from αβ T cells in that they can recognize antigens:",
+        choices: [
+          "Only when presented by MHC class II",
+          "Independently of MHC presentation",
+          "Only after somatic hypermutation",
+          "Exclusively via FcR"
+        ],
+        answer: 1
+      },
+      {
+        category: "Autoimmunity",
+        q: "In rheumatoid arthritis, which T helper subset is thought to drive synovial inflammation?",
+        choices: ["Th2", "Th17", "Th9", "Tfh"],
+        answer: 1
+      },
+      {
+        category: "Autoimmunity",
+        q: "Central tolerance eliminates autoreactive T cells primarily in which organ?",
+        choices: ["Spleen", "Lymph nodes", "Thymus", "Bone marrow"],
+        answer: 2
+      },
+      {
+        category: "Cancer Immunology",
+        q: "Which immune checkpoint molecule is targeted by pembrolizumab?",
+        choices: ["CTLA-4", "PD-1", "LAG-3", "TIM-3"],
+        answer: 1
+      },
+      {
+        category: "Cancer Immunology",
+        q: "CAR-T cell therapy most commonly targets which antigen in B cell malignancies?",
+        choices: ["CD3", "CD19", "CD8", "CD25"],
+        answer: 1
+      },
+      {
+        category: "Innate Immunity",
+        q: "Which pattern-recognition receptor recognizes lipopolysaccharide (LPS) from gram-negative bacteria?",
+        choices: ["TLR3", "TLR4", "TLR9", "NOD2"],
+        answer: 1
+      },
+      {
+        category: "Innate Immunity",
+        q: "Natural killer (NK) cells kill target cells that:",
+        choices: [
+          "Express high levels of MHC class I",
+          "Downregulate MHC class I",
+          "Express CD19",
+          "Present self-peptides on MHC class II"
+        ],
+        answer: 1
+      },
+      {
+        category: "Lab Techniques",
+        q: "Which technique allows simultaneous measurement of thousands of T cell specificities at the single-cell level?",
+        choices: [
+          "Western blotting",
+          "CRISPR screens only",
+          "Single-cell TCR sequencing",
+          "ELISA"
+        ],
+        answer: 2
+      },
+      {
+        category: "Lab Techniques",
+        q: "Functional genomics screens in immune cells most commonly use which tool to perturb gene function?",
+        choices: ["siRNA libraries", "CRISPR-Cas9", "Antisense oligonucleotides", "Morpholinos"],
+        answer: 1
+      }
+    ];
+
+    let questions = [];
+    let current = 0;
+    let score = 0;
+    let answered = false;
+
+    function shuffle(arr) {
+      return [...arr].sort(() => Math.random() - 0.5);
+    }
+
+    function startGame() {
+      questions = shuffle(ALL_QUESTIONS);
+      current = 0;
+      score = 0;
+      answered = false;
+      document.getElementById('final-screen').classList.add('hidden');
+      document.getElementById('q-counter').closest('.mb-8').classList.remove('hidden');
+      document.getElementById('category-badge').parentElement && null;
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = questions[current];
+      document.getElementById('q-counter').textContent = `${current + 1} / ${questions.length}`;
+      document.getElementById('score-display').textContent = score;
+      document.getElementById('category-badge').textContent = q.category;
+      document.getElementById('question-text').textContent = q.q;
+
+      const choicesEl = document.getElementById('choices');
+      choicesEl.innerHTML = '';
+      q.choices.forEach((choice, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = choice;
+        btn.dataset.index = i;
+        btn.className = 'choice-btn w-full rounded-xl border px-5 py-3.5 text-left text-sm font-medium transition-all duration-150';
+        btn.style.cssText = 'border-color: var(--color-border); background: white; color: var(--color-text); cursor: pointer;';
+        btn.addEventListener('mouseover', () => { if (!answered) btn.style.backgroundColor = 'var(--color-soft-surface)'; });
+        btn.addEventListener('mouseout', () => { if (!answered) btn.style.backgroundColor = 'white'; });
+        btn.addEventListener('click', () => selectAnswer(i));
+        choicesEl.appendChild(btn);
+      });
+
+      document.getElementById('feedback').classList.add('hidden');
+      document.getElementById('next-btn').classList.add('hidden');
+      answered = false;
+    }
+
+    function selectAnswer(chosen) {
+      if (answered) return;
+      answered = true;
+      const q = questions[current];
+      const correct = q.answer;
+      const buttons = document.querySelectorAll('.choice-btn');
+
+      buttons.forEach((btn, i) => {
+        btn.style.cursor = 'default';
+        if (i === correct) {
+          btn.style.backgroundColor = '#d1fae5';
+          btn.style.borderColor = '#10b981';
+          btn.style.color = '#065f46';
+        } else if (i === chosen && chosen !== correct) {
+          btn.style.backgroundColor = '#fee2e2';
+          btn.style.borderColor = '#ef4444';
+          btn.style.color = '#991b1b';
+        } else {
+          btn.style.opacity = '0.45';
+        }
+      });
+
+      const fb = document.getElementById('feedback');
+      fb.classList.remove('hidden');
+      if (chosen === correct) {
+        score++;
+        document.getElementById('score-display').textContent = score;
+        fb.style.cssText = 'background-color: #d1fae5; color: #065f46; border-radius: 0.75rem; padding: 1rem 1.25rem; font-size: 0.875rem; font-weight: 500; line-height: 1.5rem;';
+        fb.textContent = '✓ Correct! Well done.';
+      } else {
+        fb.style.cssText = 'background-color: #fee2e2; color: #991b1b; border-radius: 0.75rem; padding: 1rem 1.25rem; font-size: 0.875rem; font-weight: 500; line-height: 1.5rem;';
+        fb.textContent = `✗ Not quite. The correct answer is: "${q.choices[correct]}"`;
+      }
+
+      const nextBtn = document.getElementById('next-btn');
+      nextBtn.classList.remove('hidden');
+      nextBtn.textContent = current + 1 < questions.length ? 'Next Question →' : 'See Results';
+    }
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+      current++;
+      if (current < questions.length) {
+        renderQuestion();
+      } else {
+        showFinal();
+      }
+    });
+
+    document.getElementById('restart-btn').addEventListener('click', startGame);
+
+    function showFinal() {
+      document.querySelector('.rounded-2xl.border.p-8').style.display = 'none';
+      document.getElementById('category-badge').style.display = 'none';
+      document.getElementById('q-counter').closest('.mb-8').style.display = 'none';
+
+      const finalScreen = document.getElementById('final-screen');
+      finalScreen.classList.remove('hidden');
+      document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
+
+      const pct = score / questions.length;
+      let msg = '';
+      if (pct >= 0.9) msg = '🏆 Outstanding! You\'d fit right in at the Kohlgruber Lab. Consider applying!';
+      else if (pct >= 0.7) msg = '🌟 Great work! You have a solid grasp of immunology fundamentals.';
+      else if (pct >= 0.5) msg = '📚 Not bad! A bit more reading and you\'ll be an immunology expert.';
+      else msg = '🔬 Keep studying — the immune system is complex, but fascinating. Try again!';
+      document.getElementById('final-message').textContent = msg;
+    }
+
+    // Init
+    startGame();
+  </script>
+
+</BaseLayout>

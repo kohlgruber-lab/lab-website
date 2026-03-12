@@ -39,13 +39,29 @@ const allMembers = (await getCollection('team')).sort((a, b) => {
 const pi = allMembers.filter((m) => positionRank(m.data.position) === 0);
 const labMembers = allMembers.filter((m) => positionRank(m.data.position) !== 0);
 
-// Convert flag emoji (e.g. 🇮🇳) to ISO 3166-1 alpha-2 code (e.g. "in") for flagcdn.com
+// Convert a single flag emoji (e.g. 🇮🇳) to ISO 3166-1 alpha-2 code (e.g. "in") for flagcdn.com
 function flagEmojiToIsoCode(emoji: string): string {
   if (!emoji) return '';
   return [...emoji]
     .map(c => { const cp = c.codePointAt(0)!; return (cp >= 0x1F1E6 && cp <= 0x1F1FF) ? String.fromCharCode(cp - 0x1F1E6 + 65) : ''; })
     .join('')
     .toLowerCase();
+}
+
+// Extract all flag emojis from a string that may contain multiple flags (e.g. "🇺🇸 & 🇨🇦")
+function parseFlagEmojis(flagStr: string): string[] {
+  if (!flagStr) return [];
+  const chars = [...flagStr];
+  const flags: string[] = [];
+  for (let i = 0; i < chars.length - 1; i++) {
+    const cp1 = chars[i].codePointAt(0)!;
+    const cp2 = chars[i + 1].codePointAt(0)!;
+    if (cp1 >= 0x1F1E6 && cp1 <= 0x1F1FF && cp2 >= 0x1F1E6 && cp2 <= 0x1F1FF) {
+      flags.push(chars[i] + chars[i + 1]);
+      i++;
+    }
+  }
+  return flags;
 }
 ---
 <BaseLayout title="Team" description="Meet the Kohlgruber Lab team.">
@@ -70,15 +86,15 @@ function flagEmojiToIsoCode(emoji: string): string {
           <p class="pi-card-kicker">Principal Investigator</p>
           <h2 class="pi-card-name flex items-center gap-2 flex-wrap">
             {m.data.name}{positionRank(m.data.position) <= 1 ? ', PhD' : ''}
-            {(m.data as any).nationality_flag_emoji && (
+            {(m.data as any).nationality_flag_emoji && parseFlagEmojis((m.data as any).nationality_flag_emoji).map((flag) => (
               <img
-                src={`https://flagcdn.com/w40/${flagEmojiToIsoCode((m.data as any).nationality_flag_emoji)}.png`}
+                src={`https://flagcdn.com/w40/${flagEmojiToIsoCode(flag)}.png`}
                 alt={(m.data as any).nationality_country ?? ''}
                 title={(m.data as any).nationality_country ?? ''}
-                class="h-5 w-auto rounded-sm object-cover"
+                style="width: 28px; height: 18px; object-fit: cover; border-radius: 2px;"
                 loading="lazy"
               />
-            )}
+            ))}
           </h2>
           {(m.data as any).email && (
             <a href={`mailto:${(m.data as any).email}`} class="team-card-email mb-3 block">
@@ -131,13 +147,17 @@ function flagEmojiToIsoCode(emoji: string): string {
                   )}
                 </div>
                 {(m.data as any).nationality_flag_emoji && (
-                  <img
-                    src={`https://flagcdn.com/w80/${flagEmojiToIsoCode((m.data as any).nationality_flag_emoji)}.png`}
-                    alt={(m.data as any).nationality_country ?? ''}
-                    title={(m.data as any).nationality_country ?? ''}
-                    class="h-6 w-auto shrink-0 rounded-sm object-cover mt-0.5"
-                    loading="lazy"
-                  />
+                  <div class="flex flex-col gap-1 shrink-0 mt-0.5">
+                    {parseFlagEmojis((m.data as any).nationality_flag_emoji).map((flag) => (
+                      <img
+                        src={`https://flagcdn.com/w80/${flagEmojiToIsoCode(flag)}.png`}
+                        alt={(m.data as any).nationality_country ?? ''}
+                        title={(m.data as any).nationality_country ?? ''}
+                        style="width: 28px; height: 18px; object-fit: cover; border-radius: 2px;"
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
                 )}
               </div>
 
@@ -145,14 +165,14 @@ function flagEmojiToIsoCode(emoji: string): string {
               <div class="trainee-card-overlay">
                 <div class="mb-1 flex items-center gap-1.5">
                   <h3 class="trainee-card-overlay-name">{m.data.name}</h3>
-                  {(m.data as any).nationality_flag_emoji && (
+                  {(m.data as any).nationality_flag_emoji && parseFlagEmojis((m.data as any).nationality_flag_emoji).map((flag) => (
                     <img
-                      src={`https://flagcdn.com/w40/${flagEmojiToIsoCode((m.data as any).nationality_flag_emoji)}.png`}
+                      src={`https://flagcdn.com/w40/${flagEmojiToIsoCode(flag)}.png`}
                       alt={(m.data as any).nationality_country ?? ''}
-                      class="h-3 w-auto rounded-sm object-cover shrink-0"
+                      style="width: 22px; height: 14px; object-fit: cover; border-radius: 2px;"
                       loading="lazy"
                     />
-                  )}
+                  ))}
                 </div>
                 <p class="trainee-card-overlay-position">{m.data.position}</p>
                 {m.data.bio && m.data.bio !== 'TBD' ? (
