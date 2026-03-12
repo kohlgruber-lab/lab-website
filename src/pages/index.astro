@@ -54,17 +54,16 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
     <!-- Right: lab photo (desktop only) -->
     <div class="hidden lg:block lg:w-1/2 relative overflow-hidden">
       <img
-        src="/uploads/website_photo.jpg"
+        src={labPhoto || '/uploads/2025_labphoto_5.jpeg'}
         alt="Kohlgruber Lab"
         class="absolute inset-0 h-full w-full object-cover object-center"
       />
     </div>
   </section>
 
-
   <!-- ── News ─────────────────────────────────────────────────── -->
   {news.length > 0 && (
-    <section class="section pt-0">
+    <section class="section">
       <div class="mb-6 flex items-end justify-between">
         <h2 class="h2">Latest News</h2>
         <a href="/news" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
@@ -87,39 +86,47 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
     </section>
   )}
 
-  <!-- ── Affiliations ─────────────────────────────────────────── -->
-  <section class="section pt-0">
-    <div class="flex flex-wrap items-center justify-center gap-10">
-      <a href="https://www.childrenshospital.org" target="_blank" rel="noopener" aria-label="Boston Children's Hospital">
-      <img src="/uploads/bch-logo.png" alt="Boston Children's Hospital" class="h-14 w-auto object-contain" loading="lazy" />
-      </a>
-      <a href="https://hms.harvard.edu" target="_blank" rel="noopener" aria-label="Harvard Medical School">
-        <img src="/uploads/hms-logo.png" alt="Harvard Medical School" class="h-14 w-auto object-contain" loading="lazy" />
-      </a>
-      <a href="https://www.broadinstitute.org" target="_blank" rel="noopener" aria-label="Broad Institute of Harvard and MIT">
-        <img src="/uploads/broad-logo.png" alt="Broad Institute of Harvard and MIT" class="h-14 w-auto object-contain" loading="lazy" />
-      </a>
-    </div>
-  </section>
-
   <!-- ── Funding ───────────────────────────────────────────────── -->
   {site.funding_logos.length > 0 && (
     <section class="section pt-0">
-      <p class="mb-8 text-center text-base text-brand-gray">
+      <p class="mb-10 text-center text-base text-brand-gray">
         We are grateful for the support of our research from the following organizations
       </p>
-      <div class="flex flex-wrap items-center justify-center gap-6">
+      <div class="flex flex-wrap items-center justify-center gap-10">
         {site.funding_logos.map((logo) => (
           <a
             href={logo.url ?? '#'}
-            class="flex h-20 w-36 items-center justify-center rounded-xl border border-brand-gray/15 bg-white p-3 transition hover:shadow-md"
+            class="flex items-center justify-center transition hover:opacity-80"
             aria-label={logo.name}
           >
-            <img src={logo.image} alt={logo.alt_text} loading="lazy" class="max-h-14 max-w-full object-contain" />
+            <img
+              src={logo.image}
+              alt={logo.alt_text}
+              loading="lazy"
+              class="h-16 w-auto object-contain"
+              style="mix-blend-mode: multiply; max-width: 160px;"
+            />
           </a>
         ))}
       </div>
     </section>
   )}
+
+  <!-- ── Affiliations ──────────────────────────────────────────── -->
+  <div class="border-t mt-6" style="border-color: var(--color-border); background-color: var(--color-bg);">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-center gap-12">
+        <a href="https://www.childrenshospital.org" target="_blank" rel="noopener" aria-label="Boston Children's Hospital">
+          <img src="/uploads/bch-logo.png" alt="Boston Children's Hospital" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+        </a>
+        <a href="https://hms.harvard.edu" target="_blank" rel="noopener" aria-label="Harvard Medical School">
+          <img src="/uploads/hms-logo.png" alt="Harvard Medical School" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+        </a>
+        <a href="https://www.broadinstitute.org" target="_blank" rel="noopener" aria-label="Broad Institute of Harvard and MIT">
+          <img src="/uploads/broad-logo.png" alt="Broad Institute of Harvard and MIT" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+        </a>
+      </div>
+    </div>
+  </div>
 
 </BaseLayout>
