@@ -2,7 +2,8 @@
   "photo_collage": [
     {
       "image": "/uploads/2025_friendsgivingpotluck_7.jpeg",
-      "alt": "Labsgiving potluck joint with the Henderson and Chatila labs"
+      "alt": "Labsgiving potluck joint with the Henderson and Chatila labs",
+      "sidebar": true
     },
     {
       "image": "/uploads/2025_summerbbq_1.jpeg",
@@ -26,7 +27,8 @@
     },
     {
       "image": "/uploads/2025_summerlablunch2.jpg",
-      "alt": "Lab lunch at TimeOut Market to celebrate Ebube's successful CURE program internship and Ben joining the lab! "
+      "alt": "Lab lunch at TimeOut Market to celebrate Ebube's successful CURE program internship and Ben joining the lab! ",
+      "sidebar": true
     },
     {
       "image": "/uploads/wreath_making.jpeg"
