@@ -2,8 +2,8 @@
 name: Shilu Wang
 position: Undergraduate intern
 email: Shilu.Wang@childrens.harvard.edu
-nationality_country: USA
-nationality_flag_emoji: USA
+nationality_country: United States
+nationality_flag_emoji: 🇺🇸
 photo: /uploads/sw_headshot.jpg
 bio: "Shilu is a current undergrad intern from Northeastern University majoring
   in Bioengineering and Biochemistry. She is currently learning about different
