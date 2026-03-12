@@ -21,108 +21,46 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
 ---
 <BaseLayout title="Welcome" description={site.mission_statement}>
 
-  <!-- ── Hero ─────────────────────────────────────────────────── -->
-  <section class="relative flex items-center overflow-hidden" style="min-height: 520px;">
-    {labPhoto ? (
-      <>
-        <img
-          src={labPhoto}
-          alt="Kohlgruber Lab"
-          class="absolute inset-0 h-full w-full object-cover"
-        />
-        <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(31,53,82,0.90) 0%, rgba(6,148,142,0.55) 62%, rgba(6,148,142,0.12) 100%);"></div>
-      </>
-    ) : (
-      <div class="absolute inset-0" style="background: linear-gradient(135deg, #1F3552 0%, #06948E 100%);"></div>
-    )}
-
-    <div class="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <p class="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style="color: rgba(231,135,43,0.95);">
-        {welcome.hero.eyebrow}
-      </p>
-      <h1 class="max-w-3xl text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-[4.5rem] leading-tight">
-        {welcome.hero.title}
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
-        {site.mission_statement}
-      </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a class="btn-primary" href="/research">Explore Research</a>
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-          style="border-color: rgba(255,255,255,0.45);"
-        >Contact Us</a>
+  <!-- ── Hero (split layout) ───────────────────────────────────── -->
+  <section class="flex overflow-hidden" style="min-height: 560px;">
+    <!-- Left: gradient + text -->
+    <div class="relative flex w-full items-center lg:w-1/2" style="background: linear-gradient(135deg, #1F3552 0%, #06948E 100%);">
+      <div class="relative z-10 w-full px-8 py-20 sm:px-12 lg:px-14">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em]" style="color: rgba(231,135,43,0.95);">
+          {welcome.hero.eyebrow}
+        </p>
+        <h1 class="max-w-xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] leading-tight">
+          {welcome.hero.title}
+        </h1>
+        <p class="mt-6 max-w-lg text-base leading-relaxed" style="color: rgba(255,255,255,0.82);">
+          {site.mission_statement}
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn-primary" href="/research">Explore Research</a>
+          <a
+            href="/team"
+            class="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition"
+            style="background-color: #E7872B;"
+            onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"
+          >Meet Our Team</a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+            style="border-color: rgba(255,255,255,0.45);"
+          >Contact Us</a>
+        </div>
       </div>
+    </div>
+    <!-- Right: lab photo (desktop only) -->
+    <div class="hidden lg:block lg:w-1/2 relative overflow-hidden">
+      <img
+        src="/uploads/website_photo.jpg"
+        alt="Kohlgruber Lab"
+        class="absolute inset-0 h-full w-full object-cover object-center"
+      />
     </div>
   </section>
 
-  <!-- ── Research Themes ───────────────────────────────────────── -->
-  <section class="section">
-    <div class="mb-6 flex items-end justify-between">
-      <h2 class="h2">Research</h2>
-      <a href="/research" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
-        Full overview →
-      </a>
-    </div>
-    <div class="grid gap-4 md:grid-cols-3">
-      {research.themes.map((theme, i) => (
-        <a
-          href="/research"
-          class="research-home-card group relative block aspect-square overflow-hidden rounded-2xl no-underline"
-          style={`background-color: ${i === 1 ? 'var(--color-soft-surface)' : i === 2 ? '#eef1f5' : '#f0f9f8'};`}
-        >
-          {(theme as any).image && (
-            <img
-              src={(theme as any).image}
-              alt=""
-              aria-hidden="true"
-              class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-35"
-            />
-          )}
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-            <div
-              class="mb-3 h-1 w-10 rounded-full"
-              style={`background-color: ${cardAccents[i % cardAccents.length]};`}
-            ></div>
-            <h3
-              class="text-lg font-bold leading-snug sm:text-xl"
-              style={`color: ${cardAccents[i % cardAccents.length]};`}
-            >
-              {theme.title}
-            </h3>
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- ── Featured Team Members ─────────────────────────────────── -->
-  {team.length > 0 && (
-    <section class="section pt-0">
-      <div class="mb-6 flex items-end justify-between">
-        <h2 class="h2">Our Team</h2>
-        <a href="/team" class="text-sm font-semibold text-brand-ink hover:text-brand-turquoise">
-          Meet everyone →
-        </a>
-      </div>
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {team.map((member) => (
-          <div
-            class="overflow-hidden rounded-2xl"
-            style="aspect-ratio: 3/4; background-color: var(--color-soft-surface);"
-          >
-            <img
-              src={member.data.photo}
-              alt={`Portrait of ${member.data.name}`}
-              class="h-full w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
 
   <!-- ── News ─────────────────────────────────────────────────── -->
   {news.length > 0 && (
@@ -149,18 +87,35 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
     </section>
   )}
 
+  <!-- ── Affiliations ─────────────────────────────────────────── -->
+  <section class="section pt-0">
+    <div class="flex flex-wrap items-center justify-center gap-10">
+      <a href="https://www.childrenshospital.org" target="_blank" rel="noopener" aria-label="Boston Children's Hospital">
+      <img src="/uploads/bch-logo.png" alt="Boston Children's Hospital" class="h-14 w-auto object-contain" loading="lazy" />
+      </a>
+      <a href="https://hms.harvard.edu" target="_blank" rel="noopener" aria-label="Harvard Medical School">
+        <img src="/uploads/hms-logo.png" alt="Harvard Medical School" class="h-14 w-auto object-contain" loading="lazy" />
+      </a>
+      <a href="https://www.broadinstitute.org" target="_blank" rel="noopener" aria-label="Broad Institute of Harvard and MIT">
+        <img src="/uploads/broad-logo.png" alt="Broad Institute of Harvard and MIT" class="h-14 w-auto object-contain" loading="lazy" />
+      </a>
+    </div>
+  </section>
+
   <!-- ── Funding ───────────────────────────────────────────────── -->
   {site.funding_logos.length > 0 && (
     <section class="section pt-0">
-      <h2 class="h2 mb-5">Funding</h2>
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      <p class="mb-8 text-center text-base text-brand-gray">
+        We are grateful for the support of our research from the following organizations
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-6">
         {site.funding_logos.map((logo) => (
           <a
             href={logo.url ?? '#'}
-            class="soft-card flex h-20 items-center justify-center p-2"
+            class="flex h-20 w-36 items-center justify-center rounded-xl border border-brand-gray/15 bg-white p-3 transition hover:shadow-md"
             aria-label={logo.name}
           >
-            <img src={logo.image} alt={logo.alt_text} loading="lazy" class="max-h-14 object-contain" />
+            <img src={logo.image} alt={logo.alt_text} loading="lazy" class="max-h-14 max-w-full object-contain" />
           </a>
         ))}
       </div>
