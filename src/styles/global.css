@@ -138,9 +138,9 @@ a:hover {
 
   @media (min-width: 768px) {
     .pi-card-image {
-      width: 38%;
+      width: 36%;
       height: auto;
-      min-height: 340px;
+      min-height: 260px;
       align-self: stretch;
     }
   }
@@ -160,12 +160,14 @@ a:hover {
   }
 
   .pi-card-bio {
-    @apply text-sm leading-6 mt-3;
+    @apply text-sm mt-3;
+    line-height: 1.5;
     color: var(--color-muted-text);
   }
 
   .pi-card-fun-fact {
-    @apply mt-3 text-sm leading-6;
+    @apply mt-2 text-sm;
+    line-height: 1.5;
     color: var(--color-muted-text);
   }
 
@@ -209,7 +211,11 @@ a:hover {
   }
 
   .trainee-card-front {
-    @apply p-4;
+    @apply p-4 flex items-start justify-between gap-2;
+  }
+
+  .trainee-card-front-text {
+    @apply min-w-0 flex-1;
   }
 
   .trainee-card-name {
