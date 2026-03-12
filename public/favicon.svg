@@ -1,1 +1,6 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='#0f4c81'/><text x='32' y='38' text-anchor='middle' font-size='26' fill='white' font-family='Arial'>KL</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="10" fill="#f8f8f8"/>
+  <text text-anchor="middle" x="33" y="50" font-family="Arial Narrow,Arial,sans-serif" font-weight="700" font-size="46" letter-spacing="-2">
+    <tspan fill="#06948E">K</tspan><tspan fill="#707071">L</tspan>
+  </text>
+</svg>
