@@ -1,7 +1,7 @@
 ---
 name: Shilu Wang
 position: Undergraduate intern
-email: ""
+email: Shilu.Wang@childrens.harvard.edu
 nationality_country: United States
 nationality_flag_emoji: United States
 photo: /uploads/kohlgruber_lab_logo1.jpeg
