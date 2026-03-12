@@ -292,10 +292,28 @@ a:hover {
   /* ─────────────────────────────────────────────────────────────
      CULTURE PAGE
   ───────────────────────────────────────────────────────────── */
-  .culture-collage-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+  /* Masonry-style photo collage — photos flow at their natural aspect ratio */
+  .culture-collage {
+    columns: 2;
+    column-gap: 0.75rem;
+  }
+  .culture-collage-item {
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .culture-collage-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @media (min-width: 768px) {
+    .culture-collage {
+      columns: 3;
+    }
   }
 
   /* ─────────────────────────────────────────────────────────────
