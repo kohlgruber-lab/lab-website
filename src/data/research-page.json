@@ -8,7 +8,7 @@
     },
     {
       "title": "Antigen & Ligand Discovery ",
-      "image": "/uploads/figure-1_tcr-map.png",
+      "image": "/uploads/antigen-discovery.png",
       "text": "A T cell receptor (TCR) is only meaningful if you know what it sees. Our lab develops and applies experimental approaches to identify the specific antigens and ligands recognized by disease-associated T cells: the self-peptides driving autoimmunity, the microbial epitopes triggering cross-reactive responses, and the tumor-derived molecules that mark cancer cells as targets. We combine ribosome profiling, MHC immunopeptidomics, genome-scale antigen discovery methods like TCR-MAP, and pooled CRISPR screens targeting antigen processing and presentation to move systematically from a T cell phenotype or receptor sequence to the molecule it recognizes and the cellular pathway that generates it. Knowing the precise antigens recognized by T cells in disease is not only foundational to understanding immune pathology, but it also creates direct opportunities for therapeutic design. Defined antigens can anchor tolerizing vaccines aimed at quieting harmful autoimmune responses, protective vaccines can prime T cells against pathogens or tumors, and targeted cell therapies can exploit those specificities with precision. Defining these targets is foundational to everything else the lab does."
     },
     {
