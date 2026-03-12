@@ -157,7 +157,7 @@ collections:
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt Text", name: "alt", widget: "string", required: false }
-              - { label: "Show in sidebar (next to text)", name: "sidebar", widget: "boolean", default: false, hint: "If enabled, this photo appears in the right column alongside the Culture/Philosophy/Mentoring text. Otherwise it goes in the full-width collage below." }
+              - { label: "Show in sidebar (next to text)", name: "sidebar", widget: "boolean", default: false, required: false, hint: "If enabled, this photo appears in the right column alongside the Culture/Philosophy/Mentoring text. Otherwise it goes in the full-width collage below." }
 
   - name: "join_page"
     label: "Join Us Page"
