@@ -3,15 +3,39 @@ import site from '../data/site-settings.json';
 ---
 <footer class="border-t border-brand-gray/30 bg-brand-offwhite">
   <div class="section py-10 text-sm">
-    <p class="text-base font-semibold text-brand-ink">{site.lab_name}</p>
-    <p class="mt-1 text-brand-gray">{site.address}</p>
-    <p class="mt-1 font-semibold" style="color: #E7872B;">Ayano Kohlgruber, PhD</p>
-    <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
-    <div class="mt-4 flex flex-wrap gap-4">
-      {site.socials.map((social) => (
-        <a href={social.url} class="text-brand-gray hover:text-brand-turquoise">{social.label}</a>
-      ))}
+    <div class="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+
+      <!-- Left: lab info -->
+      <div>
+        <p class="font-medium" style="font-family: 'Avenir Next Condensed', 'Avenir Next', 'Barlow Condensed', sans-serif; font-size: 1rem;">
+          <span style="color: #06948E;">Kohlgruber</span> <span style="color: #707071;">Lab</span>
+        </p>
+        <p class="mt-1 text-brand-gray whitespace-pre-line">{site.address}</p>
+        <p class="mt-1 font-semibold" style="color: #E7872B;">Ayano Kohlgruber, PhD</p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        {site.socials.length > 0 && (
+          <div class="mt-3 flex flex-wrap gap-4">
+            {site.socials.map((social) => (
+              <a href={social.url} class="text-brand-gray hover:text-brand-turquoise">{social.label}</a>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Right: affiliation logos -->
+      <div class="flex flex-wrap items-center gap-8 sm:justify-end">
+        <a href="https://www.childrenshospital.org" target="_blank" rel="noopener" aria-label="Boston Children's Hospital">
+          <img src="/uploads/bch-logo.png" alt="Boston Children's Hospital" class="h-10 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+        </a>
+        <a href="https://hms.harvard.edu" target="_blank" rel="noopener" aria-label="Harvard Medical School">
+          <img src="/uploads/hms-logo.png" alt="Harvard Medical School" class="h-10 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+        </a>
+        <a href="https://www.broadinstitute.org" target="_blank" rel="noopener" aria-label="Broad Institute of Harvard and MIT">
+          <img src="/uploads/broad-logo.png" alt="Broad Institute of Harvard and MIT" class="h-10 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+        </a>
+      </div>
+
     </div>
-    <p class="mt-5 text-brand-gray">© {new Date().getFullYear()} {site.lab_name}. All rights reserved.</p>
+    <p class="mt-6 text-brand-gray">© {new Date().getFullYear()} {site.lab_name}. All rights reserved.</p>
   </div>
 </footer>

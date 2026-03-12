@@ -138,10 +138,11 @@ a:hover {
 
   @media (min-width: 768px) {
     .pi-card-image {
-      width: 36%;
+      width: 28%;
       height: auto;
-      min-height: 260px;
-      align-self: stretch;
+      min-height: 0;
+      max-height: 340px;
+      align-self: flex-start;
     }
   }
 
@@ -369,7 +370,7 @@ a:hover {
   }
 
   .join-accordion-body p {
-    @apply mt-3 text-sm leading-7;
+    @apply mt-2 text-sm leading-5;
     color: var(--color-muted-text);
   }
 

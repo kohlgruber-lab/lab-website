@@ -68,12 +68,16 @@ function flagEmojiToIsoCode(emoji: string): string {
         />
         <div class="pi-card-content">
           <p class="pi-card-kicker">Principal Investigator</p>
-          <h2 class="pi-card-name">
-            {m.data.name}
+          <h2 class="pi-card-name flex items-center gap-2 flex-wrap">
+            {m.data.name}{positionRank(m.data.position) <= 1 ? ', PhD' : ''}
             {(m.data as any).nationality_flag_emoji && (
-              <span class="ml-2 text-xl" title={(m.data as any).nationality_country ?? ''}>
-                {(m.data as any).nationality_flag_emoji}
-              </span>
+              <img
+                src={`https://flagcdn.com/w40/${flagEmojiToIsoCode((m.data as any).nationality_flag_emoji)}.png`}
+                alt={(m.data as any).nationality_country ?? ''}
+                title={(m.data as any).nationality_country ?? ''}
+                class="h-5 w-auto rounded-sm object-cover"
+                loading="lazy"
+              />
             )}
           </h2>
           {(m.data as any).email && (
@@ -112,7 +116,7 @@ function flagEmojiToIsoCode(emoji: string): string {
               <!-- Front info -->
               <div class="trainee-card-front">
                 <div class="trainee-card-front-text">
-                  <h3 class="trainee-card-name">{m.data.name}</h3>
+                  <h3 class="trainee-card-name">{m.data.name}{positionRank(m.data.position) <= 1 ? ', PhD' : ''}</h3>
                   <p class="trainee-card-position">{m.data.position}</p>
                   {(m.data as any).email && (
                     <a href={`mailto:${(m.data as any).email}`} class="team-card-email trainee-card-email-link">
@@ -131,7 +135,7 @@ function flagEmojiToIsoCode(emoji: string): string {
                     src={`https://flagcdn.com/w80/${flagEmojiToIsoCode((m.data as any).nationality_flag_emoji)}.png`}
                     alt={(m.data as any).nationality_country ?? ''}
                     title={(m.data as any).nationality_country ?? ''}
-                    class="h-9 w-auto shrink-0 rounded-sm object-cover mt-0.5"
+                    class="h-6 w-auto shrink-0 rounded-sm object-cover mt-0.5"
                     loading="lazy"
                   />
                 )}
@@ -145,7 +149,7 @@ function flagEmojiToIsoCode(emoji: string): string {
                     <img
                       src={`https://flagcdn.com/w40/${flagEmojiToIsoCode((m.data as any).nationality_flag_emoji)}.png`}
                       alt={(m.data as any).nationality_country ?? ''}
-                      class="h-4 w-auto rounded-sm object-cover shrink-0"
+                      class="h-3 w-auto rounded-sm object-cover shrink-0"
                       loading="lazy"
                     />
                   )}

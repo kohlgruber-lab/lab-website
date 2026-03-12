@@ -21,45 +21,44 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
 ---
 <BaseLayout title="Welcome" description={site.mission_statement}>
 
-  <!-- ── Hero (split layout) ───────────────────────────────────── -->
-  <section class="flex overflow-hidden" style="min-height: 560px;">
-    <!-- Left: gradient + text -->
-    <div class="relative flex w-full items-center lg:w-1/2" style="background: linear-gradient(135deg, #1F3552 0%, #06948E 100%);">
-      <div class="relative z-10 w-full px-8 py-20 sm:px-12 lg:px-14">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em]" style="color: rgba(231,135,43,0.95);">
-          {welcome.hero.eyebrow}
-        </p>
-        <h1 class="max-w-xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] leading-tight">
-          {welcome.hero.title}
-        </h1>
-        <p class="mt-6 max-w-lg text-base leading-relaxed" style="color: rgba(255,255,255,0.82);">
-          {site.mission_statement}
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a class="btn-primary" href="/research">Explore Research</a>
-          <a
-            href="/team"
-            class="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition"
-            style="background-color: #E7872B;"
-            onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"
-          >Meet Our Team</a>
-          <a
-            href="/contact"
-            class="inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-            style="border-color: rgba(255,255,255,0.45);"
-          >Contact Us</a>
-        </div>
+  <!-- ── Hero (full-width gradient) ───────────────────────────── -->
+  <section style="background: linear-gradient(135deg, #1F3552 0%, #06948E 100%); min-height: 480px;" class="flex items-center">
+    <div class="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em]" style="color: rgba(231,135,43,0.95);">
+        {welcome.hero.eyebrow}
+      </p>
+      <h1 class="max-w-3xl text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-[4.5rem] leading-tight">
+        {welcome.hero.title}
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
+        {site.mission_statement}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn-primary" href="/research">Explore Research</a>
+        <a
+          href="/team"
+          class="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition"
+          style="background-color: #E7872B;"
+          onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"
+        >Meet Our Team</a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+          style="border-color: rgba(255,255,255,0.45);"
+        >Contact Us</a>
       </div>
     </div>
-    <!-- Right: lab photo (desktop only) -->
-    <div class="hidden lg:block lg:w-1/2 relative overflow-hidden">
-      <img
-        src={labPhoto || '/uploads/2025_labphoto_5.jpeg'}
-        alt="Kohlgruber Lab"
-        class="absolute inset-0 h-full w-full object-cover object-center"
-      />
-    </div>
   </section>
+
+  <!-- ── Lab photo strip ───────────────────────────────────────── -->
+  <div class="w-full overflow-hidden" style="max-height: 440px;">
+    <img
+      src={labPhoto || '/uploads/2025_labphoto_5.jpeg'}
+      alt="Kohlgruber Lab"
+      class="w-full object-cover"
+      style="max-height: 440px; object-position: center center;"
+    />
+  </div>
 
   <!-- ── News ─────────────────────────────────────────────────── -->
   {news.length > 0 && (
@@ -90,7 +89,7 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
   {site.funding_logos.length > 0 && (
     <section class="section pt-0">
       <p class="mb-10 text-center text-base text-brand-gray">
-        We are grateful for the support of our research from the following organizations
+        We are grateful for the support of our research from the following organizations:
       </p>
       <div class="flex flex-wrap items-center justify-center gap-10">
         {site.funding_logos.map((logo) => (
@@ -111,22 +110,5 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
       </div>
     </section>
   )}
-
-  <!-- ── Affiliations ──────────────────────────────────────────── -->
-  <div class="border-t mt-6" style="border-color: var(--color-border); background-color: var(--color-bg);">
-    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-center justify-center gap-12">
-        <a href="https://www.childrenshospital.org" target="_blank" rel="noopener" aria-label="Boston Children's Hospital">
-          <img src="/uploads/bch-logo.png" alt="Boston Children's Hospital" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
-        </a>
-        <a href="https://hms.harvard.edu" target="_blank" rel="noopener" aria-label="Harvard Medical School">
-          <img src="/uploads/hms-logo.png" alt="Harvard Medical School" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
-        </a>
-        <a href="https://www.broadinstitute.org" target="_blank" rel="noopener" aria-label="Broad Institute of Harvard and MIT">
-          <img src="/uploads/broad-logo.png" alt="Broad Institute of Harvard and MIT" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
-        </a>
-      </div>
-    </div>
-  </div>
 
 </BaseLayout>
