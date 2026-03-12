@@ -7,10 +7,11 @@ import site from '../data/site-settings.json';
 
       <!-- Left: lab info -->
       <div>
-        <p class="font-bold" style="font-family: 'Avenir Next Condensed', 'Avenir Next', 'Barlow Condensed', sans-serif; font-size: 1.4rem;">
-          <span style="color: #06948E;">Kohlgruber</span> <span style="color: #707071;">Lab</span>
+        <p style="font-family: 'Avenir Next Condensed', 'Avenir Next', 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 500; letter-spacing: -0.01em; white-space: nowrap;">
+          <span style="color: #06948E;"><span style="font-size: 1.55rem; font-weight: 600;">K</span>ohlgruber</span>
+          <span style="color: #707071;"> <span style="font-size: 1.55rem; font-weight: 600;">L</span>ab</span>
         </p>
-        <p class="mt-1 text-brand-gray whitespace-pre-line">{site.address}</p>
+        <p class="mt-1 whitespace-pre-line" style="color: var(--color-navy);">{site.address}</p>
         {site.socials.length > 0 && (
           <div class="mt-3 flex flex-wrap gap-4">
             {site.socials.map((social) => (
@@ -23,13 +24,13 @@ import site from '../data/site-settings.json';
       <!-- Right: affiliation logos -->
       <div class="flex flex-wrap items-center gap-8 sm:justify-end">
         <a href="https://www.childrenshospital.org" target="_blank" rel="noopener" aria-label="Boston Children's Hospital">
-          <img src="/uploads/bch-logo.png" alt="Boston Children's Hospital" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+          <img src="/uploads/bch-logo.png" alt="Boston Children's Hospital" class="h-24 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
         </a>
         <a href="https://hms.harvard.edu" target="_blank" rel="noopener" aria-label="Harvard Medical School">
-          <img src="/uploads/hms-logo.png" alt="Harvard Medical School" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+          <img src="/uploads/hms-logo.png" alt="Harvard Medical School" class="h-24 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
         </a>
         <a href="https://www.broadinstitute.org" target="_blank" rel="noopener" aria-label="Broad Institute of Harvard and MIT">
-          <img src="/uploads/broad-logo.png" alt="Broad Institute of Harvard and MIT" class="h-16 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
+          <img src="/uploads/broad-logo.png" alt="Broad Institute of Harvard and MIT" class="h-24 w-auto object-contain" loading="lazy" style="mix-blend-mode: multiply;" />
         </a>
       </div>
 

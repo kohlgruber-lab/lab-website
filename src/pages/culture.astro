@@ -40,12 +40,12 @@ const sections = [
     </div>
   </div>
 
-  <!-- Two-column main content -->
+  <!-- Main content: text left, photos right; photos wrap below when they exceed text height -->
   <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-    <div class="flex flex-col gap-12 lg:flex-row lg:gap-16">
+    <div class="lg:grid lg:grid-cols-[1fr_42%] lg:gap-16 lg:items-start">
 
       <!-- LEFT: text sections stacked -->
-      <div class="flex-1 min-w-0 space-y-12">
+      <div class="space-y-12 mb-12 lg:mb-0">
         {sections.map((sec) => (
           <div class="culture-text-block">
             <div class="flex items-center gap-3 mb-4">
@@ -60,32 +60,29 @@ const sections = [
         ))}
       </div>
 
-      <!-- RIGHT: photo collage -->
+      <!-- RIGHT: photo collage — scrolls naturally; overflows below text if taller -->
       {culturePage.photo_collage && culturePage.photo_collage.length > 0 && (
-        <div class="lg:w-[42%] shrink-0">
-          <div class="sticky top-24">
-            <h2 class="mb-5 text-sm font-bold uppercase tracking-widest" style="color: var(--color-primary);">
-              Life in and out of the lab
-            </h2>
-            <div class="culture-collage-grid">
-              {culturePage.photo_collage.map((photo, i) => (
-                <div
-                  class:list={[
-                    'overflow-hidden rounded-xl shadow-soft',
-                    i === 0 ? 'col-span-2' : '',
-                  ]}
-                  style="border: 1px solid var(--color-border);"
-                >
-                  <img
-                    src={photo.image}
-                    alt={photo.alt ?? 'Lab photo'}
-                    loading="lazy"
-                    class="h-full w-full object-cover"
-                    style={i === 0 ? 'max-height: 260px;' : 'max-height: 180px;'}
-                  />
-                </div>
-              ))}
-            </div>
+        <div>
+          <h2 class="mb-5 text-sm font-bold uppercase tracking-widest" style="color: var(--color-primary);">
+            Life in and out of the lab
+          </h2>
+          <div class="culture-collage-grid">
+            {culturePage.photo_collage.map((photo, i) => (
+              <div
+                class:list={[
+                  'rounded-xl shadow-soft overflow-hidden',
+                  i === 0 ? 'col-span-2' : '',
+                ]}
+                style="border: 1px solid var(--color-border);"
+              >
+                <img
+                  src={photo.image}
+                  alt={photo.alt ?? 'Lab photo'}
+                  loading="lazy"
+                  class="w-full h-auto block object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       )}
