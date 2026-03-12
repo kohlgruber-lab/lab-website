@@ -22,6 +22,10 @@ const sections = [
     icon: '🌱',
   },
 ];
+
+const allPhotos = culturePage.photo_collage ?? [];
+const sidebarPhotos = allPhotos.filter((p: any) => p.sidebar);
+const collagPhotos  = allPhotos.filter((p: any) => !p.sidebar);
 ---
 
 <BaseLayout title={culturePage.title ?? 'Culture'} description="Lab culture, philosophy, and mentoring.">
@@ -42,30 +46,56 @@ const sections = [
 
   <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
 
-    <!-- Text sections -->
-    <div class="space-y-12 max-w-3xl">
-      {sections.map((sec) => (
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="h-8 w-1.5 rounded-full shrink-0" style={`background-color: ${sec.accent};`}></div>
-            <h2 class="text-2xl font-bold tracking-tight flex items-center gap-2" style={`color: ${sec.accent};`}>
-              {sec.title}
-              <span class="text-2xl" role="img" aria-label={sec.title}>{sec.icon}</span>
-            </h2>
+    <!-- ── Side-by-side: text left, selected sidebar photos right ── -->
+    <div class="lg:grid lg:gap-16 lg:items-start" style="grid-template-columns: 1fr 40%;">
+
+      <!-- LEFT: text sections -->
+      <div class="space-y-12 mb-12 lg:mb-0">
+        {sections.map((sec) => (
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="h-8 w-1.5 rounded-full shrink-0" style={`background-color: ${sec.accent};`}></div>
+              <h2 class="text-2xl font-bold tracking-tight flex items-center gap-2" style={`color: ${sec.accent};`}>
+                {sec.title}
+                <span class="text-2xl" role="img" aria-label={sec.title}>{sec.icon}</span>
+              </h2>
+            </div>
+            <p class="leading-6 text-brand-gray text-base">{sec.text}</p>
           </div>
-          <p class="leading-6 text-brand-gray text-base">{sec.text}</p>
+        ))}
+      </div>
+
+      <!-- RIGHT: sidebar photos stacked at natural aspect ratio -->
+      {sidebarPhotos.length > 0 && (
+        <div class="hidden lg:flex flex-col gap-3">
+          <p class="text-sm font-bold uppercase tracking-widest mb-1" style="color: var(--color-primary);">
+            Life in and out of the lab
+          </p>
+          {sidebarPhotos.map((photo: any) => (
+            <div class="rounded-xl overflow-hidden shadow-soft" style="border: 1px solid var(--color-border);">
+              <img
+                src={photo.image}
+                alt={photo.alt ?? 'Lab photo'}
+                loading="eager"
+                class="w-full h-auto block"
+              />
+            </div>
+          ))}
         </div>
-      ))}
+      )}
+
     </div>
 
-    <!-- Photo collage — always below the text sections, natural aspect ratios via CSS columns masonry -->
-    {culturePage.photo_collage && culturePage.photo_collage.length > 0 && (
+    <!-- ── Full-width masonry collage: all non-sidebar photos ── -->
+    {collagPhotos.length > 0 && (
       <div class="mt-16">
-        <h2 class="mb-6 text-sm font-bold uppercase tracking-widest" style="color: var(--color-primary);">
-          Life in and out of the lab
-        </h2>
+        {sidebarPhotos.length === 0 && (
+          <p class="text-sm font-bold uppercase tracking-widest mb-6" style="color: var(--color-primary);">
+            Life in and out of the lab
+          </p>
+        )}
         <div class="culture-collage">
-          {culturePage.photo_collage.map((photo) => (
+          {collagPhotos.map((photo: any) => (
             <div class="culture-collage-item">
               <img
                 src={photo.image}
