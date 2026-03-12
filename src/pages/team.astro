@@ -87,7 +87,7 @@ function parseFlagEmojis(flagStr: string): string[] {
           <h2 class="pi-card-name flex items-center flex-wrap">
             <span>{m.data.name}{positionRank(m.data.position) <= 1 ? ', PhD' : ''}</span>
             {(m.data as any).nationality_flag_emoji && (
-              <span style="margin-left: 0.75rem; display: inline-flex; align-items: center; gap: 4px;">
+              <span style="margin-left: calc(0.75rem + 2cm); display: inline-flex; align-items: center; gap: 4px;">
                 {parseFlagEmojis((m.data as any).nationality_flag_emoji).map((flag) => (
                   <img
                     src={`https://flagcdn.com/w40/${flagEmojiToIsoCode(flag)}.png`}
