@@ -98,7 +98,8 @@ collections:
     label: "Team Members"
     folder: "src/content/team"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "name"
+    slug: "{{year}}{{month}}{{day}}-{{hour}}{{minute}}{{second}}"
     extension: "md"
     format: "frontmatter"
     fields:
@@ -120,7 +121,8 @@ collections:
     label: "News"
     folder: "src/content/news"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "title"
+    slug: "{{year}}{{month}}{{day}}-{{hour}}{{minute}}{{second}}"
     extension: "md"
     format: "frontmatter"
     fields:
@@ -151,9 +153,11 @@ collections:
             name: "photo_collage"
             widget: "list"
             required: false
+            hint: "Photos marked 'Show in sidebar' appear alongside the text sections. All other photos appear in the masonry grid below."
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt Text", name: "alt", widget: "string", required: false }
+              - { label: "Show in sidebar (next to text)", name: "sidebar", widget: "boolean", default: false, hint: "If enabled, this photo appears in the right column alongside the Culture/Philosophy/Mentoring text. Otherwise it goes in the full-width collage below." }
 
   - name: "join_page"
     label: "Join Us Page"

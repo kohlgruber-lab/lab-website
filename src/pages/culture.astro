@@ -22,6 +22,10 @@ const sections = [
     icon: '🌱',
   },
 ];
+
+const allPhotos = culturePage.photo_collage ?? [];
+const sidebarPhotos = allPhotos.filter((p: any) => p.sidebar);
+const collagPhotos  = allPhotos.filter((p: any) => !p.sidebar);
 ---
 
 <BaseLayout title={culturePage.title ?? 'Culture'} description="Lab culture, philosophy, and mentoring.">
@@ -40,14 +44,15 @@ const sections = [
     </div>
   </div>
 
-  <!-- Main content: text left, photos right -->
   <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-    <div id="culture-layout" class="lg:grid lg:gap-16 lg:items-start" style="grid-template-columns: 1fr 42%;">
+
+    <!-- ── Side-by-side: text left, selected sidebar photos right ── -->
+    <div class="lg:grid lg:gap-16 lg:items-start" style="grid-template-columns: 1fr 40%;">
 
       <!-- LEFT: text sections -->
-      <div id="culture-text" class="space-y-12 mb-12 lg:mb-0">
+      <div class="space-y-12 mb-12 lg:mb-0">
         {sections.map((sec) => (
-          <div class="culture-text-block">
+          <div>
             <div class="flex items-center gap-3 mb-4">
               <div class="h-8 w-1.5 rounded-full shrink-0" style={`background-color: ${sec.accent};`}></div>
               <h2 class="text-2xl font-bold tracking-tight flex items-center gap-2" style={`color: ${sec.accent};`}>
@@ -55,110 +60,54 @@ const sections = [
                 <span class="text-2xl" role="img" aria-label={sec.title}>{sec.icon}</span>
               </h2>
             </div>
-            <p class="leading-6 text-brand-gray text-base max-w-prose">{sec.text}</p>
+            <p class="leading-6 text-brand-gray text-base">{sec.text}</p>
           </div>
         ))}
       </div>
 
-      <!-- RIGHT: photo collage — photos that exceed text height wrap below via JS -->
-      {culturePage.photo_collage && culturePage.photo_collage.length > 0 && (
-        <div id="culture-photos-col">
-          <h2 id="culture-photos-heading" class="mb-5 text-sm font-bold uppercase tracking-widest" style="color: var(--color-primary);">
+      <!-- RIGHT: sidebar photos stacked at natural aspect ratio -->
+      {sidebarPhotos.length > 0 && (
+        <div class="hidden lg:flex flex-col gap-3">
+          <p class="text-sm font-bold uppercase tracking-widest mb-1" style="color: var(--color-primary);">
             Life in and out of the lab
-          </h2>
-          <div id="culture-photos-main" class="culture-collage-grid">
-            {culturePage.photo_collage.map((photo, i) => (
-              <div
-                class:list={[
-                  'culture-photo-item rounded-xl shadow-soft overflow-hidden',
-                  i === 0 ? 'col-span-2' : '',
-                ]}
-                style="border: 1px solid var(--color-border);"
-              >
-                <img
-                  src={photo.image}
-                  alt={photo.alt ?? 'Lab photo'}
-                  loading="lazy"
-                  class="w-full h-auto block"
-                  style="display: block;"
-                />
-              </div>
-            ))}
-          </div>
+          </p>
+          {sidebarPhotos.map((photo: any) => (
+            <div class="rounded-xl overflow-hidden shadow-soft" style="border: 1px solid var(--color-border);">
+              <img
+                src={photo.image}
+                alt={photo.alt ?? 'Lab photo'}
+                loading="eager"
+                class="w-full h-auto block"
+              />
+            </div>
+          ))}
         </div>
       )}
 
     </div>
 
-    <!-- Container for photos that overflow below the text column -->
-    <div id="culture-photos-overflow" style="display: none; margin-top: 1.5rem;">
-      <div id="culture-photos-overflow-grid" class="culture-collage-grid"></div>
-    </div>
+    <!-- ── Full-width masonry collage: all non-sidebar photos ── -->
+    {collagPhotos.length > 0 && (
+      <div class="mt-16">
+        {sidebarPhotos.length === 0 && (
+          <p class="text-sm font-bold uppercase tracking-widest mb-6" style="color: var(--color-primary);">
+            Life in and out of the lab
+          </p>
+        )}
+        <div class="culture-collage">
+          {collagPhotos.map((photo: any) => (
+            <div class="culture-collage-item">
+              <img
+                src={photo.image}
+                alt={photo.alt ?? 'Lab photo'}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
   </div>
-
-  <script is:inline>
-  (function () {
-    function wrapCulturePhotos() {
-      var textCol = document.getElementById('culture-text');
-      var photosMain = document.getElementById('culture-photos-main');
-      var overflowSection = document.getElementById('culture-photos-overflow');
-      var overflowGrid = document.getElementById('culture-photos-overflow-grid');
-      if (!textCol || !photosMain || !overflowSection || !overflowGrid) return;
-
-      // First, move any overflow items back to main (reset)
-      var overflowItems = Array.from(overflowGrid.children);
-      overflowItems.forEach(function (item) { photosMain.appendChild(item); });
-      overflowSection.style.display = 'none';
-
-      // Only apply wrap logic on desktop
-      if (window.innerWidth < 1024) return;
-
-      var textHeight = textCol.offsetHeight;
-      var heading = document.getElementById('culture-photos-heading');
-      var headingH = heading ? heading.offsetHeight + 20 : 52;
-      var gap = 12; // matches culture-collage-grid gap: 0.75rem
-
-      var items = Array.from(photosMain.children);
-      var accH = headingH;
-      var overflowStart = -1;
-      var i = 0;
-
-      while (i < items.length) {
-        var item = items[i];
-        var isFullRow = item.classList.contains('col-span-2');
-
-        if (isFullRow) {
-          var h = item.offsetHeight;
-          if (accH + h > textHeight) { overflowStart = i; break; }
-          accH += h + gap;
-          i++;
-        } else {
-          // Two items share a row; use the taller one for row height
-          var next = items[i + 1];
-          var rowH = next ? Math.max(item.offsetHeight, next.offsetHeight) : item.offsetHeight;
-          if (accH + rowH > textHeight) { overflowStart = i; break; }
-          accH += rowH + gap;
-          i += next ? 2 : 1;
-        }
-      }
-
-      if (overflowStart >= 0) {
-        var all = Array.from(photosMain.children);
-        for (var j = overflowStart; j < all.length; j++) {
-          overflowGrid.appendChild(all[j]);
-        }
-        overflowSection.style.display = 'block';
-      }
-    }
-
-    // Run after images have loaded so heights are accurate
-    window.addEventListener('load', wrapCulturePhotos);
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(wrapCulturePhotos, 150);
-    });
-  })();
-  </script>
 
 </BaseLayout>
