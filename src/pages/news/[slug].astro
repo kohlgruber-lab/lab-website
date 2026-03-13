@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('news');
@@ -8,13 +8,13 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
 ---
-<BaseLayout title={post.data.title} description={post.data.summary}>
-  <article class="section prose max-w-3xl prose-slate">
+<BaseLayout title={post.data.title} description={post.data.title}>
+  <article class="section max-w-3xl">
     <p class="text-sm text-slate-500">{post.data.date.toISOString().slice(0,10)}</p>
-    <h1>{post.data.title}</h1>
-    <p>{post.data.summary}</p>
-    <Content />
+    <h1 class="mt-2 text-3xl font-bold text-brand-ink">{post.data.title}</h1>
+    {post.data.featured_image && (
+      <img src={post.data.featured_image} alt={post.data.title} class="mt-6 w-full rounded-2xl" loading="lazy" />
+    )}
   </article>
 </BaseLayout>

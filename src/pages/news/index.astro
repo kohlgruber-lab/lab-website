@@ -13,13 +13,9 @@ const groupedPosts = posts.reduce((acc: Record<string, typeof posts>, post) => {
   return acc;
 }, {});
 
-// Simple inline markdown: **bold** and *italic*
-function renderInline(text: string): string {
-  if (!text) return '';
-  return text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>');
-}
+// Years sorted newest-first; only the 3 most recent stay open
+const sortedYears = Object.keys(groupedPosts).sort((a, b) => Number(b) - Number(a));
+const recentYears = new Set(sortedYears.slice(0, 3));
 ---
 
 <BaseLayout title="News" description="Updates from the Kohlgruber Lab.">
@@ -29,21 +25,25 @@ function renderInline(text: string): string {
       Updates from the lab, including research highlights, papers, presentations, awards, and team news.
     </p>
 
-    <div class="mt-10 space-y-14">
-      {Object.entries(groupedPosts).map(([year, yearPosts]) => (
-        <section>
-          <!-- Year header -->
-          <div class="mb-6 flex items-center gap-4">
+    <div class="mt-10 space-y-10">
+      {sortedYears.map((year) => {
+        const yearPosts = groupedPosts[year];
+        const isRecent = recentYears.has(year);
+
+        const header = (
+          <div class="flex items-center gap-4">
             <span
-              class="rounded-full px-4 py-1 text-sm font-bold tracking-wider text-white"
+              class="rounded-full px-4 py-1 text-sm font-bold tracking-wider text-white shrink-0"
               style="background-color: var(--color-primary);"
             >
               {year}
             </span>
             <div class="flex-1 h-px" style="background-color: var(--color-border);"></div>
           </div>
+        );
 
-          <div class="space-y-0 divide-y" style="border-color: var(--color-border);">
+        const postList = (
+          <div class="mt-4 space-y-0 divide-y" style="border-color: var(--color-border);">
             {yearPosts.map((post) => (
               <article class="news-item group flex gap-4 py-5 md:gap-6">
 
@@ -55,17 +55,14 @@ function renderInline(text: string): string {
 
                 <!-- Optional thumbnail -->
                 {post.data.featured_image && (
-                  <a
-                    href={`/news/${post.id.replace('.md', '')}`}
-                    class="hidden shrink-0 md:block"
-                  >
+                  <div class="hidden shrink-0 md:block">
                     <img
                       src={post.data.featured_image}
                       alt={post.data.title}
                       loading="lazy"
                       class="h-24 w-36 rounded-xl object-cover"
                     />
-                  </a>
+                  </div>
                 )}
 
                 <!-- Content -->
@@ -78,19 +75,8 @@ function renderInline(text: string): string {
                   </p>
 
                   <h3 class="text-lg font-semibold text-brand-ink leading-snug">
-                    <a
-                      href={`/news/${post.id.replace('.md', '')}`}
-                      class="transition-colors hover:text-brand-turquoise no-underline"
-                      style="color: inherit;"
-                    >
-                      {post.data.title}
-                    </a>
+                    {post.data.title}
                   </h3>
-
-                  <p
-                    class="mt-1.5 text-sm leading-6 text-brand-gray"
-                    set:html={renderInline(post.data.summary)}
-                  />
 
                   {post.data.tags && post.data.tags.length > 0 && (
                     <div class="mt-2.5 flex flex-wrap gap-1.5">
@@ -109,8 +95,31 @@ function renderInline(text: string): string {
               </article>
             ))}
           </div>
-        </section>
-      ))}
+        );
+
+        return isRecent ? (
+          <section>
+            {header}
+            {postList}
+          </section>
+        ) : (
+          <details class="group/year">
+            <summary class="flex cursor-pointer list-none items-center gap-4 marker:hidden [&::-webkit-details-marker]:hidden">
+              <span
+                class="rounded-full px-4 py-1 text-sm font-bold tracking-wider shrink-0"
+                style="background-color: var(--color-soft-surface); color: var(--color-primary); border: 1px solid var(--color-border);"
+              >
+                {year}
+              </span>
+              <div class="flex-1 h-px" style="background-color: var(--color-border);"></div>
+              <span class="text-xs shrink-0" style="color: var(--color-primary);">
+                {yearPosts.length} {yearPosts.length === 1 ? 'item' : 'items'} — click to expand
+              </span>
+            </summary>
+            {postList}
+          </details>
+        );
+      })}
     </div>
   </section>
 </BaseLayout>
