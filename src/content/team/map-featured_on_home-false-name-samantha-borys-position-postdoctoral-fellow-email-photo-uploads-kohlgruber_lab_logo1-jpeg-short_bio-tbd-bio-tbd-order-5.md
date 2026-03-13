@@ -1,6 +1,6 @@
 ---
 name: Shilu Wang
-position: Undergraduate intern
+position: Undergraduate Intern
 email: Shilu.Wang@childrens.harvard.edu
 nationality_country: United States
 nationality_flag_emoji: 🇺🇸
