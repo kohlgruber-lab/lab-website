@@ -1,6 +1,7 @@
 ---
 name: Ayano Kohlgruber
 position: Principal Investigator
+email: Ayano.Kohlgruber@childrens.harvard.edu
 nationality_country: USA & Canada
 nationality_flag_emoji: 🇺🇸 & 🇨🇦
 places_lived:
@@ -24,11 +25,11 @@ bio: Ayano Kohlgruber is an immunologist whose work focuses on understanding how
   that brings together basic immunology, technology development, and
   translational questions.
 fun_fact: Outside the lab, Ayano can usually be found adventuring outdoors with
-  her husband, son, and two dogs, whether hiking, backpacking,
-  (backcountry/cross-country) skiing, (canoe) camping, climbing, or running.
-  These days, her main venue for experimentation is the kitchen, where she loves
-  hosting dinner parties and cooking/baking foods inspired by cuisines from
-  around the world.
+  her husband (Rob), son (Haruto), and two dogs (Murphy & Elsa), whether hiking,
+  backpacking, (backcountry/cross-country) skiing, (canoe) camping, climbing, or
+  running. These days, her main venue for experimentation is the kitchen, where
+  she loves hosting dinner parties and cooking/baking foods inspired by cuisines
+  from around the world.
 order: 1
 featured_on_home: true
 links:
