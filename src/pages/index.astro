@@ -54,12 +54,12 @@ const cardAccents = ['var(--color-accent)', 'var(--color-primary)', 'var(--color
       </div>
     </div>
 
-    <!-- Right: lab photo — shown below text on mobile, shown to the right on desktop -->
-    <div class="h-60 w-full overflow-hidden lg:h-auto lg:w-[66.667%] lg:shrink-0">
+    <!-- Right: lab photo — full image on mobile, cover fill on desktop -->
+    <div class="w-full lg:overflow-hidden lg:w-[66.667%] lg:shrink-0">
       <img
         src={labPhoto || '/uploads/2025_labphoto_5.jpeg'}
         alt="Kohlgruber Lab"
-        class="h-full w-full object-cover"
+        class="w-full h-auto block lg:h-full lg:object-cover"
         style="object-position: center center;"
       />
     </div>
