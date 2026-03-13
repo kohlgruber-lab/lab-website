@@ -35,6 +35,10 @@
     },
     {
       "image": "/uploads/divimm_holidayparty.jpeg"
+    },
+    {
+      "sidebar": false,
+      "image": "/uploads/murphy-and-chinky.jpeg"
     }
   ],
   "culture_title": "Culture",
