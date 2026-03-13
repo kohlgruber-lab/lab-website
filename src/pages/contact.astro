@@ -83,17 +83,16 @@ function renderParagraphs(text: string): string {
     <div class="flex flex-col gap-10 lg:flex-row lg:gap-12">
 
       <!-- Left: building photo + lab details stacked -->
-      <div class="lg:w-5/12 shrink-0 space-y-6">
+      <div class="lg:w-5/12 shrink-0 flex flex-col gap-6">
 
-        <!-- Building photo -->
+        <!-- Building photo — grows to fill remaining height so bottom aligns with form -->
         {contact.building_photo && (
-          <div class="overflow-hidden rounded-2xl shadow-md flex items-center justify-center" style="border: 1px solid var(--color-border); max-height: 260px;">
+          <div class="flex-1 min-h-0 overflow-hidden rounded-2xl shadow-md flex items-center justify-center" style="border: 1px solid var(--color-border);">
             <img
               src={contact.building_photo}
               alt={contact.building_photo_alt ?? 'Building photo'}
               loading="lazy"
               class="w-full h-full object-contain"
-              style="max-height: 260px;"
             />
           </div>
         )}

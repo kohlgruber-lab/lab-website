@@ -55,12 +55,12 @@ const recentYears = new Set(sortedYears.slice(0, 3));
 
                 <!-- Optional thumbnail -->
                 {post.data.featured_image && (
-                  <div class="hidden shrink-0 md:block">
+                  <div class="hidden shrink-0 md:flex md:items-center md:justify-center rounded-xl overflow-hidden" style="width:9rem; height:6rem; background-color: var(--color-soft-surface);">
                     <img
                       src={post.data.featured_image}
                       alt={post.data.title}
                       loading="lazy"
-                      class="h-24 w-36 rounded-xl object-cover"
+                      class="w-full h-full object-contain"
                     />
                   </div>
                 )}
