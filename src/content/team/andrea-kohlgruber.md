@@ -12,18 +12,19 @@ photo: /uploads/ak_headshot.jpg
 bio: Ayano Kohlgruber is an immunologist whose work focuses on understanding how
   T cells recognize antigen and how immune specificity shapes health and
   disease. She completed her undergraduate studies at the University of
-  California, Berkeley, where she first developed a deep interest in immunology.
-  She went on to earn her PhD at Harvard, where she trained with Michael Brenner
-  and Lydia Lynch and studied γδ T cells and their roles in adipose tissue and
-  metabolic homeostasis. She then joined Steve Elledge’s laboratory as a
+  California, Berkeley, where she first fell in love with immunology. She went
+  on to earn her PhD at Harvard, where she trained with Drs. Michael Brenner and
+  Lydia Lynch, studying γδ T cells and their role in metabolic homeostasis in
+  adipose tissue. She then joined Dr. Steve Elledge’s laboratory as a
   postdoctoral fellow, where she developed new tools to profile T cell
-  specificities at scale. In her own lab, Ayano studies the antigen-specific
-  basis of immunity across autoimmunity, cancer, and infectious disease. Her
-  group combines functional genomics, single-cell technologies, and synthetic
-  biology to define T cell specificities and understand how they become altered
-  in disease. She is especially excited to build a collaborative lab environment
-  that brings together basic immunology, technology development, and
-  translational questions.
+  specificities at scale. Ayano leads a team of incredible scientists to tackle
+  the antigen-specific basis of immunity across autoimmunity, cancer, and
+  infectious disease. Her group combines functional genomics, single-cell
+  technologies, and synthetic biology to define T cell specificities and
+  understand how they become altered in disease. She cares deeply about
+  mentorship and building a collaborative lab environment that brings together
+  trainees to answer basic immunology, technology development, and translational
+  questions.
 fun_fact: Outside the lab, Ayano can usually be found adventuring outdoors with
   her husband (Rob), son (Haruto), and two dogs (Murphy & Elsa), whether hiking,
   backpacking, (backcountry/cross-country) skiing, (canoe) camping, climbing, or
