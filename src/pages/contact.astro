@@ -28,7 +28,7 @@ function renderParagraphs(text: string): string {
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <h1 class="text-4xl font-bold tracking-tight text-white">{contact.title ?? 'Contact'}</h1>
       {contact.intro && (
-        <p class="mt-3 max-w-2xl text-lg leading-relaxed" style="color: rgba(255,255,255,0.82);">
+        <p class="mt-3 max-w-2xl text-lg leading-tight" style="color: rgba(255,255,255,0.82);">
           {contact.intro}
         </p>
       )}
@@ -93,7 +93,7 @@ function renderParagraphs(text: string): string {
               alt={contact.building_photo_alt ?? 'Building photo'}
               loading="lazy"
               class="w-full h-auto block"
-              style="max-height: 380px; object-fit: cover;"
+              style="max-height: 440px; object-fit: cover;"
             />
           </div>
         )}
