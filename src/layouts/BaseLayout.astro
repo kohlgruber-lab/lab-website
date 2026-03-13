@@ -2,13 +2,14 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import site from '../data/site-settings.json';
+import welcome from '../data/welcome.json';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { title = 'Welcome', description = site.mission_statement } = Astro.props;
+const { title = 'Welcome', description = (welcome as any).hero.description } = Astro.props;
 const pageTitle = `${title} | ${site.lab_name}`;
 const image = '/images/og-placeholder.svg';
 ---
