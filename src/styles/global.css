@@ -231,7 +231,7 @@ a:hover {
   }
 
   .trainee-card-name {
-    @apply text-base font-semibold tracking-tight leading-snug;
+    @apply text-base font-semibold tracking-tight leading-snug pr-9;
     color: var(--color-text);
   }
 
