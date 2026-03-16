@@ -227,7 +227,7 @@ a:hover {
   }
 
   .trainee-card-front-text {
-    @apply w-full pr-9;
+    @apply w-full;
   }
 
   .trainee-card-name {
