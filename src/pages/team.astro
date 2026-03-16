@@ -157,7 +157,7 @@ function parseFlagEmojis(flagStr: string): string[] {
                   )}
                 </div>
                 {(m.data as any).nationality_flag_emoji && (
-                  <div class="flex flex-col gap-1 shrink-0 mt-0.5">
+                  <div class="absolute top-4 right-4 flex flex-col gap-1">
                     {parseFlagEmojis((m.data as any).nationality_flag_emoji).map((flag) => (
                       <img
                         src={`https://flagcdn.com/w80/${flagEmojiToIsoCode(flag)}.png`}
