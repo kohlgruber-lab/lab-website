@@ -47,6 +47,11 @@
     {
       "sidebar": false,
       "image": "/uploads/alicia_poster.jpeg"
+    },
+    {
+      "sidebar": false,
+      "image": "/uploads/img_3355.jpg",
+      "alt": "allison's last day of rotation"
     }
   ],
   "culture_title": "Culture",
