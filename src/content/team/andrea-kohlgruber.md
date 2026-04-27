@@ -8,7 +8,7 @@ places_lived:
   - Ota, Japan;
   - Berkeley, CA;
   - Boston, MA
-photo: /uploads/ak_headshot.jpg
+photo: /uploads/ak_headshot_2.jpg
 bio: Ayano Kohlgruber is an immunologist whose work focuses on understanding how
   T cells recognize antigen and how immune specificity shapes health and
   disease. She completed her undergraduate studies at the University of
